@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Office.Interop.Excel;
 using Excel = Microsoft.Office.Interop.Excel;
-
-
+using OfficeOpenXml;
+using OfficeOpenXml.Drawing;
 namespace Query_Listener
 {
     /// <summary>
@@ -29,10 +29,11 @@ namespace Query_Listener
         private Excel.Workbook WB;
         private Excel.Worksheet WS;
         private Excel.Sheets SS;
+        private string Persona;
         private string lblPathing = "";
-        string Pathfinder = Dashboard.ExcelOFD;
         object misValue = System.Reflection.Missing.Value;
         private string finalformat;
+        private string Middlenamae;
         public Printer()
         {
             InitializeComponent();
@@ -55,9 +56,16 @@ namespace Query_Listener
             txtTWCE.Text = Dashboard.HeldTaxCE;
             txtTWPE.Text = Dashboard.HeldTaxPE;
             txtTATW.Text = Dashboard.TotalTax;
-            lblPath.Text = Pathfinder;
             txtPersonnelID.Text = Dashboard.PersonID;
-            txtTIN.Text = Dashboard.TIN;
+            txtTIN.Text = Dashboard.TIN_Printer;
+            txtPeriod1.Text = Dashboard.From;
+            txtPeriod2.Text = Dashboard.To;
+            Persona = txtFirst.Text;
+            txtCTC.Text = Dashboard.CTC;
+            txtPOI.Text = Dashboard.POI;
+            txtDOI.Text = Dashboard.DOI;
+            txtAMT.Text = Dashboard.AMT;
+            Middlenamae = Dashboard.Middlenamae;
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
@@ -72,6 +80,7 @@ namespace Query_Listener
             }
             try
             {
+                //Initialize the Excel File
                 Xls = new Excel.Application();
                 WBs = Xls.Workbooks;
                 WB = WBs.Open(lblPath.Text, 0, false, 5, "", "", true,
@@ -91,26 +100,6 @@ namespace Query_Listener
                 string digit2 = "0";
                 string digit3 = "0";
                 string digit4 = "0";
-                /*
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < input.Length; i++)
-                {
-                    sb.Append(input[i]);
-                    if (i%3 == 0)
-                    {
-                        sb.Append(' ');
-                    }
-                }
-                string formatted = sb.ToString();
-                Console.WriteLine(formatted);
-                string[] formatCollection = formatted.Split(' ');
-                digit1 = formatCollection[0];
-                digit2 = formatCollection[1];
-                digit3 = formatCollection[2];
-                digit4 = formatCollection[3];
-                
-                Console.WriteLine(formatCollection);
-                */
                 StringBuilder sb = new StringBuilder();
                 StringBuilder partBuilder = new StringBuilder();
                 int partsSplitted = 0;
@@ -132,9 +121,10 @@ namespace Query_Listener
                 digit2 = formatCollection[1];
                 digit3 = formatCollection[2];
                 digit4 = formatCollection[3];
+
                 Console.WriteLine(formatted);
                 //Names
-                WS.Cells[14, 2] = txtLast.Text + "  " + txtFirst.Text;
+                WS.Cells[14, 2] = txtLast.Text + ",  " + txtFirst.Text + " " + Middlenamae;
                 WS.Cells[48, 2] = txtEmployer.Text;
                 //Year & Period
                 WS.Cells[8, 8] = txtYear.Text;
@@ -163,6 +153,11 @@ namespace Query_Listener
                 WS.Cells[82, 12] = txtTWCE.Text;
                 WS.Cells[84, 12] = txtTWPE.Text;
                 WS.Cells[86, 12] = txtTATW.Text;
+                //==========================
+                WS.Cells[95, 5] = txtCTC.Text;
+                WS.Cells[95, 15] = txtPOI.Text;
+                WS.Cells[95, 24] = txtDOI.Text;
+                WS.Cells[95, 33] = txtAMT.Text;
                 WB.Save();
                 if (chkbxPDF.Checked == false)
                 {
@@ -238,10 +233,10 @@ namespace Query_Listener
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             var random = new Random();
             var result = new string(
-                Enumerable.Repeat(chars, 4)
+                Enumerable.Repeat(chars, 3)
                           .Select(s => s[random.Next(s.Length)])
                           .ToArray());
-            finalformat = append + "-" + result + ".pdf";
+            finalformat = append + "-" + Persona + "-" + result + ".pdf";
         }
         private void btnSource_Click(object sender, EventArgs e)
         {
@@ -256,6 +251,78 @@ namespace Query_Listener
             Console.WriteLine(finalformat);
         }
 
+        void EPPLUS()
+        {
+            // Taking existing file: 'Sample1.xlsx'. Here 'Sample1.xlsx' is treated as template file
+            FileInfo templateFile = new FileInfo(@"Sample1.xlsx");
+            // Making a new file 'Sample2.xlsx'
+            FileInfo newFile = new FileInfo(@"Sample2.xlsx");
+
+            // If there is any file having same name as 'Sample2.xlsx', then delete it first
+            if (newFile.Exists)
+            {
+                newFile.Delete();
+                newFile = new FileInfo(@"Sample2.xlsx");
+            }
+
+            using (ExcelPackage package = new ExcelPackage(newFile, templateFile))
+            {
+                // Openning first Worksheet of the template file i.e. 'Sample1.xlsx'
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+                // I'm adding 5th & 6th rows as 1st to 4th rows are already filled up with values in 'Sample1.xlsx'
+                worksheet.InsertRow(5, 2);
+
+                // Inserting values in the 5th row
+                worksheet.Cells["A5"].Value = "12010";
+                worksheet.Cells["B5"].Value = "Drill";
+                worksheet.Cells["C5"].Value = 20;
+                worksheet.Cells["D5"].Value = 8;
+
+                // Inserting values in the 6th row
+                worksheet.Cells["A6"].Value = "12011";
+                worksheet.Cells["B6"].Value = "Crowbar";
+                worksheet.Cells["C6"].Value = 7;
+                worksheet.Cells["D6"].Value = 23.48;
+            }
+        }
+
+        //void OPENXML()
+        //{
+        //    if (DGVmain.RowCount > 0)
+        //    {
+        //    string strfilepath = "C:\\Users\\m\\Desktop\\Employeedata.xlsx";
+        //    using (ExcelPackage p = new ExcelPackage())
+        //    {
+        //        using (FileStream stream = new FileStream(strfilepath, FileMode.Open))
+        //        {
+        //            p.Load(stream);
+        //            //deleting worksheet if already present in excel file
+        //            var wk = p.Workbook.Worksheets.SingleOrDefault(x => x.Name == "Hola");
+        //            if (wk != null) { p.Workbook.Worksheets.Delete(wk); }
+
+        //            p.Workbook.Worksheets.Add("Hola");
+        //            p.Workbook.Worksheets.MoveToEnd("Hola");
+        //            ExcelWorksheet worksheet = p.Workbook.Worksheets[p.Workbook.Worksheets.Count];
+
+        //            worksheet.InsertRow(5, 2);
+        //            worksheet.Cells["A9"].LoadFromDataTable(dt1, true);
+        //            // Inserting values in the 5th row
+        //            worksheet.Cells["A5"].Value = "12010";
+        //            worksheet.Cells["B5"].Value = "Drill";
+        //            worksheet.Cells["C5"].Value = 20;
+        //            worksheet.Cells["D5"].Value = 8;
+
+        //            // Inserting values in the 6th row
+        //            worksheet.Cells["A6"].Value = "12011";
+        //            worksheet.Cells["B6"].Value = "Crowbar";
+        //            worksheet.Cells["C6"].Value = 7;
+        //            worksheet.Cells["D6"].Value = 23.48;
+        //        }
+        //        //p.Save() ;
+        //        Byte[] bin = p.GetAsByteArray();
+        //        File.WriteAllBytes(@"C:\Users\m\Desktop\Employeedata.xlsx", bin);
+        //    }
+        //}
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 

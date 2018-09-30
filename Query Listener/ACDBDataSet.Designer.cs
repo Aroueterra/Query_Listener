@@ -24,7 +24,11 @@ namespace Query_Listener {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class ACDBDataSet : global::System.Data.DataSet {
         
+        private ABCDDataTable tableABCD;
+        
         private ACTBDataTable tableACTB;
+        
+        private ACTCDataTable tableACTC;
         
         private ACXLDataTable tableACXL;
         
@@ -56,8 +60,14 @@ namespace Query_Listener {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                if ((ds.Tables["ABCD"] != null)) {
+                    base.Tables.Add(new ABCDDataTable(ds.Tables["ABCD"]));
+                }
                 if ((ds.Tables["ACTB"] != null)) {
                     base.Tables.Add(new ACTBDataTable(ds.Tables["ACTB"]));
+                }
+                if ((ds.Tables["ACTC"] != null)) {
+                    base.Tables.Add(new ACTCDataTable(ds.Tables["ACTC"]));
                 }
                 if ((ds.Tables["ACXL"] != null)) {
                     base.Tables.Add(new ACXLDataTable(ds.Tables["ACXL"]));
@@ -84,9 +94,29 @@ namespace Query_Listener {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ABCDDataTable ABCD {
+            get {
+                return this.tableABCD;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public ACTBDataTable ACTB {
             get {
                 return this.tableACTB;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ACTCDataTable ACTC {
+            get {
+                return this.tableACTC;
             }
         }
         
@@ -167,8 +197,14 @@ namespace Query_Listener {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
+                if ((ds.Tables["ABCD"] != null)) {
+                    base.Tables.Add(new ABCDDataTable(ds.Tables["ABCD"]));
+                }
                 if ((ds.Tables["ACTB"] != null)) {
                     base.Tables.Add(new ACTBDataTable(ds.Tables["ACTB"]));
+                }
+                if ((ds.Tables["ACTC"] != null)) {
+                    base.Tables.Add(new ACTCDataTable(ds.Tables["ACTC"]));
                 }
                 if ((ds.Tables["ACXL"] != null)) {
                     base.Tables.Add(new ACXLDataTable(ds.Tables["ACXL"]));
@@ -206,10 +242,22 @@ namespace Query_Listener {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
+            this.tableABCD = ((ABCDDataTable)(base.Tables["ABCD"]));
+            if ((initTable == true)) {
+                if ((this.tableABCD != null)) {
+                    this.tableABCD.InitVars();
+                }
+            }
             this.tableACTB = ((ACTBDataTable)(base.Tables["ACTB"]));
             if ((initTable == true)) {
                 if ((this.tableACTB != null)) {
                     this.tableACTB.InitVars();
+                }
+            }
+            this.tableACTC = ((ACTCDataTable)(base.Tables["ACTC"]));
+            if ((initTable == true)) {
+                if ((this.tableACTC != null)) {
+                    this.tableACTC.InitVars();
                 }
             }
             this.tableACXL = ((ACXLDataTable)(base.Tables["ACXL"]));
@@ -228,15 +276,31 @@ namespace Query_Listener {
             this.Namespace = "http://tempuri.org/ACDBDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tableABCD = new ABCDDataTable();
+            base.Tables.Add(this.tableABCD);
             this.tableACTB = new ACTBDataTable();
             base.Tables.Add(this.tableACTB);
+            this.tableACTC = new ACTCDataTable();
+            base.Tables.Add(this.tableACTC);
             this.tableACXL = new ACXLDataTable();
             base.Tables.Add(this.tableACXL);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeABCD() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeACTB() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeACTC() {
             return false;
         }
         
@@ -302,10 +366,294 @@ namespace Query_Listener {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ABCDRowChangeEventHandler(object sender, ABCDRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ACTBRowChangeEventHandler(object sender, ACTBRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void ACTCRowChangeEventHandler(object sender, ACTCRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void ACXLRowChangeEventHandler(object sender, ACXLRowChangeEvent e);
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ABCDDataTable : global::System.Data.TypedTableBase<ABCDRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnStarted;
+            
+            private global::System.Data.DataColumn columnEnded;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ABCDDataTable() {
+                this.TableName = "ABCD";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ABCDDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ABCDDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StartedColumn {
+                get {
+                    return this.columnStarted;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EndedColumn {
+                get {
+                    return this.columnEnded;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ABCDRow this[int index] {
+                get {
+                    return ((ABCDRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ABCDRowChangeEventHandler ABCDRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ABCDRowChangeEventHandler ABCDRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ABCDRowChangeEventHandler ABCDRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ABCDRowChangeEventHandler ABCDRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddABCDRow(ABCDRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ABCDRow AddABCDRow(string ID, string Started, string Ended) {
+                ABCDRow rowABCDRow = ((ABCDRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        Started,
+                        Ended};
+                rowABCDRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowABCDRow);
+                return rowABCDRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ABCDDataTable cln = ((ABCDDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ABCDDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnStarted = base.Columns["Started"];
+                this.columnEnded = base.Columns["Ended"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnStarted = new global::System.Data.DataColumn("Started", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStarted);
+                this.columnEnded = new global::System.Data.DataColumn("Ended", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnded);
+                this.columnID.MaxLength = 255;
+                this.columnStarted.MaxLength = 255;
+                this.columnEnded.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ABCDRow NewABCDRow() {
+                return ((ABCDRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ABCDRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ABCDRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ABCDRowChanged != null)) {
+                    this.ABCDRowChanged(this, new ABCDRowChangeEvent(((ABCDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ABCDRowChanging != null)) {
+                    this.ABCDRowChanging(this, new ABCDRowChangeEvent(((ABCDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ABCDRowDeleted != null)) {
+                    this.ABCDRowDeleted(this, new ABCDRowChangeEvent(((ABCDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ABCDRowDeleting != null)) {
+                    this.ABCDRowDeleting(this, new ABCDRowChangeEvent(((ABCDRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveABCDRow(ABCDRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                ACDBDataSet ds = new ACDBDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ABCDDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -316,35 +664,65 @@ namespace Query_Listener {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnFirstName;
+            private global::System.Data.DataColumn columnLAST_NAME;
             
-            private global::System.Data.DataColumn columnLastName;
+            private global::System.Data.DataColumn columnFIRST_NAME;
             
-            private global::System.Data.DataColumn columnGrossIncome;
+            private global::System.Data.DataColumn columnMIDDLE_NAME;
             
-            private global::System.Data.DataColumn columnLessTNT;
+            private global::System.Data.DataColumn columnGROSS_COMP_INCOME;
             
-            private global::System.Data.DataColumn columnTaxableIncomeCE;
+            private global::System.Data.DataColumn columnPRES_NONTAX_13TH_MONTH;
             
-            private global::System.Data.DataColumn columnTaxableIncomePE;
+            private global::System.Data.DataColumn columnPRES_NONTAX_DE_MINIMIS;
             
-            private global::System.Data.DataColumn columnGrossTaxableIncome;
+            private global::System.Data.DataColumn columnPRES_NONTAX_SSS_ETS;
             
-            private global::System.Data.DataColumn columnLessTE;
+            private global::System.Data.DataColumn columnPRES_NONTAX_SALARIES;
             
-            private global::System.Data.DataColumn columnLessPPH;
+            private global::System.Data.DataColumn columnTOTAL_NONTAX_COMP_INCOME;
             
-            private global::System.Data.DataColumn columnNetTax;
+            private global::System.Data.DataColumn columnPRES_TAXABLE_BASIC_SALARY;
             
-            private global::System.Data.DataColumn columnTaxDue;
+            private global::System.Data.DataColumn columnPRES_TAXABLE_13TH_MONTH;
             
-            private global::System.Data.DataColumn columnHeldTaxCE;
+            private global::System.Data.DataColumn columnPRES_TAXABLE_SALARIES;
             
-            private global::System.Data.DataColumn columnHeldTaxPE;
+            private global::System.Data.DataColumn columnTOTAL_TAXABLE_COMP_INCOME;
             
-            private global::System.Data.DataColumn columnTotalTax;
+            private global::System.Data.DataColumn columnEXMPN_CODE;
+            
+            private global::System.Data.DataColumn columnEXPMN_AMT;
+            
+            private global::System.Data.DataColumn columnPREMIUM_PAID;
+            
+            private global::System.Data.DataColumn columnNET_TAXABLE_COMP_INCOME;
+            
+            private global::System.Data.DataColumn columnTAX_DUE;
+            
+            private global::System.Data.DataColumn columnPRES_TAX_WTHLD;
+            
+            private global::System.Data.DataColumn columnAMT_WTHLD_DEC;
+            
+            private global::System.Data.DataColumn columnOVER_WTHLD;
+            
+            private global::System.Data.DataColumn columnACTUAL_AMT_WTHLD;
+            
+            private global::System.Data.DataColumn columnSUBS_FILING;
             
             private global::System.Data.DataColumn columnTIN;
+            
+            private global::System.Data.DataColumn columnSTARTED;
+            
+            private global::System.Data.DataColumn columnENDED;
+            
+            private global::System.Data.DataColumn columnCTC;
+            
+            private global::System.Data.DataColumn columnPOI;
+            
+            private global::System.Data.DataColumn columnDOI;
+            
+            private global::System.Data.DataColumn columnAMT;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -389,113 +767,185 @@ namespace Query_Listener {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FirstNameColumn {
+            public global::System.Data.DataColumn LAST_NAMEColumn {
                 get {
-                    return this.columnFirstName;
+                    return this.columnLAST_NAME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LastNameColumn {
+            public global::System.Data.DataColumn FIRST_NAMEColumn {
                 get {
-                    return this.columnLastName;
+                    return this.columnFIRST_NAME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GrossIncomeColumn {
+            public global::System.Data.DataColumn MIDDLE_NAMEColumn {
                 get {
-                    return this.columnGrossIncome;
+                    return this.columnMIDDLE_NAME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LessTNTColumn {
+            public global::System.Data.DataColumn GROSS_COMP_INCOMEColumn {
                 get {
-                    return this.columnLessTNT;
+                    return this.columnGROSS_COMP_INCOME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TaxableIncomeCEColumn {
+            public global::System.Data.DataColumn PRES_NONTAX_13TH_MONTHColumn {
                 get {
-                    return this.columnTaxableIncomeCE;
+                    return this.columnPRES_NONTAX_13TH_MONTH;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TaxableIncomePEColumn {
+            public global::System.Data.DataColumn PRES_NONTAX_DE_MINIMISColumn {
                 get {
-                    return this.columnTaxableIncomePE;
+                    return this.columnPRES_NONTAX_DE_MINIMIS;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GrossTaxableIncomeColumn {
+            public global::System.Data.DataColumn PRES_NONTAX_SSS_ETSColumn {
                 get {
-                    return this.columnGrossTaxableIncome;
+                    return this.columnPRES_NONTAX_SSS_ETS;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LessTEColumn {
+            public global::System.Data.DataColumn PRES_NONTAX_SALARIESColumn {
                 get {
-                    return this.columnLessTE;
+                    return this.columnPRES_NONTAX_SALARIES;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LessPPHColumn {
+            public global::System.Data.DataColumn TOTAL_NONTAX_COMP_INCOMEColumn {
                 get {
-                    return this.columnLessPPH;
+                    return this.columnTOTAL_NONTAX_COMP_INCOME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NetTaxColumn {
+            public global::System.Data.DataColumn PRES_TAXABLE_BASIC_SALARYColumn {
                 get {
-                    return this.columnNetTax;
+                    return this.columnPRES_TAXABLE_BASIC_SALARY;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TaxDueColumn {
+            public global::System.Data.DataColumn PRES_TAXABLE_13TH_MONTHColumn {
                 get {
-                    return this.columnTaxDue;
+                    return this.columnPRES_TAXABLE_13TH_MONTH;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HeldTaxCEColumn {
+            public global::System.Data.DataColumn PRES_TAXABLE_SALARIESColumn {
                 get {
-                    return this.columnHeldTaxCE;
+                    return this.columnPRES_TAXABLE_SALARIES;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HeldTaxPEColumn {
+            public global::System.Data.DataColumn TOTAL_TAXABLE_COMP_INCOMEColumn {
                 get {
-                    return this.columnHeldTaxPE;
+                    return this.columnTOTAL_TAXABLE_COMP_INCOME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotalTaxColumn {
+            public global::System.Data.DataColumn EXMPN_CODEColumn {
                 get {
-                    return this.columnTotalTax;
+                    return this.columnEXMPN_CODE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EXPMN_AMTColumn {
+                get {
+                    return this.columnEXPMN_AMT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PREMIUM_PAIDColumn {
+                get {
+                    return this.columnPREMIUM_PAID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NET_TAXABLE_COMP_INCOMEColumn {
+                get {
+                    return this.columnNET_TAXABLE_COMP_INCOME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TAX_DUEColumn {
+                get {
+                    return this.columnTAX_DUE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PRES_TAX_WTHLDColumn {
+                get {
+                    return this.columnPRES_TAX_WTHLD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AMT_WTHLD_DECColumn {
+                get {
+                    return this.columnAMT_WTHLD_DEC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OVER_WTHLDColumn {
+                get {
+                    return this.columnOVER_WTHLD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ACTUAL_AMT_WTHLDColumn {
+                get {
+                    return this.columnACTUAL_AMT_WTHLD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SUBS_FILINGColumn {
+                get {
+                    return this.columnSUBS_FILING;
                 }
             }
             
@@ -504,6 +954,54 @@ namespace Query_Listener {
             public global::System.Data.DataColumn TINColumn {
                 get {
                     return this.columnTIN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn STARTEDColumn {
+                get {
+                    return this.columnSTARTED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ENDEDColumn {
+                get {
+                    return this.columnENDED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CTCColumn {
+                get {
+                    return this.columnCTC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn POIColumn {
+                get {
+                    return this.columnPOI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DOIColumn {
+                get {
+                    return this.columnDOI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AMTColumn {
+                get {
+                    return this.columnAMT;
                 }
             }
             
@@ -546,39 +1044,69 @@ namespace Query_Listener {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ACTBRow AddACTBRow(
                         string ID, 
-                        string FirstName, 
-                        string LastName, 
-                        int GrossIncome, 
-                        int LessTNT, 
-                        int TaxableIncomeCE, 
-                        int TaxableIncomePE, 
-                        int GrossTaxableIncome, 
-                        int LessTE, 
-                        int LessPPH, 
-                        int NetTax, 
-                        int TaxDue, 
-                        int HeldTaxCE, 
-                        int HeldTaxPE, 
-                        int TotalTax, 
-                        string TIN) {
+                        string LAST_NAME, 
+                        string FIRST_NAME, 
+                        string MIDDLE_NAME, 
+                        double GROSS_COMP_INCOME, 
+                        double PRES_NONTAX_13TH_MONTH, 
+                        double PRES_NONTAX_DE_MINIMIS, 
+                        double PRES_NONTAX_SSS_ETS, 
+                        double PRES_NONTAX_SALARIES, 
+                        double TOTAL_NONTAX_COMP_INCOME, 
+                        double PRES_TAXABLE_BASIC_SALARY, 
+                        double PRES_TAXABLE_13TH_MONTH, 
+                        double PRES_TAXABLE_SALARIES, 
+                        double TOTAL_TAXABLE_COMP_INCOME, 
+                        string EXMPN_CODE, 
+                        double EXPMN_AMT, 
+                        double PREMIUM_PAID, 
+                        double NET_TAXABLE_COMP_INCOME, 
+                        double TAX_DUE, 
+                        double PRES_TAX_WTHLD, 
+                        double AMT_WTHLD_DEC, 
+                        double OVER_WTHLD, 
+                        double ACTUAL_AMT_WTHLD, 
+                        int SUBS_FILING, 
+                        string TIN, 
+                        string STARTED, 
+                        string ENDED, 
+                        int CTC, 
+                        string POI, 
+                        string DOI, 
+                        int AMT) {
                 ACTBRow rowACTBRow = ((ACTBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
-                        FirstName,
-                        LastName,
-                        GrossIncome,
-                        LessTNT,
-                        TaxableIncomeCE,
-                        TaxableIncomePE,
-                        GrossTaxableIncome,
-                        LessTE,
-                        LessPPH,
-                        NetTax,
-                        TaxDue,
-                        HeldTaxCE,
-                        HeldTaxPE,
-                        TotalTax,
-                        TIN};
+                        LAST_NAME,
+                        FIRST_NAME,
+                        MIDDLE_NAME,
+                        GROSS_COMP_INCOME,
+                        PRES_NONTAX_13TH_MONTH,
+                        PRES_NONTAX_DE_MINIMIS,
+                        PRES_NONTAX_SSS_ETS,
+                        PRES_NONTAX_SALARIES,
+                        TOTAL_NONTAX_COMP_INCOME,
+                        PRES_TAXABLE_BASIC_SALARY,
+                        PRES_TAXABLE_13TH_MONTH,
+                        PRES_TAXABLE_SALARIES,
+                        TOTAL_TAXABLE_COMP_INCOME,
+                        EXMPN_CODE,
+                        EXPMN_AMT,
+                        PREMIUM_PAID,
+                        NET_TAXABLE_COMP_INCOME,
+                        TAX_DUE,
+                        PRES_TAX_WTHLD,
+                        AMT_WTHLD_DEC,
+                        OVER_WTHLD,
+                        ACTUAL_AMT_WTHLD,
+                        SUBS_FILING,
+                        TIN,
+                        STARTED,
+                        ENDED,
+                        CTC,
+                        POI,
+                        DOI,
+                        AMT};
                 rowACTBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowACTBRow);
                 return rowACTBRow;
@@ -609,21 +1137,36 @@ namespace Query_Listener {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnFirstName = base.Columns["FirstName"];
-                this.columnLastName = base.Columns["LastName"];
-                this.columnGrossIncome = base.Columns["GrossIncome"];
-                this.columnLessTNT = base.Columns["LessTNT"];
-                this.columnTaxableIncomeCE = base.Columns["TaxableIncomeCE"];
-                this.columnTaxableIncomePE = base.Columns["TaxableIncomePE"];
-                this.columnGrossTaxableIncome = base.Columns["GrossTaxableIncome"];
-                this.columnLessTE = base.Columns["LessTE"];
-                this.columnLessPPH = base.Columns["LessPPH"];
-                this.columnNetTax = base.Columns["NetTax"];
-                this.columnTaxDue = base.Columns["TaxDue"];
-                this.columnHeldTaxCE = base.Columns["HeldTaxCE"];
-                this.columnHeldTaxPE = base.Columns["HeldTaxPE"];
-                this.columnTotalTax = base.Columns["TotalTax"];
+                this.columnLAST_NAME = base.Columns["LAST_NAME"];
+                this.columnFIRST_NAME = base.Columns["FIRST_NAME"];
+                this.columnMIDDLE_NAME = base.Columns["MIDDLE_NAME"];
+                this.columnGROSS_COMP_INCOME = base.Columns["GROSS_COMP_INCOME"];
+                this.columnPRES_NONTAX_13TH_MONTH = base.Columns["PRES_NONTAX_13TH_MONTH"];
+                this.columnPRES_NONTAX_DE_MINIMIS = base.Columns["PRES_NONTAX_DE_MINIMIS"];
+                this.columnPRES_NONTAX_SSS_ETS = base.Columns["PRES_NONTAX_SSS_ETS"];
+                this.columnPRES_NONTAX_SALARIES = base.Columns["PRES_NONTAX_SALARIES"];
+                this.columnTOTAL_NONTAX_COMP_INCOME = base.Columns["TOTAL_NONTAX_COMP_INCOME"];
+                this.columnPRES_TAXABLE_BASIC_SALARY = base.Columns["PRES_TAXABLE_BASIC_SALARY"];
+                this.columnPRES_TAXABLE_13TH_MONTH = base.Columns["PRES_TAXABLE_13TH_MONTH"];
+                this.columnPRES_TAXABLE_SALARIES = base.Columns["PRES_TAXABLE_SALARIES"];
+                this.columnTOTAL_TAXABLE_COMP_INCOME = base.Columns["TOTAL_TAXABLE_COMP_INCOME"];
+                this.columnEXMPN_CODE = base.Columns["EXMPN_CODE"];
+                this.columnEXPMN_AMT = base.Columns["EXPMN_AMT"];
+                this.columnPREMIUM_PAID = base.Columns["PREMIUM_PAID"];
+                this.columnNET_TAXABLE_COMP_INCOME = base.Columns["NET_TAXABLE_COMP_INCOME"];
+                this.columnTAX_DUE = base.Columns["TAX_DUE"];
+                this.columnPRES_TAX_WTHLD = base.Columns["PRES_TAX_WTHLD"];
+                this.columnAMT_WTHLD_DEC = base.Columns["AMT_WTHLD_DEC"];
+                this.columnOVER_WTHLD = base.Columns["OVER_WTHLD"];
+                this.columnACTUAL_AMT_WTHLD = base.Columns["ACTUAL_AMT_WTHLD"];
+                this.columnSUBS_FILING = base.Columns["SUBS_FILING"];
                 this.columnTIN = base.Columns["TIN"];
+                this.columnSTARTED = base.Columns["STARTED"];
+                this.columnENDED = base.Columns["ENDED"];
+                this.columnCTC = base.Columns["CTC"];
+                this.columnPOI = base.Columns["POI"];
+                this.columnDOI = base.Columns["DOI"];
+                this.columnAMT = base.Columns["AMT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -631,44 +1174,80 @@ namespace Query_Listener {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnFirstName = new global::System.Data.DataColumn("FirstName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFirstName);
-                this.columnLastName = new global::System.Data.DataColumn("LastName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLastName);
-                this.columnGrossIncome = new global::System.Data.DataColumn("GrossIncome", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGrossIncome);
-                this.columnLessTNT = new global::System.Data.DataColumn("LessTNT", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLessTNT);
-                this.columnTaxableIncomeCE = new global::System.Data.DataColumn("TaxableIncomeCE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxableIncomeCE);
-                this.columnTaxableIncomePE = new global::System.Data.DataColumn("TaxableIncomePE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxableIncomePE);
-                this.columnGrossTaxableIncome = new global::System.Data.DataColumn("GrossTaxableIncome", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGrossTaxableIncome);
-                this.columnLessTE = new global::System.Data.DataColumn("LessTE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLessTE);
-                this.columnLessPPH = new global::System.Data.DataColumn("LessPPH", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLessPPH);
-                this.columnNetTax = new global::System.Data.DataColumn("NetTax", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNetTax);
-                this.columnTaxDue = new global::System.Data.DataColumn("TaxDue", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxDue);
-                this.columnHeldTaxCE = new global::System.Data.DataColumn("HeldTaxCE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHeldTaxCE);
-                this.columnHeldTaxPE = new global::System.Data.DataColumn("HeldTaxPE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHeldTaxPE);
-                this.columnTotalTax = new global::System.Data.DataColumn("TotalTax", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalTax);
+                this.columnLAST_NAME = new global::System.Data.DataColumn("LAST_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLAST_NAME);
+                this.columnFIRST_NAME = new global::System.Data.DataColumn("FIRST_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFIRST_NAME);
+                this.columnMIDDLE_NAME = new global::System.Data.DataColumn("MIDDLE_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMIDDLE_NAME);
+                this.columnGROSS_COMP_INCOME = new global::System.Data.DataColumn("GROSS_COMP_INCOME", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGROSS_COMP_INCOME);
+                this.columnPRES_NONTAX_13TH_MONTH = new global::System.Data.DataColumn("PRES_NONTAX_13TH_MONTH", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_NONTAX_13TH_MONTH);
+                this.columnPRES_NONTAX_DE_MINIMIS = new global::System.Data.DataColumn("PRES_NONTAX_DE_MINIMIS", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_NONTAX_DE_MINIMIS);
+                this.columnPRES_NONTAX_SSS_ETS = new global::System.Data.DataColumn("PRES_NONTAX_SSS_ETS", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_NONTAX_SSS_ETS);
+                this.columnPRES_NONTAX_SALARIES = new global::System.Data.DataColumn("PRES_NONTAX_SALARIES", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_NONTAX_SALARIES);
+                this.columnTOTAL_NONTAX_COMP_INCOME = new global::System.Data.DataColumn("TOTAL_NONTAX_COMP_INCOME", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTOTAL_NONTAX_COMP_INCOME);
+                this.columnPRES_TAXABLE_BASIC_SALARY = new global::System.Data.DataColumn("PRES_TAXABLE_BASIC_SALARY", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_TAXABLE_BASIC_SALARY);
+                this.columnPRES_TAXABLE_13TH_MONTH = new global::System.Data.DataColumn("PRES_TAXABLE_13TH_MONTH", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_TAXABLE_13TH_MONTH);
+                this.columnPRES_TAXABLE_SALARIES = new global::System.Data.DataColumn("PRES_TAXABLE_SALARIES", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_TAXABLE_SALARIES);
+                this.columnTOTAL_TAXABLE_COMP_INCOME = new global::System.Data.DataColumn("TOTAL_TAXABLE_COMP_INCOME", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTOTAL_TAXABLE_COMP_INCOME);
+                this.columnEXMPN_CODE = new global::System.Data.DataColumn("EXMPN_CODE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEXMPN_CODE);
+                this.columnEXPMN_AMT = new global::System.Data.DataColumn("EXPMN_AMT", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEXPMN_AMT);
+                this.columnPREMIUM_PAID = new global::System.Data.DataColumn("PREMIUM_PAID", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPREMIUM_PAID);
+                this.columnNET_TAXABLE_COMP_INCOME = new global::System.Data.DataColumn("NET_TAXABLE_COMP_INCOME", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNET_TAXABLE_COMP_INCOME);
+                this.columnTAX_DUE = new global::System.Data.DataColumn("TAX_DUE", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTAX_DUE);
+                this.columnPRES_TAX_WTHLD = new global::System.Data.DataColumn("PRES_TAX_WTHLD", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_TAX_WTHLD);
+                this.columnAMT_WTHLD_DEC = new global::System.Data.DataColumn("AMT_WTHLD_DEC", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAMT_WTHLD_DEC);
+                this.columnOVER_WTHLD = new global::System.Data.DataColumn("OVER_WTHLD", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOVER_WTHLD);
+                this.columnACTUAL_AMT_WTHLD = new global::System.Data.DataColumn("ACTUAL_AMT_WTHLD", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACTUAL_AMT_WTHLD);
+                this.columnSUBS_FILING = new global::System.Data.DataColumn("SUBS_FILING", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSUBS_FILING);
                 this.columnTIN = new global::System.Data.DataColumn("TIN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTIN);
+                this.columnSTARTED = new global::System.Data.DataColumn("STARTED", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTARTED);
+                this.columnENDED = new global::System.Data.DataColumn("ENDED", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnENDED);
+                this.columnCTC = new global::System.Data.DataColumn("CTC", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCTC);
+                this.columnPOI = new global::System.Data.DataColumn("POI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPOI);
+                this.columnDOI = new global::System.Data.DataColumn("DOI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDOI);
+                this.columnAMT = new global::System.Data.DataColumn("AMT", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAMT);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnID.AllowDBNull = false;
                 this.columnID.Unique = true;
                 this.columnID.MaxLength = 255;
-                this.columnFirstName.MaxLength = 255;
-                this.columnLastName.MaxLength = 255;
+                this.columnLAST_NAME.MaxLength = 255;
+                this.columnFIRST_NAME.MaxLength = 255;
+                this.columnMIDDLE_NAME.MaxLength = 255;
+                this.columnEXMPN_CODE.MaxLength = 255;
                 this.columnTIN.MaxLength = 255;
+                this.columnSTARTED.MaxLength = 255;
+                this.columnENDED.MaxLength = 255;
+                this.columnPOI.MaxLength = 255;
+                this.columnDOI.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -800,39 +1379,361 @@ namespace Query_Listener {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ACTCDataTable : global::System.Data.TypedTableBase<ACTCRow> {
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnCTC;
+            
+            private global::System.Data.DataColumn columnPOI;
+            
+            private global::System.Data.DataColumn columnDOI;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ACTCDataTable() {
+                this.TableName = "ACTC";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ACTCDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected ACTCDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CTCColumn {
+                get {
+                    return this.columnCTC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn POIColumn {
+                get {
+                    return this.columnPOI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DOIColumn {
+                get {
+                    return this.columnDOI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ACTCRow this[int index] {
+                get {
+                    return ((ACTCRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ACTCRowChangeEventHandler ACTCRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ACTCRowChangeEventHandler ACTCRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ACTCRowChangeEventHandler ACTCRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event ACTCRowChangeEventHandler ACTCRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddACTCRow(ACTCRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ACTCRow AddACTCRow(string ID, int CTC, string POI, string DOI) {
+                ACTCRow rowACTCRow = ((ACTCRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        ID,
+                        CTC,
+                        POI,
+                        DOI};
+                rowACTCRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowACTCRow);
+                return rowACTCRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ACTCDataTable cln = ((ACTCDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ACTCDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnID = base.Columns["ID"];
+                this.columnCTC = base.Columns["CTC"];
+                this.columnPOI = base.Columns["POI"];
+                this.columnDOI = base.Columns["DOI"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnCTC = new global::System.Data.DataColumn("CTC", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCTC);
+                this.columnPOI = new global::System.Data.DataColumn("POI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPOI);
+                this.columnDOI = new global::System.Data.DataColumn("DOI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDOI);
+                this.columnID.MaxLength = 255;
+                this.columnPOI.MaxLength = 255;
+                this.columnDOI.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ACTCRow NewACTCRow() {
+                return ((ACTCRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ACTCRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ACTCRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ACTCRowChanged != null)) {
+                    this.ACTCRowChanged(this, new ACTCRowChangeEvent(((ACTCRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ACTCRowChanging != null)) {
+                    this.ACTCRowChanging(this, new ACTCRowChangeEvent(((ACTCRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ACTCRowDeleted != null)) {
+                    this.ACTCRowDeleted(this, new ACTCRowChangeEvent(((ACTCRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ACTCRowDeleting != null)) {
+                    this.ACTCRowDeleting(this, new ACTCRowChangeEvent(((ACTCRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveACTCRow(ACTCRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                ACDBDataSet ds = new ACDBDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ACTCDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ACXLDataTable : global::System.Data.TypedTableBase<ACXLRow> {
             
             private global::System.Data.DataColumn columnID;
             
-            private global::System.Data.DataColumn columnFirstName;
+            private global::System.Data.DataColumn columnLAST_NAME;
             
-            private global::System.Data.DataColumn columnLastName;
+            private global::System.Data.DataColumn columnFIRST_NAME;
             
-            private global::System.Data.DataColumn columnGrossIncome;
+            private global::System.Data.DataColumn columnMIDDLE_NAME;
             
-            private global::System.Data.DataColumn columnLessTNT;
+            private global::System.Data.DataColumn columnGROSS_COMP_INCOME;
             
-            private global::System.Data.DataColumn columnTaxableIncomeCE;
+            private global::System.Data.DataColumn columnPRES_NONTAX_13TH_MONTH;
             
-            private global::System.Data.DataColumn columnTaxableIncomePE;
+            private global::System.Data.DataColumn columnPRES_NONTAX_DE_MINIMIS;
             
-            private global::System.Data.DataColumn columnGrossTaxableIncome;
+            private global::System.Data.DataColumn columnPRES_NONTAX_SSS_ETS;
             
-            private global::System.Data.DataColumn columnLessTE;
+            private global::System.Data.DataColumn columnPRES_NONTAX_SALARIES;
             
-            private global::System.Data.DataColumn columnLessPPH;
+            private global::System.Data.DataColumn columnTOTAL_NONTAX_COMP_INCOME;
             
-            private global::System.Data.DataColumn columnNetTax;
+            private global::System.Data.DataColumn columnPRES_TAXABLE_BASIC_SALARY;
             
-            private global::System.Data.DataColumn columnTaxDue;
+            private global::System.Data.DataColumn columnPRES_TAXABLE_13TH_MONTH;
             
-            private global::System.Data.DataColumn columnHeldTaxCE;
+            private global::System.Data.DataColumn columnPRES_TAXABLE_SALARIES;
             
-            private global::System.Data.DataColumn columnHeldTaxPE;
+            private global::System.Data.DataColumn columnTOTAL_TAXABLE_COMP_INCOME;
             
-            private global::System.Data.DataColumn columnTotalTax;
+            private global::System.Data.DataColumn columnEXMPN_CODE;
+            
+            private global::System.Data.DataColumn columnEXPMN_AMT;
+            
+            private global::System.Data.DataColumn columnPREMIUM_PAID;
+            
+            private global::System.Data.DataColumn columnNET_TAXABLE_COMP_INCOME;
+            
+            private global::System.Data.DataColumn columnTAX_DUE;
+            
+            private global::System.Data.DataColumn columnPRES_TAX_WTHLD;
+            
+            private global::System.Data.DataColumn columnAMT_WTHLD_DEC;
+            
+            private global::System.Data.DataColumn columnOVER_WTHLD;
+            
+            private global::System.Data.DataColumn columnACTUAL_AMT_WTHLD;
+            
+            private global::System.Data.DataColumn columnSUBS_FILING;
             
             private global::System.Data.DataColumn columnTIN;
+            
+            private global::System.Data.DataColumn columnSTARTED;
+            
+            private global::System.Data.DataColumn columnENDED;
+            
+            private global::System.Data.DataColumn columnCTC;
+            
+            private global::System.Data.DataColumn columnPOI;
+            
+            private global::System.Data.DataColumn columnDOI;
+            
+            private global::System.Data.DataColumn columnAMT;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -877,113 +1778,185 @@ namespace Query_Listener {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FirstNameColumn {
+            public global::System.Data.DataColumn LAST_NAMEColumn {
                 get {
-                    return this.columnFirstName;
+                    return this.columnLAST_NAME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LastNameColumn {
+            public global::System.Data.DataColumn FIRST_NAMEColumn {
                 get {
-                    return this.columnLastName;
+                    return this.columnFIRST_NAME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GrossIncomeColumn {
+            public global::System.Data.DataColumn MIDDLE_NAMEColumn {
                 get {
-                    return this.columnGrossIncome;
+                    return this.columnMIDDLE_NAME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LessTNTColumn {
+            public global::System.Data.DataColumn GROSS_COMP_INCOMEColumn {
                 get {
-                    return this.columnLessTNT;
+                    return this.columnGROSS_COMP_INCOME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TaxableIncomeCEColumn {
+            public global::System.Data.DataColumn PRES_NONTAX_13TH_MONTHColumn {
                 get {
-                    return this.columnTaxableIncomeCE;
+                    return this.columnPRES_NONTAX_13TH_MONTH;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TaxableIncomePEColumn {
+            public global::System.Data.DataColumn PRES_NONTAX_DE_MINIMISColumn {
                 get {
-                    return this.columnTaxableIncomePE;
+                    return this.columnPRES_NONTAX_DE_MINIMIS;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GrossTaxableIncomeColumn {
+            public global::System.Data.DataColumn PRES_NONTAX_SSS_ETSColumn {
                 get {
-                    return this.columnGrossTaxableIncome;
+                    return this.columnPRES_NONTAX_SSS_ETS;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LessTEColumn {
+            public global::System.Data.DataColumn PRES_NONTAX_SALARIESColumn {
                 get {
-                    return this.columnLessTE;
+                    return this.columnPRES_NONTAX_SALARIES;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LessPPHColumn {
+            public global::System.Data.DataColumn TOTAL_NONTAX_COMP_INCOMEColumn {
                 get {
-                    return this.columnLessPPH;
+                    return this.columnTOTAL_NONTAX_COMP_INCOME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NetTaxColumn {
+            public global::System.Data.DataColumn PRES_TAXABLE_BASIC_SALARYColumn {
                 get {
-                    return this.columnNetTax;
+                    return this.columnPRES_TAXABLE_BASIC_SALARY;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TaxDueColumn {
+            public global::System.Data.DataColumn PRES_TAXABLE_13TH_MONTHColumn {
                 get {
-                    return this.columnTaxDue;
+                    return this.columnPRES_TAXABLE_13TH_MONTH;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HeldTaxCEColumn {
+            public global::System.Data.DataColumn PRES_TAXABLE_SALARIESColumn {
                 get {
-                    return this.columnHeldTaxCE;
+                    return this.columnPRES_TAXABLE_SALARIES;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HeldTaxPEColumn {
+            public global::System.Data.DataColumn TOTAL_TAXABLE_COMP_INCOMEColumn {
                 get {
-                    return this.columnHeldTaxPE;
+                    return this.columnTOTAL_TAXABLE_COMP_INCOME;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotalTaxColumn {
+            public global::System.Data.DataColumn EXMPN_CODEColumn {
                 get {
-                    return this.columnTotalTax;
+                    return this.columnEXMPN_CODE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EXPMN_AMTColumn {
+                get {
+                    return this.columnEXPMN_AMT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PREMIUM_PAIDColumn {
+                get {
+                    return this.columnPREMIUM_PAID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NET_TAXABLE_COMP_INCOMEColumn {
+                get {
+                    return this.columnNET_TAXABLE_COMP_INCOME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TAX_DUEColumn {
+                get {
+                    return this.columnTAX_DUE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PRES_TAX_WTHLDColumn {
+                get {
+                    return this.columnPRES_TAX_WTHLD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AMT_WTHLD_DECColumn {
+                get {
+                    return this.columnAMT_WTHLD_DEC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OVER_WTHLDColumn {
+                get {
+                    return this.columnOVER_WTHLD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ACTUAL_AMT_WTHLDColumn {
+                get {
+                    return this.columnACTUAL_AMT_WTHLD;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SUBS_FILINGColumn {
+                get {
+                    return this.columnSUBS_FILING;
                 }
             }
             
@@ -992,6 +1965,54 @@ namespace Query_Listener {
             public global::System.Data.DataColumn TINColumn {
                 get {
                     return this.columnTIN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn STARTEDColumn {
+                get {
+                    return this.columnSTARTED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ENDEDColumn {
+                get {
+                    return this.columnENDED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CTCColumn {
+                get {
+                    return this.columnCTC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn POIColumn {
+                get {
+                    return this.columnPOI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DOIColumn {
+                get {
+                    return this.columnDOI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AMTColumn {
+                get {
+                    return this.columnAMT;
                 }
             }
             
@@ -1034,49 +2055,72 @@ namespace Query_Listener {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ACXLRow AddACXLRow(
                         string ID, 
-                        string FirstName, 
-                        string LastName, 
-                        int GrossIncome, 
-                        int LessTNT, 
-                        int TaxableIncomeCE, 
-                        int TaxableIncomePE, 
-                        int GrossTaxableIncome, 
-                        int LessTE, 
-                        int LessPPH, 
-                        int NetTax, 
-                        int TaxDue, 
-                        int HeldTaxCE, 
-                        int HeldTaxPE, 
-                        int TotalTax, 
-                        string TIN) {
+                        string LAST_NAME, 
+                        string FIRST_NAME, 
+                        string MIDDLE_NAME, 
+                        double GROSS_COMP_INCOME, 
+                        double PRES_NONTAX_13TH_MONTH, 
+                        double PRES_NONTAX_DE_MINIMIS, 
+                        double PRES_NONTAX_SSS_ETS, 
+                        double PRES_NONTAX_SALARIES, 
+                        double TOTAL_NONTAX_COMP_INCOME, 
+                        double PRES_TAXABLE_BASIC_SALARY, 
+                        double PRES_TAXABLE_13TH_MONTH, 
+                        double PRES_TAXABLE_SALARIES, 
+                        double TOTAL_TAXABLE_COMP_INCOME, 
+                        string EXMPN_CODE, 
+                        double EXPMN_AMT, 
+                        double PREMIUM_PAID, 
+                        double NET_TAXABLE_COMP_INCOME, 
+                        double TAX_DUE, 
+                        double PRES_TAX_WTHLD, 
+                        double AMT_WTHLD_DEC, 
+                        double OVER_WTHLD, 
+                        double ACTUAL_AMT_WTHLD, 
+                        string SUBS_FILING, 
+                        string TIN, 
+                        string STARTED, 
+                        string ENDED, 
+                        int CTC, 
+                        string POI, 
+                        string DOI, 
+                        int AMT) {
                 ACXLRow rowACXLRow = ((ACXLRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ID,
-                        FirstName,
-                        LastName,
-                        GrossIncome,
-                        LessTNT,
-                        TaxableIncomeCE,
-                        TaxableIncomePE,
-                        GrossTaxableIncome,
-                        LessTE,
-                        LessPPH,
-                        NetTax,
-                        TaxDue,
-                        HeldTaxCE,
-                        HeldTaxPE,
-                        TotalTax,
-                        TIN};
+                        LAST_NAME,
+                        FIRST_NAME,
+                        MIDDLE_NAME,
+                        GROSS_COMP_INCOME,
+                        PRES_NONTAX_13TH_MONTH,
+                        PRES_NONTAX_DE_MINIMIS,
+                        PRES_NONTAX_SSS_ETS,
+                        PRES_NONTAX_SALARIES,
+                        TOTAL_NONTAX_COMP_INCOME,
+                        PRES_TAXABLE_BASIC_SALARY,
+                        PRES_TAXABLE_13TH_MONTH,
+                        PRES_TAXABLE_SALARIES,
+                        TOTAL_TAXABLE_COMP_INCOME,
+                        EXMPN_CODE,
+                        EXPMN_AMT,
+                        PREMIUM_PAID,
+                        NET_TAXABLE_COMP_INCOME,
+                        TAX_DUE,
+                        PRES_TAX_WTHLD,
+                        AMT_WTHLD_DEC,
+                        OVER_WTHLD,
+                        ACTUAL_AMT_WTHLD,
+                        SUBS_FILING,
+                        TIN,
+                        STARTED,
+                        ENDED,
+                        CTC,
+                        POI,
+                        DOI,
+                        AMT};
                 rowACXLRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowACXLRow);
                 return rowACXLRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ACXLRow FindByID(string ID) {
-                return ((ACXLRow)(this.Rows.Find(new object[] {
-                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1097,21 +2141,36 @@ namespace Query_Listener {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnID = base.Columns["ID"];
-                this.columnFirstName = base.Columns["FirstName"];
-                this.columnLastName = base.Columns["LastName"];
-                this.columnGrossIncome = base.Columns["GrossIncome"];
-                this.columnLessTNT = base.Columns["LessTNT"];
-                this.columnTaxableIncomeCE = base.Columns["TaxableIncomeCE"];
-                this.columnTaxableIncomePE = base.Columns["TaxableIncomePE"];
-                this.columnGrossTaxableIncome = base.Columns["GrossTaxableIncome"];
-                this.columnLessTE = base.Columns["LessTE"];
-                this.columnLessPPH = base.Columns["LessPPH"];
-                this.columnNetTax = base.Columns["NetTax"];
-                this.columnTaxDue = base.Columns["TaxDue"];
-                this.columnHeldTaxCE = base.Columns["HeldTaxCE"];
-                this.columnHeldTaxPE = base.Columns["HeldTaxPE"];
-                this.columnTotalTax = base.Columns["TotalTax"];
+                this.columnLAST_NAME = base.Columns["LAST_NAME"];
+                this.columnFIRST_NAME = base.Columns["FIRST_NAME"];
+                this.columnMIDDLE_NAME = base.Columns["MIDDLE_NAME"];
+                this.columnGROSS_COMP_INCOME = base.Columns["GROSS_COMP_INCOME"];
+                this.columnPRES_NONTAX_13TH_MONTH = base.Columns["PRES_NONTAX_13TH_MONTH"];
+                this.columnPRES_NONTAX_DE_MINIMIS = base.Columns["PRES_NONTAX_DE_MINIMIS"];
+                this.columnPRES_NONTAX_SSS_ETS = base.Columns["PRES_NONTAX_SSS_ETS"];
+                this.columnPRES_NONTAX_SALARIES = base.Columns["PRES_NONTAX_SALARIES"];
+                this.columnTOTAL_NONTAX_COMP_INCOME = base.Columns["TOTAL_NONTAX_COMP_INCOME"];
+                this.columnPRES_TAXABLE_BASIC_SALARY = base.Columns["PRES_TAXABLE_BASIC_SALARY"];
+                this.columnPRES_TAXABLE_13TH_MONTH = base.Columns["PRES_TAXABLE_13TH_MONTH"];
+                this.columnPRES_TAXABLE_SALARIES = base.Columns["PRES_TAXABLE_SALARIES"];
+                this.columnTOTAL_TAXABLE_COMP_INCOME = base.Columns["TOTAL_TAXABLE_COMP_INCOME"];
+                this.columnEXMPN_CODE = base.Columns["EXMPN_CODE"];
+                this.columnEXPMN_AMT = base.Columns["EXPMN_AMT"];
+                this.columnPREMIUM_PAID = base.Columns["PREMIUM_PAID"];
+                this.columnNET_TAXABLE_COMP_INCOME = base.Columns["NET_TAXABLE_COMP_INCOME"];
+                this.columnTAX_DUE = base.Columns["TAX_DUE"];
+                this.columnPRES_TAX_WTHLD = base.Columns["PRES_TAX_WTHLD"];
+                this.columnAMT_WTHLD_DEC = base.Columns["AMT_WTHLD_DEC"];
+                this.columnOVER_WTHLD = base.Columns["OVER_WTHLD"];
+                this.columnACTUAL_AMT_WTHLD = base.Columns["ACTUAL_AMT_WTHLD"];
+                this.columnSUBS_FILING = base.Columns["SUBS_FILING"];
                 this.columnTIN = base.Columns["TIN"];
+                this.columnSTARTED = base.Columns["STARTED"];
+                this.columnENDED = base.Columns["ENDED"];
+                this.columnCTC = base.Columns["CTC"];
+                this.columnPOI = base.Columns["POI"];
+                this.columnDOI = base.Columns["DOI"];
+                this.columnAMT = base.Columns["AMT"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1119,44 +2178,76 @@ namespace Query_Listener {
             private void InitClass() {
                 this.columnID = new global::System.Data.DataColumn("ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnID);
-                this.columnFirstName = new global::System.Data.DataColumn("FirstName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFirstName);
-                this.columnLastName = new global::System.Data.DataColumn("LastName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLastName);
-                this.columnGrossIncome = new global::System.Data.DataColumn("GrossIncome", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGrossIncome);
-                this.columnLessTNT = new global::System.Data.DataColumn("LessTNT", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLessTNT);
-                this.columnTaxableIncomeCE = new global::System.Data.DataColumn("TaxableIncomeCE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxableIncomeCE);
-                this.columnTaxableIncomePE = new global::System.Data.DataColumn("TaxableIncomePE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxableIncomePE);
-                this.columnGrossTaxableIncome = new global::System.Data.DataColumn("GrossTaxableIncome", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGrossTaxableIncome);
-                this.columnLessTE = new global::System.Data.DataColumn("LessTE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLessTE);
-                this.columnLessPPH = new global::System.Data.DataColumn("LessPPH", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLessPPH);
-                this.columnNetTax = new global::System.Data.DataColumn("NetTax", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNetTax);
-                this.columnTaxDue = new global::System.Data.DataColumn("TaxDue", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTaxDue);
-                this.columnHeldTaxCE = new global::System.Data.DataColumn("HeldTaxCE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHeldTaxCE);
-                this.columnHeldTaxPE = new global::System.Data.DataColumn("HeldTaxPE", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHeldTaxPE);
-                this.columnTotalTax = new global::System.Data.DataColumn("TotalTax", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalTax);
+                this.columnLAST_NAME = new global::System.Data.DataColumn("LAST_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLAST_NAME);
+                this.columnFIRST_NAME = new global::System.Data.DataColumn("FIRST_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFIRST_NAME);
+                this.columnMIDDLE_NAME = new global::System.Data.DataColumn("MIDDLE_NAME", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMIDDLE_NAME);
+                this.columnGROSS_COMP_INCOME = new global::System.Data.DataColumn("GROSS_COMP_INCOME", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGROSS_COMP_INCOME);
+                this.columnPRES_NONTAX_13TH_MONTH = new global::System.Data.DataColumn("PRES_NONTAX_13TH_MONTH", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_NONTAX_13TH_MONTH);
+                this.columnPRES_NONTAX_DE_MINIMIS = new global::System.Data.DataColumn("PRES_NONTAX_DE_MINIMIS", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_NONTAX_DE_MINIMIS);
+                this.columnPRES_NONTAX_SSS_ETS = new global::System.Data.DataColumn("PRES_NONTAX_SSS_ETS", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_NONTAX_SSS_ETS);
+                this.columnPRES_NONTAX_SALARIES = new global::System.Data.DataColumn("PRES_NONTAX_SALARIES", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_NONTAX_SALARIES);
+                this.columnTOTAL_NONTAX_COMP_INCOME = new global::System.Data.DataColumn("TOTAL_NONTAX_COMP_INCOME", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTOTAL_NONTAX_COMP_INCOME);
+                this.columnPRES_TAXABLE_BASIC_SALARY = new global::System.Data.DataColumn("PRES_TAXABLE_BASIC_SALARY", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_TAXABLE_BASIC_SALARY);
+                this.columnPRES_TAXABLE_13TH_MONTH = new global::System.Data.DataColumn("PRES_TAXABLE_13TH_MONTH", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_TAXABLE_13TH_MONTH);
+                this.columnPRES_TAXABLE_SALARIES = new global::System.Data.DataColumn("PRES_TAXABLE_SALARIES", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_TAXABLE_SALARIES);
+                this.columnTOTAL_TAXABLE_COMP_INCOME = new global::System.Data.DataColumn("TOTAL_TAXABLE_COMP_INCOME", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTOTAL_TAXABLE_COMP_INCOME);
+                this.columnEXMPN_CODE = new global::System.Data.DataColumn("EXMPN_CODE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEXMPN_CODE);
+                this.columnEXPMN_AMT = new global::System.Data.DataColumn("EXPMN_AMT", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEXPMN_AMT);
+                this.columnPREMIUM_PAID = new global::System.Data.DataColumn("PREMIUM_PAID", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPREMIUM_PAID);
+                this.columnNET_TAXABLE_COMP_INCOME = new global::System.Data.DataColumn("NET_TAXABLE_COMP_INCOME", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNET_TAXABLE_COMP_INCOME);
+                this.columnTAX_DUE = new global::System.Data.DataColumn("TAX_DUE", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTAX_DUE);
+                this.columnPRES_TAX_WTHLD = new global::System.Data.DataColumn("PRES_TAX_WTHLD", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPRES_TAX_WTHLD);
+                this.columnAMT_WTHLD_DEC = new global::System.Data.DataColumn("AMT_WTHLD_DEC", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAMT_WTHLD_DEC);
+                this.columnOVER_WTHLD = new global::System.Data.DataColumn("OVER_WTHLD", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOVER_WTHLD);
+                this.columnACTUAL_AMT_WTHLD = new global::System.Data.DataColumn("ACTUAL_AMT_WTHLD", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnACTUAL_AMT_WTHLD);
+                this.columnSUBS_FILING = new global::System.Data.DataColumn("SUBS_FILING", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSUBS_FILING);
                 this.columnTIN = new global::System.Data.DataColumn("TIN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTIN);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AllowDBNull = false;
-                this.columnID.Unique = true;
+                this.columnSTARTED = new global::System.Data.DataColumn("STARTED", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSTARTED);
+                this.columnENDED = new global::System.Data.DataColumn("ENDED", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnENDED);
+                this.columnCTC = new global::System.Data.DataColumn("CTC", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCTC);
+                this.columnPOI = new global::System.Data.DataColumn("POI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPOI);
+                this.columnDOI = new global::System.Data.DataColumn("DOI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDOI);
+                this.columnAMT = new global::System.Data.DataColumn("AMT", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAMT);
                 this.columnID.MaxLength = 255;
-                this.columnFirstName.MaxLength = 255;
-                this.columnLastName.MaxLength = 255;
+                this.columnLAST_NAME.MaxLength = 255;
+                this.columnFIRST_NAME.MaxLength = 255;
+                this.columnMIDDLE_NAME.MaxLength = 255;
+                this.columnEXMPN_CODE.MaxLength = 255;
                 this.columnTIN.MaxLength = 255;
+                this.columnSTARTED.MaxLength = 255;
+                this.columnENDED.MaxLength = 255;
+                this.columnPOI.MaxLength = 255;
+                this.columnDOI.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1286,6 +2377,105 @@ namespace Query_Listener {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
+        public partial class ABCDRow : global::System.Data.DataRow {
+            
+            private ABCDDataTable tableABCD;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ABCDRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableABCD = ((ABCDDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ID {
+                get {
+                    try {
+                        return ((string)(this[this.tableABCD.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'ABCD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableABCD.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Started {
+                get {
+                    try {
+                        return ((string)(this[this.tableABCD.StartedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Started\' in table \'ABCD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableABCD.StartedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Ended {
+                get {
+                    try {
+                        return ((string)(this[this.tableABCD.EndedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Ended\' in table \'ABCD\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableABCD.EndedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIDNull() {
+                return this.IsNull(this.tableABCD.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIDNull() {
+                this[this.tableABCD.IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStartedNull() {
+                return this.IsNull(this.tableABCD.StartedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStartedNull() {
+                this[this.tableABCD.StartedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEndedNull() {
+                return this.IsNull(this.tableABCD.EndedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEndedNull() {
+                this[this.tableABCD.EndedColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
         public partial class ACTBRow : global::System.Data.DataRow {
             
             private ACTBDataTable tableACTB;
@@ -1310,225 +2500,369 @@ namespace Query_Listener {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FirstName {
+            public string LAST_NAME {
                 get {
                     try {
-                        return ((string)(this[this.tableACTB.FirstNameColumn]));
+                        return ((string)(this[this.tableACTB.LAST_NAMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FirstName\' in table \'ACTB\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'LAST_NAME\' in table \'ACTB\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACTB.FirstNameColumn] = value;
+                    this[this.tableACTB.LAST_NAMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string LastName {
+            public string FIRST_NAME {
                 get {
-                    try {
-                        return ((string)(this[this.tableACTB.LastNameColumn]));
+                    if (this.IsFIRST_NAMENull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LastName\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableACTB.FIRST_NAMEColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.LastNameColumn] = value;
+                    this[this.tableACTB.FIRST_NAMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int GrossIncome {
+            public string MIDDLE_NAME {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.GrossIncomeColumn]));
+                    if (this.IsMIDDLE_NAMENull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GrossIncome\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableACTB.MIDDLE_NAMEColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.GrossIncomeColumn] = value;
+                    this[this.tableACTB.MIDDLE_NAMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LessTNT {
+            public double GROSS_COMP_INCOME {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.LessTNTColumn]));
+                    if (this.IsGROSS_COMP_INCOMENull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LessTNT\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.GROSS_COMP_INCOMEColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.LessTNTColumn] = value;
+                    this[this.tableACTB.GROSS_COMP_INCOMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TaxableIncomeCE {
+            public double PRES_NONTAX_13TH_MONTH {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.TaxableIncomeCEColumn]));
+                    if (this.IsPRES_NONTAX_13TH_MONTHNull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TaxableIncomeCE\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.PRES_NONTAX_13TH_MONTHColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.TaxableIncomeCEColumn] = value;
+                    this[this.tableACTB.PRES_NONTAX_13TH_MONTHColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TaxableIncomePE {
+            public double PRES_NONTAX_DE_MINIMIS {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.TaxableIncomePEColumn]));
+                    if (this.IsPRES_NONTAX_DE_MINIMISNull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TaxableIncomePE\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.PRES_NONTAX_DE_MINIMISColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.TaxableIncomePEColumn] = value;
+                    this[this.tableACTB.PRES_NONTAX_DE_MINIMISColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int GrossTaxableIncome {
+            public double PRES_NONTAX_SSS_ETS {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.GrossTaxableIncomeColumn]));
+                    if (this.IsPRES_NONTAX_SSS_ETSNull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GrossTaxableIncome\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.PRES_NONTAX_SSS_ETSColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.GrossTaxableIncomeColumn] = value;
+                    this[this.tableACTB.PRES_NONTAX_SSS_ETSColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LessTE {
+            public double PRES_NONTAX_SALARIES {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.LessTEColumn]));
+                    if (this.IsPRES_NONTAX_SALARIESNull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LessTE\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.PRES_NONTAX_SALARIESColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.LessTEColumn] = value;
+                    this[this.tableACTB.PRES_NONTAX_SALARIESColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LessPPH {
+            public double TOTAL_NONTAX_COMP_INCOME {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.LessPPHColumn]));
+                    if (this.IsTOTAL_NONTAX_COMP_INCOMENull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LessPPH\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.TOTAL_NONTAX_COMP_INCOMEColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.LessPPHColumn] = value;
+                    this[this.tableACTB.TOTAL_NONTAX_COMP_INCOMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int NetTax {
+            public double PRES_TAXABLE_BASIC_SALARY {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.NetTaxColumn]));
+                    if (this.IsPRES_TAXABLE_BASIC_SALARYNull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NetTax\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.PRES_TAXABLE_BASIC_SALARYColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.NetTaxColumn] = value;
+                    this[this.tableACTB.PRES_TAXABLE_BASIC_SALARYColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TaxDue {
+            public double PRES_TAXABLE_13TH_MONTH {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.TaxDueColumn]));
+                    if (this.IsPRES_TAXABLE_13TH_MONTHNull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TaxDue\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.PRES_TAXABLE_13TH_MONTHColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.TaxDueColumn] = value;
+                    this[this.tableACTB.PRES_TAXABLE_13TH_MONTHColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int HeldTaxCE {
+            public double PRES_TAXABLE_SALARIES {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.HeldTaxCEColumn]));
+                    if (this.IsPRES_TAXABLE_SALARIESNull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'HeldTaxCE\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.PRES_TAXABLE_SALARIESColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.HeldTaxCEColumn] = value;
+                    this[this.tableACTB.PRES_TAXABLE_SALARIESColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int HeldTaxPE {
+            public double TOTAL_TAXABLE_COMP_INCOME {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.HeldTaxPEColumn]));
+                    if (this.IsTOTAL_TAXABLE_COMP_INCOMENull()) {
+                        return 0D;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'HeldTaxPE\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((double)(this[this.tableACTB.TOTAL_TAXABLE_COMP_INCOMEColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.HeldTaxPEColumn] = value;
+                    this[this.tableACTB.TOTAL_TAXABLE_COMP_INCOMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TotalTax {
+            public string EXMPN_CODE {
                 get {
-                    try {
-                        return ((int)(this[this.tableACTB.TotalTaxColumn]));
+                    if (this.IsEXMPN_CODENull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalTax\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableACTB.EXMPN_CODEColumn]));
                     }
                 }
                 set {
-                    this[this.tableACTB.TotalTaxColumn] = value;
+                    this[this.tableACTB.EXMPN_CODEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double EXPMN_AMT {
+                get {
+                    if (this.IsEXPMN_AMTNull()) {
+                        return 0D;
+                    }
+                    else {
+                        return ((double)(this[this.tableACTB.EXPMN_AMTColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.EXPMN_AMTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double PREMIUM_PAID {
+                get {
+                    if (this.IsPREMIUM_PAIDNull()) {
+                        return 0D;
+                    }
+                    else {
+                        return ((double)(this[this.tableACTB.PREMIUM_PAIDColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.PREMIUM_PAIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double NET_TAXABLE_COMP_INCOME {
+                get {
+                    if (this.IsNET_TAXABLE_COMP_INCOMENull()) {
+                        return 0D;
+                    }
+                    else {
+                        return ((double)(this[this.tableACTB.NET_TAXABLE_COMP_INCOMEColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.NET_TAXABLE_COMP_INCOMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double TAX_DUE {
+                get {
+                    if (this.IsTAX_DUENull()) {
+                        return 0D;
+                    }
+                    else {
+                        return ((double)(this[this.tableACTB.TAX_DUEColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.TAX_DUEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double PRES_TAX_WTHLD {
+                get {
+                    if (this.IsPRES_TAX_WTHLDNull()) {
+                        return 0D;
+                    }
+                    else {
+                        return ((double)(this[this.tableACTB.PRES_TAX_WTHLDColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.PRES_TAX_WTHLDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double AMT_WTHLD_DEC {
+                get {
+                    if (this.IsAMT_WTHLD_DECNull()) {
+                        return 0D;
+                    }
+                    else {
+                        return ((double)(this[this.tableACTB.AMT_WTHLD_DECColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.AMT_WTHLD_DECColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double OVER_WTHLD {
+                get {
+                    if (this.IsOVER_WTHLDNull()) {
+                        return 0D;
+                    }
+                    else {
+                        return ((double)(this[this.tableACTB.OVER_WTHLDColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.OVER_WTHLDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double ACTUAL_AMT_WTHLD {
+                get {
+                    if (this.IsACTUAL_AMT_WTHLDNull()) {
+                        return 0D;
+                    }
+                    else {
+                        return ((double)(this[this.tableACTB.ACTUAL_AMT_WTHLDColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.ACTUAL_AMT_WTHLDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int SUBS_FILING {
+                get {
+                    try {
+                        return ((int)(this[this.tableACTB.SUBS_FILINGColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SUBS_FILING\' in table \'ACTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACTB.SUBS_FILINGColumn] = value;
                 }
             }
             
@@ -1536,11 +2870,11 @@ namespace Query_Listener {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string TIN {
                 get {
-                    try {
-                        return ((string)(this[this.tableACTB.TINColumn]));
+                    if (this.IsTINNull()) {
+                        return string.Empty;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TIN\' in table \'ACTB\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tableACTB.TINColumn]));
                     }
                 }
                 set {
@@ -1550,170 +2884,374 @@ namespace Query_Listener {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFirstNameNull() {
-                return this.IsNull(this.tableACTB.FirstNameColumn);
+            public string STARTED {
+                get {
+                    if (this.IsSTARTEDNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableACTB.STARTEDColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.STARTEDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFirstNameNull() {
-                this[this.tableACTB.FirstNameColumn] = global::System.Convert.DBNull;
+            public string ENDED {
+                get {
+                    if (this.IsENDEDNull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableACTB.ENDEDColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.ENDEDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLastNameNull() {
-                return this.IsNull(this.tableACTB.LastNameColumn);
+            public int CTC {
+                get {
+                    try {
+                        return ((int)(this[this.tableACTB.CTCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CTC\' in table \'ACTB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACTB.CTCColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLastNameNull() {
-                this[this.tableACTB.LastNameColumn] = global::System.Convert.DBNull;
+            public string POI {
+                get {
+                    if (this.IsPOINull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableACTB.POIColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.POIColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGrossIncomeNull() {
-                return this.IsNull(this.tableACTB.GrossIncomeColumn);
+            public string DOI {
+                get {
+                    if (this.IsDOINull()) {
+                        return string.Empty;
+                    }
+                    else {
+                        return ((string)(this[this.tableACTB.DOIColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.DOIColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGrossIncomeNull() {
-                this[this.tableACTB.GrossIncomeColumn] = global::System.Convert.DBNull;
+            public int AMT {
+                get {
+                    if (this.IsAMTNull()) {
+                        return 0;
+                    }
+                    else {
+                        return ((int)(this[this.tableACTB.AMTColumn]));
+                    }
+                }
+                set {
+                    this[this.tableACTB.AMTColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLessTNTNull() {
-                return this.IsNull(this.tableACTB.LessTNTColumn);
+            public bool IsLAST_NAMENull() {
+                return this.IsNull(this.tableACTB.LAST_NAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLessTNTNull() {
-                this[this.tableACTB.LessTNTColumn] = global::System.Convert.DBNull;
+            public void SetLAST_NAMENull() {
+                this[this.tableACTB.LAST_NAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTaxableIncomeCENull() {
-                return this.IsNull(this.tableACTB.TaxableIncomeCEColumn);
+            public bool IsFIRST_NAMENull() {
+                return this.IsNull(this.tableACTB.FIRST_NAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTaxableIncomeCENull() {
-                this[this.tableACTB.TaxableIncomeCEColumn] = global::System.Convert.DBNull;
+            public void SetFIRST_NAMENull() {
+                this[this.tableACTB.FIRST_NAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTaxableIncomePENull() {
-                return this.IsNull(this.tableACTB.TaxableIncomePEColumn);
+            public bool IsMIDDLE_NAMENull() {
+                return this.IsNull(this.tableACTB.MIDDLE_NAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTaxableIncomePENull() {
-                this[this.tableACTB.TaxableIncomePEColumn] = global::System.Convert.DBNull;
+            public void SetMIDDLE_NAMENull() {
+                this[this.tableACTB.MIDDLE_NAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGrossTaxableIncomeNull() {
-                return this.IsNull(this.tableACTB.GrossTaxableIncomeColumn);
+            public bool IsGROSS_COMP_INCOMENull() {
+                return this.IsNull(this.tableACTB.GROSS_COMP_INCOMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGrossTaxableIncomeNull() {
-                this[this.tableACTB.GrossTaxableIncomeColumn] = global::System.Convert.DBNull;
+            public void SetGROSS_COMP_INCOMENull() {
+                this[this.tableACTB.GROSS_COMP_INCOMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLessTENull() {
-                return this.IsNull(this.tableACTB.LessTEColumn);
+            public bool IsPRES_NONTAX_13TH_MONTHNull() {
+                return this.IsNull(this.tableACTB.PRES_NONTAX_13TH_MONTHColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLessTENull() {
-                this[this.tableACTB.LessTEColumn] = global::System.Convert.DBNull;
+            public void SetPRES_NONTAX_13TH_MONTHNull() {
+                this[this.tableACTB.PRES_NONTAX_13TH_MONTHColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLessPPHNull() {
-                return this.IsNull(this.tableACTB.LessPPHColumn);
+            public bool IsPRES_NONTAX_DE_MINIMISNull() {
+                return this.IsNull(this.tableACTB.PRES_NONTAX_DE_MINIMISColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLessPPHNull() {
-                this[this.tableACTB.LessPPHColumn] = global::System.Convert.DBNull;
+            public void SetPRES_NONTAX_DE_MINIMISNull() {
+                this[this.tableACTB.PRES_NONTAX_DE_MINIMISColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNetTaxNull() {
-                return this.IsNull(this.tableACTB.NetTaxColumn);
+            public bool IsPRES_NONTAX_SSS_ETSNull() {
+                return this.IsNull(this.tableACTB.PRES_NONTAX_SSS_ETSColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNetTaxNull() {
-                this[this.tableACTB.NetTaxColumn] = global::System.Convert.DBNull;
+            public void SetPRES_NONTAX_SSS_ETSNull() {
+                this[this.tableACTB.PRES_NONTAX_SSS_ETSColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTaxDueNull() {
-                return this.IsNull(this.tableACTB.TaxDueColumn);
+            public bool IsPRES_NONTAX_SALARIESNull() {
+                return this.IsNull(this.tableACTB.PRES_NONTAX_SALARIESColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTaxDueNull() {
-                this[this.tableACTB.TaxDueColumn] = global::System.Convert.DBNull;
+            public void SetPRES_NONTAX_SALARIESNull() {
+                this[this.tableACTB.PRES_NONTAX_SALARIESColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHeldTaxCENull() {
-                return this.IsNull(this.tableACTB.HeldTaxCEColumn);
+            public bool IsTOTAL_NONTAX_COMP_INCOMENull() {
+                return this.IsNull(this.tableACTB.TOTAL_NONTAX_COMP_INCOMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHeldTaxCENull() {
-                this[this.tableACTB.HeldTaxCEColumn] = global::System.Convert.DBNull;
+            public void SetTOTAL_NONTAX_COMP_INCOMENull() {
+                this[this.tableACTB.TOTAL_NONTAX_COMP_INCOMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHeldTaxPENull() {
-                return this.IsNull(this.tableACTB.HeldTaxPEColumn);
+            public bool IsPRES_TAXABLE_BASIC_SALARYNull() {
+                return this.IsNull(this.tableACTB.PRES_TAXABLE_BASIC_SALARYColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHeldTaxPENull() {
-                this[this.tableACTB.HeldTaxPEColumn] = global::System.Convert.DBNull;
+            public void SetPRES_TAXABLE_BASIC_SALARYNull() {
+                this[this.tableACTB.PRES_TAXABLE_BASIC_SALARYColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotalTaxNull() {
-                return this.IsNull(this.tableACTB.TotalTaxColumn);
+            public bool IsPRES_TAXABLE_13TH_MONTHNull() {
+                return this.IsNull(this.tableACTB.PRES_TAXABLE_13TH_MONTHColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotalTaxNull() {
-                this[this.tableACTB.TotalTaxColumn] = global::System.Convert.DBNull;
+            public void SetPRES_TAXABLE_13TH_MONTHNull() {
+                this[this.tableACTB.PRES_TAXABLE_13TH_MONTHColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPRES_TAXABLE_SALARIESNull() {
+                return this.IsNull(this.tableACTB.PRES_TAXABLE_SALARIESColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPRES_TAXABLE_SALARIESNull() {
+                this[this.tableACTB.PRES_TAXABLE_SALARIESColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTOTAL_TAXABLE_COMP_INCOMENull() {
+                return this.IsNull(this.tableACTB.TOTAL_TAXABLE_COMP_INCOMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTOTAL_TAXABLE_COMP_INCOMENull() {
+                this[this.tableACTB.TOTAL_TAXABLE_COMP_INCOMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEXMPN_CODENull() {
+                return this.IsNull(this.tableACTB.EXMPN_CODEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEXMPN_CODENull() {
+                this[this.tableACTB.EXMPN_CODEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEXPMN_AMTNull() {
+                return this.IsNull(this.tableACTB.EXPMN_AMTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEXPMN_AMTNull() {
+                this[this.tableACTB.EXPMN_AMTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPREMIUM_PAIDNull() {
+                return this.IsNull(this.tableACTB.PREMIUM_PAIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPREMIUM_PAIDNull() {
+                this[this.tableACTB.PREMIUM_PAIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNET_TAXABLE_COMP_INCOMENull() {
+                return this.IsNull(this.tableACTB.NET_TAXABLE_COMP_INCOMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNET_TAXABLE_COMP_INCOMENull() {
+                this[this.tableACTB.NET_TAXABLE_COMP_INCOMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTAX_DUENull() {
+                return this.IsNull(this.tableACTB.TAX_DUEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTAX_DUENull() {
+                this[this.tableACTB.TAX_DUEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPRES_TAX_WTHLDNull() {
+                return this.IsNull(this.tableACTB.PRES_TAX_WTHLDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPRES_TAX_WTHLDNull() {
+                this[this.tableACTB.PRES_TAX_WTHLDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAMT_WTHLD_DECNull() {
+                return this.IsNull(this.tableACTB.AMT_WTHLD_DECColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAMT_WTHLD_DECNull() {
+                this[this.tableACTB.AMT_WTHLD_DECColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOVER_WTHLDNull() {
+                return this.IsNull(this.tableACTB.OVER_WTHLDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOVER_WTHLDNull() {
+                this[this.tableACTB.OVER_WTHLDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsACTUAL_AMT_WTHLDNull() {
+                return this.IsNull(this.tableACTB.ACTUAL_AMT_WTHLDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetACTUAL_AMT_WTHLDNull() {
+                this[this.tableACTB.ACTUAL_AMT_WTHLDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSUBS_FILINGNull() {
+                return this.IsNull(this.tableACTB.SUBS_FILINGColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSUBS_FILINGNull() {
+                this[this.tableACTB.SUBS_FILINGColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1726,6 +3264,205 @@ namespace Query_Listener {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTINNull() {
                 this[this.tableACTB.TINColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSTARTEDNull() {
+                return this.IsNull(this.tableACTB.STARTEDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSTARTEDNull() {
+                this[this.tableACTB.STARTEDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsENDEDNull() {
+                return this.IsNull(this.tableACTB.ENDEDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetENDEDNull() {
+                this[this.tableACTB.ENDEDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCTCNull() {
+                return this.IsNull(this.tableACTB.CTCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCTCNull() {
+                this[this.tableACTB.CTCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPOINull() {
+                return this.IsNull(this.tableACTB.POIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPOINull() {
+                this[this.tableACTB.POIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDOINull() {
+                return this.IsNull(this.tableACTB.DOIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDOINull() {
+                this[this.tableACTB.DOIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAMTNull() {
+                return this.IsNull(this.tableACTB.AMTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAMTNull() {
+                this[this.tableACTB.AMTColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ACTCRow : global::System.Data.DataRow {
+            
+            private ACTCDataTable tableACTC;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal ACTCRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableACTC = ((ACTCDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ID {
+                get {
+                    try {
+                        return ((string)(this[this.tableACTC.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'ACTC\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACTC.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int CTC {
+                get {
+                    try {
+                        return ((int)(this[this.tableACTC.CTCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CTC\' in table \'ACTC\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACTC.CTCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string POI {
+                get {
+                    try {
+                        return ((string)(this[this.tableACTC.POIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'POI\' in table \'ACTC\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACTC.POIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DOI {
+                get {
+                    try {
+                        return ((string)(this[this.tableACTC.DOIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DOI\' in table \'ACTC\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACTC.DOIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIDNull() {
+                return this.IsNull(this.tableACTC.IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIDNull() {
+                this[this.tableACTC.IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCTCNull() {
+                return this.IsNull(this.tableACTC.CTCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCTCNull() {
+                this[this.tableACTC.CTCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPOINull() {
+                return this.IsNull(this.tableACTC.POIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPOINull() {
+                this[this.tableACTC.POIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDOINull() {
+                return this.IsNull(this.tableACTC.DOIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDOINull() {
+                this[this.tableACTC.DOIColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1747,7 +3484,12 @@ namespace Query_Listener {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string ID {
                 get {
-                    return ((string)(this[this.tableACXL.IDColumn]));
+                    try {
+                        return ((string)(this[this.tableACXL.IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'ACXL\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableACXL.IDColumn] = value;
@@ -1756,225 +3498,369 @@ namespace Query_Listener {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FirstName {
+            public string LAST_NAME {
                 get {
                     try {
-                        return ((string)(this[this.tableACXL.FirstNameColumn]));
+                        return ((string)(this[this.tableACXL.LAST_NAMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FirstName\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'LAST_NAME\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.FirstNameColumn] = value;
+                    this[this.tableACXL.LAST_NAMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string LastName {
+            public string FIRST_NAME {
                 get {
                     try {
-                        return ((string)(this[this.tableACXL.LastNameColumn]));
+                        return ((string)(this[this.tableACXL.FIRST_NAMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LastName\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'FIRST_NAME\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.LastNameColumn] = value;
+                    this[this.tableACXL.FIRST_NAMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int GrossIncome {
+            public string MIDDLE_NAME {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.GrossIncomeColumn]));
+                        return ((string)(this[this.tableACXL.MIDDLE_NAMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GrossIncome\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'MIDDLE_NAME\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.GrossIncomeColumn] = value;
+                    this[this.tableACXL.MIDDLE_NAMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LessTNT {
+            public double GROSS_COMP_INCOME {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.LessTNTColumn]));
+                        return ((double)(this[this.tableACXL.GROSS_COMP_INCOMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LessTNT\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'GROSS_COMP_INCOME\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.LessTNTColumn] = value;
+                    this[this.tableACXL.GROSS_COMP_INCOMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TaxableIncomeCE {
+            public double PRES_NONTAX_13TH_MONTH {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.TaxableIncomeCEColumn]));
+                        return ((double)(this[this.tableACXL.PRES_NONTAX_13TH_MONTHColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TaxableIncomeCE\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRES_NONTAX_13TH_MONTH\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.TaxableIncomeCEColumn] = value;
+                    this[this.tableACXL.PRES_NONTAX_13TH_MONTHColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TaxableIncomePE {
+            public double PRES_NONTAX_DE_MINIMIS {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.TaxableIncomePEColumn]));
+                        return ((double)(this[this.tableACXL.PRES_NONTAX_DE_MINIMISColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TaxableIncomePE\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRES_NONTAX_DE_MINIMIS\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.TaxableIncomePEColumn] = value;
+                    this[this.tableACXL.PRES_NONTAX_DE_MINIMISColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int GrossTaxableIncome {
+            public double PRES_NONTAX_SSS_ETS {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.GrossTaxableIncomeColumn]));
+                        return ((double)(this[this.tableACXL.PRES_NONTAX_SSS_ETSColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GrossTaxableIncome\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRES_NONTAX_SSS_ETS\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.GrossTaxableIncomeColumn] = value;
+                    this[this.tableACXL.PRES_NONTAX_SSS_ETSColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LessTE {
+            public double PRES_NONTAX_SALARIES {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.LessTEColumn]));
+                        return ((double)(this[this.tableACXL.PRES_NONTAX_SALARIESColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LessTE\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRES_NONTAX_SALARIES\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.LessTEColumn] = value;
+                    this[this.tableACXL.PRES_NONTAX_SALARIESColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int LessPPH {
+            public double TOTAL_NONTAX_COMP_INCOME {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.LessPPHColumn]));
+                        return ((double)(this[this.tableACXL.TOTAL_NONTAX_COMP_INCOMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LessPPH\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TOTAL_NONTAX_COMP_INCOME\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.LessPPHColumn] = value;
+                    this[this.tableACXL.TOTAL_NONTAX_COMP_INCOMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int NetTax {
+            public double PRES_TAXABLE_BASIC_SALARY {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.NetTaxColumn]));
+                        return ((double)(this[this.tableACXL.PRES_TAXABLE_BASIC_SALARYColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NetTax\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRES_TAXABLE_BASIC_SALARY\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.NetTaxColumn] = value;
+                    this[this.tableACXL.PRES_TAXABLE_BASIC_SALARYColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TaxDue {
+            public double PRES_TAXABLE_13TH_MONTH {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.TaxDueColumn]));
+                        return ((double)(this[this.tableACXL.PRES_TAXABLE_13TH_MONTHColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TaxDue\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRES_TAXABLE_13TH_MONTH\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.TaxDueColumn] = value;
+                    this[this.tableACXL.PRES_TAXABLE_13TH_MONTHColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int HeldTaxCE {
+            public double PRES_TAXABLE_SALARIES {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.HeldTaxCEColumn]));
+                        return ((double)(this[this.tableACXL.PRES_TAXABLE_SALARIESColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'HeldTaxCE\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRES_TAXABLE_SALARIES\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.HeldTaxCEColumn] = value;
+                    this[this.tableACXL.PRES_TAXABLE_SALARIESColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int HeldTaxPE {
+            public double TOTAL_TAXABLE_COMP_INCOME {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.HeldTaxPEColumn]));
+                        return ((double)(this[this.tableACXL.TOTAL_TAXABLE_COMP_INCOMEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'HeldTaxPE\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TOTAL_TAXABLE_COMP_INCOME\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.HeldTaxPEColumn] = value;
+                    this[this.tableACXL.TOTAL_TAXABLE_COMP_INCOMEColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TotalTax {
+            public string EXMPN_CODE {
                 get {
                     try {
-                        return ((int)(this[this.tableACXL.TotalTaxColumn]));
+                        return ((string)(this[this.tableACXL.EXMPN_CODEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalTax\' in table \'ACXL\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'EXMPN_CODE\' in table \'ACXL\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableACXL.TotalTaxColumn] = value;
+                    this[this.tableACXL.EXMPN_CODEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double EXPMN_AMT {
+                get {
+                    try {
+                        return ((double)(this[this.tableACXL.EXPMN_AMTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EXPMN_AMT\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.EXPMN_AMTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double PREMIUM_PAID {
+                get {
+                    try {
+                        return ((double)(this[this.tableACXL.PREMIUM_PAIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PREMIUM_PAID\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.PREMIUM_PAIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double NET_TAXABLE_COMP_INCOME {
+                get {
+                    try {
+                        return ((double)(this[this.tableACXL.NET_TAXABLE_COMP_INCOMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NET_TAXABLE_COMP_INCOME\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.NET_TAXABLE_COMP_INCOMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double TAX_DUE {
+                get {
+                    try {
+                        return ((double)(this[this.tableACXL.TAX_DUEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TAX_DUE\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.TAX_DUEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double PRES_TAX_WTHLD {
+                get {
+                    try {
+                        return ((double)(this[this.tableACXL.PRES_TAX_WTHLDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PRES_TAX_WTHLD\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.PRES_TAX_WTHLDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double AMT_WTHLD_DEC {
+                get {
+                    try {
+                        return ((double)(this[this.tableACXL.AMT_WTHLD_DECColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AMT_WTHLD_DEC\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.AMT_WTHLD_DECColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double OVER_WTHLD {
+                get {
+                    try {
+                        return ((double)(this[this.tableACXL.OVER_WTHLDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OVER_WTHLD\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.OVER_WTHLDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double ACTUAL_AMT_WTHLD {
+                get {
+                    try {
+                        return ((double)(this[this.tableACXL.ACTUAL_AMT_WTHLDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ACTUAL_AMT_WTHLD\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.ACTUAL_AMT_WTHLDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SUBS_FILING {
+                get {
+                    try {
+                        return ((string)(this[this.tableACXL.SUBS_FILINGColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SUBS_FILING\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.SUBS_FILINGColumn] = value;
                 }
             }
             
@@ -1996,170 +3882,386 @@ namespace Query_Listener {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFirstNameNull() {
-                return this.IsNull(this.tableACXL.FirstNameColumn);
+            public string STARTED {
+                get {
+                    try {
+                        return ((string)(this[this.tableACXL.STARTEDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'STARTED\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.STARTEDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFirstNameNull() {
-                this[this.tableACXL.FirstNameColumn] = global::System.Convert.DBNull;
+            public string ENDED {
+                get {
+                    try {
+                        return ((string)(this[this.tableACXL.ENDEDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ENDED\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.ENDEDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLastNameNull() {
-                return this.IsNull(this.tableACXL.LastNameColumn);
+            public int CTC {
+                get {
+                    try {
+                        return ((int)(this[this.tableACXL.CTCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CTC\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.CTCColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLastNameNull() {
-                this[this.tableACXL.LastNameColumn] = global::System.Convert.DBNull;
+            public string POI {
+                get {
+                    try {
+                        return ((string)(this[this.tableACXL.POIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'POI\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.POIColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGrossIncomeNull() {
-                return this.IsNull(this.tableACXL.GrossIncomeColumn);
+            public string DOI {
+                get {
+                    try {
+                        return ((string)(this[this.tableACXL.DOIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DOI\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.DOIColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGrossIncomeNull() {
-                this[this.tableACXL.GrossIncomeColumn] = global::System.Convert.DBNull;
+            public int AMT {
+                get {
+                    try {
+                        return ((int)(this[this.tableACXL.AMTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'AMT\' in table \'ACXL\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableACXL.AMTColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLessTNTNull() {
-                return this.IsNull(this.tableACXL.LessTNTColumn);
+            public bool IsIDNull() {
+                return this.IsNull(this.tableACXL.IDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLessTNTNull() {
-                this[this.tableACXL.LessTNTColumn] = global::System.Convert.DBNull;
+            public void SetIDNull() {
+                this[this.tableACXL.IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTaxableIncomeCENull() {
-                return this.IsNull(this.tableACXL.TaxableIncomeCEColumn);
+            public bool IsLAST_NAMENull() {
+                return this.IsNull(this.tableACXL.LAST_NAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTaxableIncomeCENull() {
-                this[this.tableACXL.TaxableIncomeCEColumn] = global::System.Convert.DBNull;
+            public void SetLAST_NAMENull() {
+                this[this.tableACXL.LAST_NAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTaxableIncomePENull() {
-                return this.IsNull(this.tableACXL.TaxableIncomePEColumn);
+            public bool IsFIRST_NAMENull() {
+                return this.IsNull(this.tableACXL.FIRST_NAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTaxableIncomePENull() {
-                this[this.tableACXL.TaxableIncomePEColumn] = global::System.Convert.DBNull;
+            public void SetFIRST_NAMENull() {
+                this[this.tableACXL.FIRST_NAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGrossTaxableIncomeNull() {
-                return this.IsNull(this.tableACXL.GrossTaxableIncomeColumn);
+            public bool IsMIDDLE_NAMENull() {
+                return this.IsNull(this.tableACXL.MIDDLE_NAMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGrossTaxableIncomeNull() {
-                this[this.tableACXL.GrossTaxableIncomeColumn] = global::System.Convert.DBNull;
+            public void SetMIDDLE_NAMENull() {
+                this[this.tableACXL.MIDDLE_NAMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLessTENull() {
-                return this.IsNull(this.tableACXL.LessTEColumn);
+            public bool IsGROSS_COMP_INCOMENull() {
+                return this.IsNull(this.tableACXL.GROSS_COMP_INCOMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLessTENull() {
-                this[this.tableACXL.LessTEColumn] = global::System.Convert.DBNull;
+            public void SetGROSS_COMP_INCOMENull() {
+                this[this.tableACXL.GROSS_COMP_INCOMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLessPPHNull() {
-                return this.IsNull(this.tableACXL.LessPPHColumn);
+            public bool IsPRES_NONTAX_13TH_MONTHNull() {
+                return this.IsNull(this.tableACXL.PRES_NONTAX_13TH_MONTHColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLessPPHNull() {
-                this[this.tableACXL.LessPPHColumn] = global::System.Convert.DBNull;
+            public void SetPRES_NONTAX_13TH_MONTHNull() {
+                this[this.tableACXL.PRES_NONTAX_13TH_MONTHColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNetTaxNull() {
-                return this.IsNull(this.tableACXL.NetTaxColumn);
+            public bool IsPRES_NONTAX_DE_MINIMISNull() {
+                return this.IsNull(this.tableACXL.PRES_NONTAX_DE_MINIMISColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNetTaxNull() {
-                this[this.tableACXL.NetTaxColumn] = global::System.Convert.DBNull;
+            public void SetPRES_NONTAX_DE_MINIMISNull() {
+                this[this.tableACXL.PRES_NONTAX_DE_MINIMISColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTaxDueNull() {
-                return this.IsNull(this.tableACXL.TaxDueColumn);
+            public bool IsPRES_NONTAX_SSS_ETSNull() {
+                return this.IsNull(this.tableACXL.PRES_NONTAX_SSS_ETSColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTaxDueNull() {
-                this[this.tableACXL.TaxDueColumn] = global::System.Convert.DBNull;
+            public void SetPRES_NONTAX_SSS_ETSNull() {
+                this[this.tableACXL.PRES_NONTAX_SSS_ETSColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHeldTaxCENull() {
-                return this.IsNull(this.tableACXL.HeldTaxCEColumn);
+            public bool IsPRES_NONTAX_SALARIESNull() {
+                return this.IsNull(this.tableACXL.PRES_NONTAX_SALARIESColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHeldTaxCENull() {
-                this[this.tableACXL.HeldTaxCEColumn] = global::System.Convert.DBNull;
+            public void SetPRES_NONTAX_SALARIESNull() {
+                this[this.tableACXL.PRES_NONTAX_SALARIESColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHeldTaxPENull() {
-                return this.IsNull(this.tableACXL.HeldTaxPEColumn);
+            public bool IsTOTAL_NONTAX_COMP_INCOMENull() {
+                return this.IsNull(this.tableACXL.TOTAL_NONTAX_COMP_INCOMEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHeldTaxPENull() {
-                this[this.tableACXL.HeldTaxPEColumn] = global::System.Convert.DBNull;
+            public void SetTOTAL_NONTAX_COMP_INCOMENull() {
+                this[this.tableACXL.TOTAL_NONTAX_COMP_INCOMEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotalTaxNull() {
-                return this.IsNull(this.tableACXL.TotalTaxColumn);
+            public bool IsPRES_TAXABLE_BASIC_SALARYNull() {
+                return this.IsNull(this.tableACXL.PRES_TAXABLE_BASIC_SALARYColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotalTaxNull() {
-                this[this.tableACXL.TotalTaxColumn] = global::System.Convert.DBNull;
+            public void SetPRES_TAXABLE_BASIC_SALARYNull() {
+                this[this.tableACXL.PRES_TAXABLE_BASIC_SALARYColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPRES_TAXABLE_13TH_MONTHNull() {
+                return this.IsNull(this.tableACXL.PRES_TAXABLE_13TH_MONTHColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPRES_TAXABLE_13TH_MONTHNull() {
+                this[this.tableACXL.PRES_TAXABLE_13TH_MONTHColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPRES_TAXABLE_SALARIESNull() {
+                return this.IsNull(this.tableACXL.PRES_TAXABLE_SALARIESColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPRES_TAXABLE_SALARIESNull() {
+                this[this.tableACXL.PRES_TAXABLE_SALARIESColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTOTAL_TAXABLE_COMP_INCOMENull() {
+                return this.IsNull(this.tableACXL.TOTAL_TAXABLE_COMP_INCOMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTOTAL_TAXABLE_COMP_INCOMENull() {
+                this[this.tableACXL.TOTAL_TAXABLE_COMP_INCOMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEXMPN_CODENull() {
+                return this.IsNull(this.tableACXL.EXMPN_CODEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEXMPN_CODENull() {
+                this[this.tableACXL.EXMPN_CODEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEXPMN_AMTNull() {
+                return this.IsNull(this.tableACXL.EXPMN_AMTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEXPMN_AMTNull() {
+                this[this.tableACXL.EXPMN_AMTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPREMIUM_PAIDNull() {
+                return this.IsNull(this.tableACXL.PREMIUM_PAIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPREMIUM_PAIDNull() {
+                this[this.tableACXL.PREMIUM_PAIDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNET_TAXABLE_COMP_INCOMENull() {
+                return this.IsNull(this.tableACXL.NET_TAXABLE_COMP_INCOMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNET_TAXABLE_COMP_INCOMENull() {
+                this[this.tableACXL.NET_TAXABLE_COMP_INCOMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTAX_DUENull() {
+                return this.IsNull(this.tableACXL.TAX_DUEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTAX_DUENull() {
+                this[this.tableACXL.TAX_DUEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPRES_TAX_WTHLDNull() {
+                return this.IsNull(this.tableACXL.PRES_TAX_WTHLDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPRES_TAX_WTHLDNull() {
+                this[this.tableACXL.PRES_TAX_WTHLDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAMT_WTHLD_DECNull() {
+                return this.IsNull(this.tableACXL.AMT_WTHLD_DECColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAMT_WTHLD_DECNull() {
+                this[this.tableACXL.AMT_WTHLD_DECColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOVER_WTHLDNull() {
+                return this.IsNull(this.tableACXL.OVER_WTHLDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOVER_WTHLDNull() {
+                this[this.tableACXL.OVER_WTHLDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsACTUAL_AMT_WTHLDNull() {
+                return this.IsNull(this.tableACXL.ACTUAL_AMT_WTHLDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetACTUAL_AMT_WTHLDNull() {
+                this[this.tableACXL.ACTUAL_AMT_WTHLDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSUBS_FILINGNull() {
+                return this.IsNull(this.tableACXL.SUBS_FILINGColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSUBS_FILINGNull() {
+                this[this.tableACXL.SUBS_FILINGColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2172,6 +4274,112 @@ namespace Query_Listener {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTINNull() {
                 this[this.tableACXL.TINColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSTARTEDNull() {
+                return this.IsNull(this.tableACXL.STARTEDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSTARTEDNull() {
+                this[this.tableACXL.STARTEDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsENDEDNull() {
+                return this.IsNull(this.tableACXL.ENDEDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetENDEDNull() {
+                this[this.tableACXL.ENDEDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCTCNull() {
+                return this.IsNull(this.tableACXL.CTCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCTCNull() {
+                this[this.tableACXL.CTCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPOINull() {
+                return this.IsNull(this.tableACXL.POIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPOINull() {
+                this[this.tableACXL.POIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDOINull() {
+                return this.IsNull(this.tableACXL.DOIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDOINull() {
+                this[this.tableACXL.DOIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAMTNull() {
+                return this.IsNull(this.tableACXL.AMTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAMTNull() {
+                this[this.tableACXL.AMTColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ABCDRowChangeEvent : global::System.EventArgs {
+            
+            private ABCDRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ABCDRowChangeEvent(ABCDRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ABCDRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
             }
         }
         
@@ -2195,6 +4403,40 @@ namespace Query_Listener {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ACTBRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class ACTCRowChangeEvent : global::System.EventArgs {
+            
+            private ACTCRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ACTCRowChangeEvent(ACTCRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ACTCRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -2246,6 +4488,250 @@ namespace Query_Listener {
 }
 namespace Query_Listener.ACDBDataSetTableAdapters {
     
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ABCDTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
+        
+        private global::System.Data.OleDb.OleDbConnection _connection;
+        
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
+        
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ABCDTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ABCD";
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("Started", "Started");
+            tableMapping.ColumnMappings.Add("Ended", "Ended");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `ABCD` (`ID`, `Started`, `Ended`) VALUES (?, ?, ?)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Started", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Started", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Ended", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Ended", global::System.Data.DataRowVersion.Current, false, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::Query_Listener.Properties.Settings.Default.Cons;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ID, Started, Ended FROM ABCD";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(ACDBDataSet.ABCDDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual ACDBDataSet.ABCDDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            ACDBDataSet.ABCDDataTable dataTable = new ACDBDataSet.ABCDDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ACDBDataSet.ABCDDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ACDBDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ABCD");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string ID, string Started, string Ended) {
+            if ((ID == null)) {
+                throw new global::System.ArgumentNullException("ID");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ID));
+            }
+            if ((Started == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Started));
+            }
+            if ((Ended == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Ended));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+    }
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -2369,128 +4855,291 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ACTB";
             tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("FirstName", "FirstName");
-            tableMapping.ColumnMappings.Add("LastName", "LastName");
-            tableMapping.ColumnMappings.Add("GrossIncome", "GrossIncome");
-            tableMapping.ColumnMappings.Add("LessTNT", "LessTNT");
-            tableMapping.ColumnMappings.Add("TaxableIncomeCE", "TaxableIncomeCE");
-            tableMapping.ColumnMappings.Add("TaxableIncomePE", "TaxableIncomePE");
-            tableMapping.ColumnMappings.Add("GrossTaxableIncome", "GrossTaxableIncome");
-            tableMapping.ColumnMappings.Add("LessTE", "LessTE");
-            tableMapping.ColumnMappings.Add("LessPPH", "LessPPH");
-            tableMapping.ColumnMappings.Add("NetTax", "NetTax");
-            tableMapping.ColumnMappings.Add("TaxDue", "TaxDue");
-            tableMapping.ColumnMappings.Add("HeldTaxCE", "HeldTaxCE");
-            tableMapping.ColumnMappings.Add("HeldTaxPE", "HeldTaxPE");
-            tableMapping.ColumnMappings.Add("TotalTax", "TotalTax");
+            tableMapping.ColumnMappings.Add("LAST_NAME", "LAST_NAME");
+            tableMapping.ColumnMappings.Add("FIRST_NAME", "FIRST_NAME");
+            tableMapping.ColumnMappings.Add("MIDDLE_NAME", "MIDDLE_NAME");
+            tableMapping.ColumnMappings.Add("GROSS_COMP_INCOME", "GROSS_COMP_INCOME");
+            tableMapping.ColumnMappings.Add("PRES_NONTAX_13TH_MONTH", "PRES_NONTAX_13TH_MONTH");
+            tableMapping.ColumnMappings.Add("PRES_NONTAX_DE_MINIMIS", "PRES_NONTAX_DE_MINIMIS");
+            tableMapping.ColumnMappings.Add("PRES_NONTAX_SSS_ETS", "PRES_NONTAX_SSS_ETS");
+            tableMapping.ColumnMappings.Add("PRES_NONTAX_SALARIES", "PRES_NONTAX_SALARIES");
+            tableMapping.ColumnMappings.Add("TOTAL_NONTAX_COMP_INCOME", "TOTAL_NONTAX_COMP_INCOME");
+            tableMapping.ColumnMappings.Add("PRES_TAXABLE_BASIC_SALARY", "PRES_TAXABLE_BASIC_SALARY");
+            tableMapping.ColumnMappings.Add("PRES_TAXABLE_13TH_MONTH", "PRES_TAXABLE_13TH_MONTH");
+            tableMapping.ColumnMappings.Add("PRES_TAXABLE_SALARIES", "PRES_TAXABLE_SALARIES");
+            tableMapping.ColumnMappings.Add("TOTAL_TAXABLE_COMP_INCOME", "TOTAL_TAXABLE_COMP_INCOME");
+            tableMapping.ColumnMappings.Add("EXMPN_CODE", "EXMPN_CODE");
+            tableMapping.ColumnMappings.Add("EXPMN_AMT", "EXPMN_AMT");
+            tableMapping.ColumnMappings.Add("PREMIUM_PAID", "PREMIUM_PAID");
+            tableMapping.ColumnMappings.Add("NET_TAXABLE_COMP_INCOME", "NET_TAXABLE_COMP_INCOME");
+            tableMapping.ColumnMappings.Add("TAX_DUE", "TAX_DUE");
+            tableMapping.ColumnMappings.Add("PRES_TAX_WTHLD", "PRES_TAX_WTHLD");
+            tableMapping.ColumnMappings.Add("AMT_WTHLD_DEC", "AMT_WTHLD_DEC");
+            tableMapping.ColumnMappings.Add("OVER_WTHLD", "OVER_WTHLD");
+            tableMapping.ColumnMappings.Add("ACTUAL_AMT_WTHLD", "ACTUAL_AMT_WTHLD");
+            tableMapping.ColumnMappings.Add("SUBS_FILING", "SUBS_FILING");
             tableMapping.ColumnMappings.Add("TIN", "TIN");
+            tableMapping.ColumnMappings.Add("STARTED", "STARTED");
+            tableMapping.ColumnMappings.Add("ENDED", "ENDED");
+            tableMapping.ColumnMappings.Add("CTC", "CTC");
+            tableMapping.ColumnMappings.Add("POI", "POI");
+            tableMapping.ColumnMappings.Add("DOI", "DOI");
+            tableMapping.ColumnMappings.Add("AMT", "AMT");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `ACTB` WHERE ((`ID` = ?) AND ((? = 1 AND `FirstName` IS NULL) OR (`FirstName` = ?)) AND ((? = 1 AND `LastName` IS NULL) OR (`LastName` = ?)) AND ((? = 1 AND `GrossIncome` IS NULL) OR (`GrossIncome` = ?)) AND ((? = 1 AND `LessTNT` IS NULL) OR (`LessTNT` = ?)) AND ((? = 1 AND `TaxableIncomeCE` IS NULL) OR (`TaxableIncomeCE` = ?)) AND ((? = 1 AND `TaxableIncomePE` IS NULL) OR (`TaxableIncomePE` = ?)) AND ((? = 1 AND `GrossTaxableIncome` IS NULL) OR (`GrossTaxableIncome` = ?)) AND ((? = 1 AND `LessTE` IS NULL) OR (`LessTE` = ?)) AND ((? = 1 AND `LessPPH` IS NULL) OR (`LessPPH` = ?)) AND ((? = 1 AND `NetTax` IS NULL) OR (`NetTax` = ?)) AND ((? = 1 AND `TaxDue` IS NULL) OR (`TaxDue` = ?)) AND ((? = 1 AND `HeldTaxCE` IS NULL) OR (`HeldTaxCE` = ?)) AND ((? = 1 AND `HeldTaxPE` IS NULL) OR (`HeldTaxPE` = ?)) AND ((? = 1 AND `TotalTax` IS NULL) OR (`TotalTax` = ?)) AND ((? = 1 AND `TIN` IS NULL) OR (`TIN` = ?)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM `ACTB` WHERE ((`ID` = ?) AND ((? = 1 AND `LAST_NAME` IS NULL) OR (`LA" +
+                "ST_NAME` = ?)) AND ((? = 1 AND `FIRST_NAME` IS NULL) OR (`FIRST_NAME` = ?)) AND " +
+                "((? = 1 AND `MIDDLE_NAME` IS NULL) OR (`MIDDLE_NAME` = ?)) AND ((? = 1 AND `GROS" +
+                "S_COMP_INCOME` IS NULL) OR (`GROSS_COMP_INCOME` = ?)) AND ((? = 1 AND `PRES_NONT" +
+                "AX_13TH_MONTH` IS NULL) OR (`PRES_NONTAX_13TH_MONTH` = ?)) AND ((? = 1 AND `PRES" +
+                "_NONTAX_DE_MINIMIS` IS NULL) OR (`PRES_NONTAX_DE_MINIMIS` = ?)) AND ((? = 1 AND " +
+                "`PRES_NONTAX_SSS_ETS` IS NULL) OR (`PRES_NONTAX_SSS_ETS` = ?)) AND ((? = 1 AND `" +
+                "PRES_NONTAX_SALARIES` IS NULL) OR (`PRES_NONTAX_SALARIES` = ?)) AND ((? = 1 AND " +
+                "`TOTAL_NONTAX_COMP_INCOME` IS NULL) OR (`TOTAL_NONTAX_COMP_INCOME` = ?)) AND ((?" +
+                " = 1 AND `PRES_TAXABLE_BASIC_SALARY` IS NULL) OR (`PRES_TAXABLE_BASIC_SALARY` = " +
+                "?)) AND ((? = 1 AND `PRES_TAXABLE_13TH_MONTH` IS NULL) OR (`PRES_TAXABLE_13TH_MO" +
+                "NTH` = ?)) AND ((? = 1 AND `PRES_TAXABLE_SALARIES` IS NULL) OR (`PRES_TAXABLE_SA" +
+                "LARIES` = ?)) AND ((? = 1 AND `TOTAL_TAXABLE_COMP_INCOME` IS NULL) OR (`TOTAL_TA" +
+                "XABLE_COMP_INCOME` = ?)) AND ((? = 1 AND `EXMPN_CODE` IS NULL) OR (`EXMPN_CODE` " +
+                "= ?)) AND ((? = 1 AND `EXPMN_AMT` IS NULL) OR (`EXPMN_AMT` = ?)) AND ((? = 1 AND" +
+                " `PREMIUM_PAID` IS NULL) OR (`PREMIUM_PAID` = ?)) AND ((? = 1 AND `NET_TAXABLE_C" +
+                "OMP_INCOME` IS NULL) OR (`NET_TAXABLE_COMP_INCOME` = ?)) AND ((? = 1 AND `TAX_DU" +
+                "E` IS NULL) OR (`TAX_DUE` = ?)) AND ((? = 1 AND `PRES_TAX_WTHLD` IS NULL) OR (`P" +
+                "RES_TAX_WTHLD` = ?)) AND ((? = 1 AND `AMT_WTHLD_DEC` IS NULL) OR (`AMT_WTHLD_DEC" +
+                "` = ?)) AND ((? = 1 AND `OVER_WTHLD` IS NULL) OR (`OVER_WTHLD` = ?)) AND ((? = 1" +
+                " AND `ACTUAL_AMT_WTHLD` IS NULL) OR (`ACTUAL_AMT_WTHLD` = ?)) AND ((? = 1 AND `S" +
+                "UBS_FILING` IS NULL) OR (`SUBS_FILING` = ?)) AND ((? = 1 AND `TIN` IS NULL) OR (" +
+                "`TIN` = ?)) AND ((? = 1 AND `STARTED` IS NULL) OR (`STARTED` = ?)) AND ((? = 1 A" +
+                "ND `ENDED` IS NULL) OR (`ENDED` = ?)) AND ((? = 1 AND `CTC` IS NULL) OR (`CTC` =" +
+                " ?)) AND ((? = 1 AND `POI` IS NULL) OR (`POI` = ?)) AND ((? = 1 AND `DOI` IS NUL" +
+                "L) OR (`DOI` = ?)) AND ((? = 1 AND `AMT` IS NULL) OR (`AMT` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_FirstName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_FirstName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LastName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LastName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LAST_NAME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LAST_NAME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LAST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LAST_NAME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_FIRST_NAME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FIRST_NAME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_FIRST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FIRST_NAME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_MIDDLE_NAME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MIDDLE_NAME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MIDDLE_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MIDDLE_NAME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GROSS_COMP_INCOME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GROSS_COMP_INCOME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GROSS_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GROSS_COMP_INCOME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_NONTAX_13TH_MONTH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_13TH_MONTH", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_NONTAX_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_13TH_MONTH", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_NONTAX_DE_MINIMIS", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_DE_MINIMIS", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_NONTAX_DE_MINIMIS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_DE_MINIMIS", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_NONTAX_SSS_ETS", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SSS_ETS", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_NONTAX_SSS_ETS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SSS_ETS", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_NONTAX_SALARIES", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SALARIES", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_NONTAX_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SALARIES", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TOTAL_NONTAX_COMP_INCOME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_NONTAX_COMP_INCOME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TOTAL_NONTAX_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_NONTAX_COMP_INCOME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_TAXABLE_BASIC_SALARY", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_BASIC_SALARY", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_TAXABLE_BASIC_SALARY", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_BASIC_SALARY", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_TAXABLE_13TH_MONTH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_13TH_MONTH", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_TAXABLE_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_13TH_MONTH", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_TAXABLE_SALARIES", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_SALARIES", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_TAXABLE_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_SALARIES", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TOTAL_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TOTAL_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_EXMPN_CODE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXMPN_CODE", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_EXMPN_CODE", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXMPN_CODE", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_EXPMN_AMT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXPMN_AMT", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_EXPMN_AMT", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXPMN_AMT", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PREMIUM_PAID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PREMIUM_PAID", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PREMIUM_PAID", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PREMIUM_PAID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NET_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NET_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NET_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NET_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TAX_DUE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TAX_DUE", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TAX_DUE", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TAX_DUE", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_TAX_WTHLD", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAX_WTHLD", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_TAX_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAX_WTHLD", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_AMT_WTHLD_DEC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT_WTHLD_DEC", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_AMT_WTHLD_DEC", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT_WTHLD_DEC", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_OVER_WTHLD", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OVER_WTHLD", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_OVER_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OVER_WTHLD", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ACTUAL_AMT_WTHLD", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ACTUAL_AMT_WTHLD", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ACTUAL_AMT_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ACTUAL_AMT_WTHLD", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_SUBS_FILING", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SUBS_FILING", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_SUBS_FILING", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SUBS_FILING", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TIN", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TIN", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_STARTED", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "STARTED", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_STARTED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "STARTED", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ENDED", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ENDED", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ENDED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ENDED", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_CTC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CTC", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_CTC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CTC", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_POI", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "POI", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_POI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "POI", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_DOI", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DOI", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DOI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DOI", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_AMT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_AMT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO `ACTB` (`ID`, `FirstName`, `LastName`, `GrossIncome`, `LessTNT`, `TaxableIncomeCE`, `TaxableIncomePE`, `GrossTaxableIncome`, `LessTE`, `LessPPH`, `NetTax`, `TaxDue`, `HeldTaxCE`, `HeldTaxPE`, `TotalTax`, `TIN`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `ACTB` (`ID`, `LAST_NAME`, `FIRST_NAME`, `MIDDLE_NAME`, `GROSS_COMP_INCOME`, `PRES_NONTAX_13TH_MONTH`, `PRES_NONTAX_DE_MINIMIS`, `PRES_NONTAX_SSS_ETS`, `PRES_NONTAX_SALARIES`, `TOTAL_NONTAX_COMP_INCOME`, `PRES_TAXABLE_BASIC_SALARY`, `PRES_TAXABLE_13TH_MONTH`, `PRES_TAXABLE_SALARIES`, `TOTAL_TAXABLE_COMP_INCOME`, `EXMPN_CODE`, `EXPMN_AMT`, `PREMIUM_PAID`, `NET_TAXABLE_COMP_INCOME`, `TAX_DUE`, `PRES_TAX_WTHLD`, `AMT_WTHLD_DEC`, `OVER_WTHLD`, `ACTUAL_AMT_WTHLD`, `SUBS_FILING`, `TIN`, `STARTED`, `ENDED`, `CTC`, `POI`, `DOI`, `AMT`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("FirstName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LastName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LAST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LAST_NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("FIRST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FIRST_NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MIDDLE_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MIDDLE_NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GROSS_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GROSS_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_13TH_MONTH", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_DE_MINIMIS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_DE_MINIMIS", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_SSS_ETS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SSS_ETS", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SALARIES", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TOTAL_NONTAX_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_NONTAX_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAXABLE_BASIC_SALARY", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_BASIC_SALARY", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAXABLE_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_13TH_MONTH", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAXABLE_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_SALARIES", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TOTAL_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("EXMPN_CODE", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXMPN_CODE", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("EXPMN_AMT", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXPMN_AMT", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PREMIUM_PAID", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PREMIUM_PAID", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NET_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NET_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TAX_DUE", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TAX_DUE", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAX_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAX_WTHLD", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AMT_WTHLD_DEC", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT_WTHLD_DEC", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("OVER_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OVER_WTHLD", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ACTUAL_AMT_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ACTUAL_AMT_WTHLD", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("SUBS_FILING", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SUBS_FILING", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TIN", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("STARTED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "STARTED", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ENDED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ENDED", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CTC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CTC", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("POI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "POI", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DOI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DOI", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AMT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `ACTB` SET `ID` = ?, `FirstName` = ?, `LastName` = ?, `GrossIncome` = ?, `LessTNT` = ?, `TaxableIncomeCE` = ?, `TaxableIncomePE` = ?, `GrossTaxableIncome` = ?, `LessTE` = ?, `LessPPH` = ?, `NetTax` = ?, `TaxDue` = ?, `HeldTaxCE` = ?, `HeldTaxPE` = ?, `TotalTax` = ?, `TIN` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `FirstName` IS NULL) OR (`FirstName` = ?)) AND ((? = 1 AND `LastName` IS NULL) OR (`LastName` = ?)) AND ((? = 1 AND `GrossIncome` IS NULL) OR (`GrossIncome` = ?)) AND ((? = 1 AND `LessTNT` IS NULL) OR (`LessTNT` = ?)) AND ((? = 1 AND `TaxableIncomeCE` IS NULL) OR (`TaxableIncomeCE` = ?)) AND ((? = 1 AND `TaxableIncomePE` IS NULL) OR (`TaxableIncomePE` = ?)) AND ((? = 1 AND `GrossTaxableIncome` IS NULL) OR (`GrossTaxableIncome` = ?)) AND ((? = 1 AND `LessTE` IS NULL) OR (`LessTE` = ?)) AND ((? = 1 AND `LessPPH` IS NULL) OR (`LessPPH` = ?)) AND ((? = 1 AND `NetTax` IS NULL) OR (`NetTax` = ?)) AND ((? = 1 AND `TaxDue` IS NULL) OR (`TaxDue` = ?)) AND ((? = 1 AND `HeldTaxCE` IS NULL) OR (`HeldTaxCE` = ?)) AND ((? = 1 AND `HeldTaxPE` IS NULL) OR (`HeldTaxPE` = ?)) AND ((? = 1 AND `TotalTax` IS NULL) OR (`TotalTax` = ?)) AND ((? = 1 AND `TIN` IS NULL) OR (`TIN` = ?)))";
+            this._adapter.UpdateCommand.CommandText = "UPDATE `ACTB` SET `ID` = ?, `LAST_NAME` = ?, `FIRST_NAME` = ?, `MIDDLE_NAME` = ?," +
+                " `GROSS_COMP_INCOME` = ?, `PRES_NONTAX_13TH_MONTH` = ?, `PRES_NONTAX_DE_MINIMIS`" +
+                " = ?, `PRES_NONTAX_SSS_ETS` = ?, `PRES_NONTAX_SALARIES` = ?, `TOTAL_NONTAX_COMP_" +
+                "INCOME` = ?, `PRES_TAXABLE_BASIC_SALARY` = ?, `PRES_TAXABLE_13TH_MONTH` = ?, `PR" +
+                "ES_TAXABLE_SALARIES` = ?, `TOTAL_TAXABLE_COMP_INCOME` = ?, `EXMPN_CODE` = ?, `EX" +
+                "PMN_AMT` = ?, `PREMIUM_PAID` = ?, `NET_TAXABLE_COMP_INCOME` = ?, `TAX_DUE` = ?, " +
+                "`PRES_TAX_WTHLD` = ?, `AMT_WTHLD_DEC` = ?, `OVER_WTHLD` = ?, `ACTUAL_AMT_WTHLD` " +
+                "= ?, `SUBS_FILING` = ?, `TIN` = ?, `STARTED` = ?, `ENDED` = ?, `CTC` = ?, `POI` " +
+                "= ?, `DOI` = ?, `AMT` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `LAST_NAME` IS NULL)" +
+                " OR (`LAST_NAME` = ?)) AND ((? = 1 AND `FIRST_NAME` IS NULL) OR (`FIRST_NAME` = " +
+                "?)) AND ((? = 1 AND `MIDDLE_NAME` IS NULL) OR (`MIDDLE_NAME` = ?)) AND ((? = 1 A" +
+                "ND `GROSS_COMP_INCOME` IS NULL) OR (`GROSS_COMP_INCOME` = ?)) AND ((? = 1 AND `P" +
+                "RES_NONTAX_13TH_MONTH` IS NULL) OR (`PRES_NONTAX_13TH_MONTH` = ?)) AND ((? = 1 A" +
+                "ND `PRES_NONTAX_DE_MINIMIS` IS NULL) OR (`PRES_NONTAX_DE_MINIMIS` = ?)) AND ((? " +
+                "= 1 AND `PRES_NONTAX_SSS_ETS` IS NULL) OR (`PRES_NONTAX_SSS_ETS` = ?)) AND ((? =" +
+                " 1 AND `PRES_NONTAX_SALARIES` IS NULL) OR (`PRES_NONTAX_SALARIES` = ?)) AND ((? " +
+                "= 1 AND `TOTAL_NONTAX_COMP_INCOME` IS NULL) OR (`TOTAL_NONTAX_COMP_INCOME` = ?))" +
+                " AND ((? = 1 AND `PRES_TAXABLE_BASIC_SALARY` IS NULL) OR (`PRES_TAXABLE_BASIC_SA" +
+                "LARY` = ?)) AND ((? = 1 AND `PRES_TAXABLE_13TH_MONTH` IS NULL) OR (`PRES_TAXABLE" +
+                "_13TH_MONTH` = ?)) AND ((? = 1 AND `PRES_TAXABLE_SALARIES` IS NULL) OR (`PRES_TA" +
+                "XABLE_SALARIES` = ?)) AND ((? = 1 AND `TOTAL_TAXABLE_COMP_INCOME` IS NULL) OR (`" +
+                "TOTAL_TAXABLE_COMP_INCOME` = ?)) AND ((? = 1 AND `EXMPN_CODE` IS NULL) OR (`EXMP" +
+                "N_CODE` = ?)) AND ((? = 1 AND `EXPMN_AMT` IS NULL) OR (`EXPMN_AMT` = ?)) AND ((?" +
+                " = 1 AND `PREMIUM_PAID` IS NULL) OR (`PREMIUM_PAID` = ?)) AND ((? = 1 AND `NET_T" +
+                "AXABLE_COMP_INCOME` IS NULL) OR (`NET_TAXABLE_COMP_INCOME` = ?)) AND ((? = 1 AND" +
+                " `TAX_DUE` IS NULL) OR (`TAX_DUE` = ?)) AND ((? = 1 AND `PRES_TAX_WTHLD` IS NULL" +
+                ") OR (`PRES_TAX_WTHLD` = ?)) AND ((? = 1 AND `AMT_WTHLD_DEC` IS NULL) OR (`AMT_W" +
+                "THLD_DEC` = ?)) AND ((? = 1 AND `OVER_WTHLD` IS NULL) OR (`OVER_WTHLD` = ?)) AND" +
+                " ((? = 1 AND `ACTUAL_AMT_WTHLD` IS NULL) OR (`ACTUAL_AMT_WTHLD` = ?)) AND ((? = " +
+                "1 AND `SUBS_FILING` IS NULL) OR (`SUBS_FILING` = ?)) AND ((? = 1 AND `TIN` IS NU" +
+                "LL) OR (`TIN` = ?)) AND ((? = 1 AND `STARTED` IS NULL) OR (`STARTED` = ?)) AND (" +
+                "(? = 1 AND `ENDED` IS NULL) OR (`ENDED` = ?)) AND ((? = 1 AND `CTC` IS NULL) OR " +
+                "(`CTC` = ?)) AND ((? = 1 AND `POI` IS NULL) OR (`POI` = ?)) AND ((? = 1 AND `DOI" +
+                "` IS NULL) OR (`DOI` = ?)) AND ((? = 1 AND `AMT` IS NULL) OR (`AMT` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("FirstName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LastName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LAST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LAST_NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("FIRST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FIRST_NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MIDDLE_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MIDDLE_NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GROSS_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GROSS_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_13TH_MONTH", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_DE_MINIMIS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_DE_MINIMIS", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_SSS_ETS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SSS_ETS", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SALARIES", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TOTAL_NONTAX_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_NONTAX_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAXABLE_BASIC_SALARY", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_BASIC_SALARY", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAXABLE_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_13TH_MONTH", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAXABLE_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_SALARIES", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TOTAL_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("EXMPN_CODE", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXMPN_CODE", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("EXPMN_AMT", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXPMN_AMT", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PREMIUM_PAID", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PREMIUM_PAID", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NET_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NET_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TAX_DUE", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TAX_DUE", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAX_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAX_WTHLD", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AMT_WTHLD_DEC", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT_WTHLD_DEC", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("OVER_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OVER_WTHLD", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ACTUAL_AMT_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ACTUAL_AMT_WTHLD", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("SUBS_FILING", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SUBS_FILING", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TIN", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("STARTED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "STARTED", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ENDED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ENDED", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CTC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CTC", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("POI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "POI", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DOI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DOI", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AMT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_FirstName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_FirstName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LastName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LastName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LAST_NAME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LAST_NAME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LAST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LAST_NAME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_FIRST_NAME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FIRST_NAME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_FIRST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FIRST_NAME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_MIDDLE_NAME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MIDDLE_NAME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_MIDDLE_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MIDDLE_NAME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GROSS_COMP_INCOME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GROSS_COMP_INCOME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GROSS_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GROSS_COMP_INCOME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_NONTAX_13TH_MONTH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_13TH_MONTH", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_NONTAX_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_13TH_MONTH", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_NONTAX_DE_MINIMIS", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_DE_MINIMIS", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_NONTAX_DE_MINIMIS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_DE_MINIMIS", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_NONTAX_SSS_ETS", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SSS_ETS", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_NONTAX_SSS_ETS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SSS_ETS", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_NONTAX_SALARIES", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SALARIES", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_NONTAX_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SALARIES", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TOTAL_NONTAX_COMP_INCOME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_NONTAX_COMP_INCOME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TOTAL_NONTAX_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_NONTAX_COMP_INCOME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_TAXABLE_BASIC_SALARY", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_BASIC_SALARY", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_TAXABLE_BASIC_SALARY", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_BASIC_SALARY", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_TAXABLE_13TH_MONTH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_13TH_MONTH", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_TAXABLE_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_13TH_MONTH", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_TAXABLE_SALARIES", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_SALARIES", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_TAXABLE_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_SALARIES", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TOTAL_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TOTAL_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_EXMPN_CODE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXMPN_CODE", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_EXMPN_CODE", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXMPN_CODE", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_EXPMN_AMT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXPMN_AMT", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_EXPMN_AMT", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXPMN_AMT", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PREMIUM_PAID", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PREMIUM_PAID", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PREMIUM_PAID", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PREMIUM_PAID", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NET_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NET_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NET_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NET_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TAX_DUE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TAX_DUE", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TAX_DUE", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TAX_DUE", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_PRES_TAX_WTHLD", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAX_WTHLD", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_PRES_TAX_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAX_WTHLD", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_AMT_WTHLD_DEC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT_WTHLD_DEC", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_AMT_WTHLD_DEC", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT_WTHLD_DEC", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_OVER_WTHLD", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OVER_WTHLD", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_OVER_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OVER_WTHLD", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ACTUAL_AMT_WTHLD", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ACTUAL_AMT_WTHLD", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ACTUAL_AMT_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ACTUAL_AMT_WTHLD", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_SUBS_FILING", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SUBS_FILING", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_SUBS_FILING", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SUBS_FILING", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TIN", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TIN", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_STARTED", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "STARTED", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_STARTED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "STARTED", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ENDED", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ENDED", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ENDED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ENDED", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_CTC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CTC", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_CTC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CTC", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_POI", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "POI", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_POI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "POI", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_DOI", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DOI", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_DOI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DOI", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_AMT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_AMT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2506,9 +5155,7 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, FirstName, LastName, GrossIncome, LessTNT, TaxableIncomeCE, TaxableInc" +
-                "omePE, GrossTaxableIncome, LessTE, LessPPH, NetTax, TaxDue, HeldTaxCE, HeldTaxPE" +
-                ", TotalTax, TIN FROM ACTB";
+            this._commandCollection[0].CommandText = @"SELECT ID, LAST_NAME, FIRST_NAME, MIDDLE_NAME, GROSS_COMP_INCOME, PRES_NONTAX_13TH_MONTH, PRES_NONTAX_DE_MINIMIS, PRES_NONTAX_SSS_ETS, PRES_NONTAX_SALARIES, TOTAL_NONTAX_COMP_INCOME, PRES_TAXABLE_BASIC_SALARY, PRES_TAXABLE_13TH_MONTH, PRES_TAXABLE_SALARIES, TOTAL_TAXABLE_COMP_INCOME, EXMPN_CODE, EXPMN_AMT, PREMIUM_PAID, NET_TAXABLE_COMP_INCOME, TAX_DUE, PRES_TAX_WTHLD, AMT_WTHLD_DEC, OVER_WTHLD, ACTUAL_AMT_WTHLD, SUBS_FILING, TIN, STARTED, ENDED, CTC, POI, DOI, AMT FROM ACTB";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2571,146 +5218,281 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
                     string Original_ID, 
-                    string Original_FirstName, 
-                    string Original_LastName, 
-                    global::System.Nullable<int> Original_GrossIncome, 
-                    global::System.Nullable<int> Original_LessTNT, 
-                    global::System.Nullable<int> Original_TaxableIncomeCE, 
-                    global::System.Nullable<int> Original_TaxableIncomePE, 
-                    global::System.Nullable<int> Original_GrossTaxableIncome, 
-                    global::System.Nullable<int> Original_LessTE, 
-                    global::System.Nullable<int> Original_LessPPH, 
-                    global::System.Nullable<int> Original_NetTax, 
-                    global::System.Nullable<int> Original_TaxDue, 
-                    global::System.Nullable<int> Original_HeldTaxCE, 
-                    global::System.Nullable<int> Original_HeldTaxPE, 
-                    global::System.Nullable<int> Original_TotalTax, 
-                    string Original_TIN) {
+                    string Original_LAST_NAME, 
+                    string Original_FIRST_NAME, 
+                    string Original_MIDDLE_NAME, 
+                    global::System.Nullable<double> Original_GROSS_COMP_INCOME, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_13TH_MONTH, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_DE_MINIMIS, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_SSS_ETS, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_SALARIES, 
+                    global::System.Nullable<double> Original_TOTAL_NONTAX_COMP_INCOME, 
+                    global::System.Nullable<double> Original_PRES_TAXABLE_BASIC_SALARY, 
+                    global::System.Nullable<double> Original_PRES_TAXABLE_13TH_MONTH, 
+                    global::System.Nullable<double> Original_PRES_TAXABLE_SALARIES, 
+                    global::System.Nullable<double> Original_TOTAL_TAXABLE_COMP_INCOME, 
+                    string Original_EXMPN_CODE, 
+                    global::System.Nullable<double> Original_EXPMN_AMT, 
+                    global::System.Nullable<double> Original_PREMIUM_PAID, 
+                    global::System.Nullable<double> Original_NET_TAXABLE_COMP_INCOME, 
+                    global::System.Nullable<double> Original_TAX_DUE, 
+                    global::System.Nullable<double> Original_PRES_TAX_WTHLD, 
+                    global::System.Nullable<double> Original_AMT_WTHLD_DEC, 
+                    global::System.Nullable<double> Original_OVER_WTHLD, 
+                    global::System.Nullable<double> Original_ACTUAL_AMT_WTHLD, 
+                    global::System.Nullable<double> Original_SUBS_FILING, 
+                    string Original_TIN, 
+                    string Original_STARTED, 
+                    string Original_ENDED, 
+                    global::System.Nullable<int> Original_CTC, 
+                    string Original_POI, 
+                    string Original_DOI, 
+                    global::System.Nullable<int> Original_AMT) {
             if ((Original_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_ID");
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ID));
             }
-            if ((Original_FirstName == null)) {
+            if ((Original_LAST_NAME == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_FirstName));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_LAST_NAME));
             }
-            if ((Original_LastName == null)) {
+            if ((Original_FIRST_NAME == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_LastName));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_FIRST_NAME));
             }
-            if ((Original_GrossIncome.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_GrossIncome.Value));
-            }
-            else {
+            if ((Original_MIDDLE_NAME == null)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_LessTNT.HasValue == true)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_MIDDLE_NAME));
+            }
+            if ((Original_GROSS_COMP_INCOME.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_LessTNT.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((double)(Original_GROSS_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_TaxableIncomeCE.HasValue == true)) {
+            if ((Original_PRES_NONTAX_13TH_MONTH.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_TaxableIncomeCE.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((double)(Original_PRES_NONTAX_13TH_MONTH.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((Original_TaxableIncomePE.HasValue == true)) {
+            if ((Original_PRES_NONTAX_DE_MINIMIS.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_TaxableIncomePE.Value));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((double)(Original_PRES_NONTAX_DE_MINIMIS.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((Original_GrossTaxableIncome.HasValue == true)) {
+            if ((Original_PRES_NONTAX_SSS_ETS.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(Original_GrossTaxableIncome.Value));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((double)(Original_PRES_NONTAX_SSS_ETS.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((Original_LessTE.HasValue == true)) {
+            if ((Original_PRES_NONTAX_SALARIES.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((int)(Original_LessTE.Value));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((double)(Original_PRES_NONTAX_SALARIES.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((Original_LessPPH.HasValue == true)) {
+            if ((Original_TOTAL_NONTAX_COMP_INCOME.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((int)(Original_LessPPH.Value));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((double)(Original_TOTAL_NONTAX_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            if ((Original_NetTax.HasValue == true)) {
+            if ((Original_PRES_TAXABLE_BASIC_SALARY.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((int)(Original_NetTax.Value));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((double)(Original_PRES_TAXABLE_BASIC_SALARY.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            if ((Original_TaxDue.HasValue == true)) {
+            if ((Original_PRES_TAXABLE_13TH_MONTH.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((int)(Original_TaxDue.Value));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((double)(Original_PRES_TAXABLE_13TH_MONTH.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
-            if ((Original_HeldTaxCE.HasValue == true)) {
+            if ((Original_PRES_TAXABLE_SALARIES.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((int)(Original_HeldTaxCE.Value));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((double)(Original_PRES_TAXABLE_SALARIES.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
-            if ((Original_HeldTaxPE.HasValue == true)) {
+            if ((Original_TOTAL_TAXABLE_COMP_INCOME.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((int)(Original_HeldTaxPE.Value));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((double)(Original_TOTAL_TAXABLE_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
-            if ((Original_TotalTax.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((int)(Original_TotalTax.Value));
-            }
-            else {
+            if ((Original_EXMPN_CODE == null)) {
                 this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
-            if ((Original_TIN == null)) {
+            else {
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((string)(Original_EXMPN_CODE));
+            }
+            if ((Original_EXPMN_AMT.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((double)(Original_EXPMN_AMT.Value));
+            }
+            else {
                 this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
+            if ((Original_PREMIUM_PAID.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((double)(Original_PREMIUM_PAID.Value));
+            }
             else {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((string)(Original_TIN));
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            if ((Original_NET_TAXABLE_COMP_INCOME.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((double)(Original_NET_TAXABLE_COMP_INCOME.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TAX_DUE.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((double)(Original_TAX_DUE.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PRES_TAX_WTHLD.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((double)(Original_PRES_TAX_WTHLD.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[38].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AMT_WTHLD_DEC.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((double)(Original_AMT_WTHLD_DEC.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[40].Value = global::System.DBNull.Value;
+            }
+            if ((Original_OVER_WTHLD.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[42].Value = ((double)(Original_OVER_WTHLD.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[42].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ACTUAL_AMT_WTHLD.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[44].Value = ((double)(Original_ACTUAL_AMT_WTHLD.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[44].Value = global::System.DBNull.Value;
+            }
+            if ((Original_SUBS_FILING.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[46].Value = ((double)(Original_SUBS_FILING.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[46].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TIN == null)) {
+                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[48].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((string)(Original_TIN));
+            }
+            if ((Original_STARTED == null)) {
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((string)(Original_STARTED));
+            }
+            if ((Original_ENDED == null)) {
+                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[52].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((string)(Original_ENDED));
+            }
+            if ((Original_CTC.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((int)(Original_CTC.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[54].Value = global::System.DBNull.Value;
+            }
+            if ((Original_POI == null)) {
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[56].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((string)(Original_POI));
+            }
+            if ((Original_DOI == null)) {
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[58].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((string)(Original_DOI));
+            }
+            if ((Original_AMT.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((int)(Original_AMT.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[60].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2734,116 +5516,221 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
                     string ID, 
-                    string FirstName, 
-                    string LastName, 
-                    global::System.Nullable<int> GrossIncome, 
-                    global::System.Nullable<int> LessTNT, 
-                    global::System.Nullable<int> TaxableIncomeCE, 
-                    global::System.Nullable<int> TaxableIncomePE, 
-                    global::System.Nullable<int> GrossTaxableIncome, 
-                    global::System.Nullable<int> LessTE, 
-                    global::System.Nullable<int> LessPPH, 
-                    global::System.Nullable<int> NetTax, 
-                    global::System.Nullable<int> TaxDue, 
-                    global::System.Nullable<int> HeldTaxCE, 
-                    global::System.Nullable<int> HeldTaxPE, 
-                    global::System.Nullable<int> TotalTax, 
-                    string TIN) {
+                    string LAST_NAME, 
+                    string FIRST_NAME, 
+                    string MIDDLE_NAME, 
+                    global::System.Nullable<double> GROSS_COMP_INCOME, 
+                    global::System.Nullable<double> PRES_NONTAX_13TH_MONTH, 
+                    global::System.Nullable<double> PRES_NONTAX_DE_MINIMIS, 
+                    global::System.Nullable<double> PRES_NONTAX_SSS_ETS, 
+                    global::System.Nullable<double> PRES_NONTAX_SALARIES, 
+                    global::System.Nullable<double> TOTAL_NONTAX_COMP_INCOME, 
+                    global::System.Nullable<double> PRES_TAXABLE_BASIC_SALARY, 
+                    global::System.Nullable<double> PRES_TAXABLE_13TH_MONTH, 
+                    global::System.Nullable<double> PRES_TAXABLE_SALARIES, 
+                    global::System.Nullable<double> TOTAL_TAXABLE_COMP_INCOME, 
+                    string EXMPN_CODE, 
+                    global::System.Nullable<double> EXPMN_AMT, 
+                    global::System.Nullable<double> PREMIUM_PAID, 
+                    global::System.Nullable<double> NET_TAXABLE_COMP_INCOME, 
+                    global::System.Nullable<double> TAX_DUE, 
+                    global::System.Nullable<double> PRES_TAX_WTHLD, 
+                    global::System.Nullable<double> AMT_WTHLD_DEC, 
+                    global::System.Nullable<double> OVER_WTHLD, 
+                    global::System.Nullable<double> ACTUAL_AMT_WTHLD, 
+                    global::System.Nullable<double> SUBS_FILING, 
+                    string TIN, 
+                    string STARTED, 
+                    string ENDED, 
+                    global::System.Nullable<int> CTC, 
+                    string POI, 
+                    string DOI, 
+                    global::System.Nullable<int> AMT) {
             if ((ID == null)) {
                 throw new global::System.ArgumentNullException("ID");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ID));
             }
-            if ((FirstName == null)) {
+            if ((LAST_NAME == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FirstName));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(LAST_NAME));
             }
-            if ((LastName == null)) {
+            if ((FIRST_NAME == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(LastName));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(FIRST_NAME));
             }
-            if ((GrossIncome.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(GrossIncome.Value));
-            }
-            else {
+            if ((MIDDLE_NAME == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((LessTNT.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(LessTNT.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(MIDDLE_NAME));
+            }
+            if ((GROSS_COMP_INCOME.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((double)(GROSS_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((TaxableIncomeCE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(TaxableIncomeCE.Value));
+            if ((PRES_NONTAX_13TH_MONTH.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((double)(PRES_NONTAX_13TH_MONTH.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((TaxableIncomePE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(TaxableIncomePE.Value));
+            if ((PRES_NONTAX_DE_MINIMIS.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((double)(PRES_NONTAX_DE_MINIMIS.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((GrossTaxableIncome.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(GrossTaxableIncome.Value));
+            if ((PRES_NONTAX_SSS_ETS.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((double)(PRES_NONTAX_SSS_ETS.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((LessTE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(LessTE.Value));
+            if ((PRES_NONTAX_SALARIES.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((double)(PRES_NONTAX_SALARIES.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((LessPPH.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(LessPPH.Value));
+            if ((TOTAL_NONTAX_COMP_INCOME.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((double)(TOTAL_NONTAX_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((NetTax.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(NetTax.Value));
+            if ((PRES_TAXABLE_BASIC_SALARY.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((double)(PRES_TAXABLE_BASIC_SALARY.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((TaxDue.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(TaxDue.Value));
+            if ((PRES_TAXABLE_13TH_MONTH.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((double)(PRES_TAXABLE_13TH_MONTH.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((HeldTaxCE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(HeldTaxCE.Value));
+            if ((PRES_TAXABLE_SALARIES.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((double)(PRES_TAXABLE_SALARIES.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((HeldTaxPE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((int)(HeldTaxPE.Value));
+            if ((TOTAL_TAXABLE_COMP_INCOME.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((double)(TOTAL_TAXABLE_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((TotalTax.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((int)(TotalTax.Value));
-            }
-            else {
+            if ((EXMPN_CODE == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((TIN == null)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(EXMPN_CODE));
+            }
+            if ((EXPMN_AMT.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((double)(EXPMN_AMT.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(TIN));
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((PREMIUM_PAID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((double)(PREMIUM_PAID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((NET_TAXABLE_COMP_INCOME.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((double)(NET_TAXABLE_COMP_INCOME.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((TAX_DUE.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[18].Value = ((double)(TAX_DUE.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((PRES_TAX_WTHLD.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((double)(PRES_TAX_WTHLD.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((AMT_WTHLD_DEC.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((double)(AMT_WTHLD_DEC.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((OVER_WTHLD.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[21].Value = ((double)(OVER_WTHLD.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((ACTUAL_AMT_WTHLD.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[22].Value = ((double)(ACTUAL_AMT_WTHLD.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((SUBS_FILING.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((double)(SUBS_FILING.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((TIN == null)) {
+                this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[24].Value = ((string)(TIN));
+            }
+            if ((STARTED == null)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((string)(STARTED));
+            }
+            if ((ENDED == null)) {
+                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(ENDED));
+            }
+            if ((CTC.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[27].Value = ((int)(CTC.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((POI == null)) {
+                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(POI));
+            }
+            if ((DOI == null)) {
+                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(DOI));
+            }
+            if ((AMT.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[30].Value = ((int)(AMT.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2867,258 +5754,498 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
                     string ID, 
-                    string FirstName, 
-                    string LastName, 
-                    global::System.Nullable<int> GrossIncome, 
-                    global::System.Nullable<int> LessTNT, 
-                    global::System.Nullable<int> TaxableIncomeCE, 
-                    global::System.Nullable<int> TaxableIncomePE, 
-                    global::System.Nullable<int> GrossTaxableIncome, 
-                    global::System.Nullable<int> LessTE, 
-                    global::System.Nullable<int> LessPPH, 
-                    global::System.Nullable<int> NetTax, 
-                    global::System.Nullable<int> TaxDue, 
-                    global::System.Nullable<int> HeldTaxCE, 
-                    global::System.Nullable<int> HeldTaxPE, 
-                    global::System.Nullable<int> TotalTax, 
+                    string LAST_NAME, 
+                    string FIRST_NAME, 
+                    string MIDDLE_NAME, 
+                    global::System.Nullable<double> GROSS_COMP_INCOME, 
+                    global::System.Nullable<double> PRES_NONTAX_13TH_MONTH, 
+                    global::System.Nullable<double> PRES_NONTAX_DE_MINIMIS, 
+                    global::System.Nullable<double> PRES_NONTAX_SSS_ETS, 
+                    global::System.Nullable<double> PRES_NONTAX_SALARIES, 
+                    global::System.Nullable<double> TOTAL_NONTAX_COMP_INCOME, 
+                    global::System.Nullable<double> PRES_TAXABLE_BASIC_SALARY, 
+                    global::System.Nullable<double> PRES_TAXABLE_13TH_MONTH, 
+                    global::System.Nullable<double> PRES_TAXABLE_SALARIES, 
+                    global::System.Nullable<double> TOTAL_TAXABLE_COMP_INCOME, 
+                    string EXMPN_CODE, 
+                    global::System.Nullable<double> EXPMN_AMT, 
+                    global::System.Nullable<double> PREMIUM_PAID, 
+                    global::System.Nullable<double> NET_TAXABLE_COMP_INCOME, 
+                    global::System.Nullable<double> TAX_DUE, 
+                    global::System.Nullable<double> PRES_TAX_WTHLD, 
+                    global::System.Nullable<double> AMT_WTHLD_DEC, 
+                    global::System.Nullable<double> OVER_WTHLD, 
+                    global::System.Nullable<double> ACTUAL_AMT_WTHLD, 
+                    global::System.Nullable<double> SUBS_FILING, 
                     string TIN, 
+                    string STARTED, 
+                    string ENDED, 
+                    global::System.Nullable<int> CTC, 
+                    string POI, 
+                    string DOI, 
+                    global::System.Nullable<int> AMT, 
                     string Original_ID, 
-                    string Original_FirstName, 
-                    string Original_LastName, 
-                    global::System.Nullable<int> Original_GrossIncome, 
-                    global::System.Nullable<int> Original_LessTNT, 
-                    global::System.Nullable<int> Original_TaxableIncomeCE, 
-                    global::System.Nullable<int> Original_TaxableIncomePE, 
-                    global::System.Nullable<int> Original_GrossTaxableIncome, 
-                    global::System.Nullable<int> Original_LessTE, 
-                    global::System.Nullable<int> Original_LessPPH, 
-                    global::System.Nullable<int> Original_NetTax, 
-                    global::System.Nullable<int> Original_TaxDue, 
-                    global::System.Nullable<int> Original_HeldTaxCE, 
-                    global::System.Nullable<int> Original_HeldTaxPE, 
-                    global::System.Nullable<int> Original_TotalTax, 
-                    string Original_TIN) {
+                    string Original_LAST_NAME, 
+                    string Original_FIRST_NAME, 
+                    string Original_MIDDLE_NAME, 
+                    global::System.Nullable<double> Original_GROSS_COMP_INCOME, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_13TH_MONTH, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_DE_MINIMIS, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_SSS_ETS, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_SALARIES, 
+                    global::System.Nullable<double> Original_TOTAL_NONTAX_COMP_INCOME, 
+                    global::System.Nullable<double> Original_PRES_TAXABLE_BASIC_SALARY, 
+                    global::System.Nullable<double> Original_PRES_TAXABLE_13TH_MONTH, 
+                    global::System.Nullable<double> Original_PRES_TAXABLE_SALARIES, 
+                    global::System.Nullable<double> Original_TOTAL_TAXABLE_COMP_INCOME, 
+                    string Original_EXMPN_CODE, 
+                    global::System.Nullable<double> Original_EXPMN_AMT, 
+                    global::System.Nullable<double> Original_PREMIUM_PAID, 
+                    global::System.Nullable<double> Original_NET_TAXABLE_COMP_INCOME, 
+                    global::System.Nullable<double> Original_TAX_DUE, 
+                    global::System.Nullable<double> Original_PRES_TAX_WTHLD, 
+                    global::System.Nullable<double> Original_AMT_WTHLD_DEC, 
+                    global::System.Nullable<double> Original_OVER_WTHLD, 
+                    global::System.Nullable<double> Original_ACTUAL_AMT_WTHLD, 
+                    global::System.Nullable<double> Original_SUBS_FILING, 
+                    string Original_TIN, 
+                    string Original_STARTED, 
+                    string Original_ENDED, 
+                    global::System.Nullable<int> Original_CTC, 
+                    string Original_POI, 
+                    string Original_DOI, 
+                    global::System.Nullable<int> Original_AMT) {
             if ((ID == null)) {
                 throw new global::System.ArgumentNullException("ID");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ID));
             }
-            if ((FirstName == null)) {
+            if ((LAST_NAME == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FirstName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(LAST_NAME));
             }
-            if ((LastName == null)) {
+            if ((FIRST_NAME == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(LastName));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(FIRST_NAME));
             }
-            if ((GrossIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(GrossIncome.Value));
-            }
-            else {
+            if ((MIDDLE_NAME == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((LessTNT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(LessTNT.Value));
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(MIDDLE_NAME));
+            }
+            if ((GROSS_COMP_INCOME.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(GROSS_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((TaxableIncomeCE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(TaxableIncomeCE.Value));
+            if ((PRES_NONTAX_13TH_MONTH.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(PRES_NONTAX_13TH_MONTH.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((TaxableIncomePE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(TaxableIncomePE.Value));
+            if ((PRES_NONTAX_DE_MINIMIS.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(PRES_NONTAX_DE_MINIMIS.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((GrossTaxableIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(GrossTaxableIncome.Value));
+            if ((PRES_NONTAX_SSS_ETS.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(PRES_NONTAX_SSS_ETS.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((LessTE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(LessTE.Value));
+            if ((PRES_NONTAX_SALARIES.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(PRES_NONTAX_SALARIES.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((LessPPH.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(LessPPH.Value));
+            if ((TOTAL_NONTAX_COMP_INCOME.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((double)(TOTAL_NONTAX_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((NetTax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(NetTax.Value));
+            if ((PRES_TAXABLE_BASIC_SALARY.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((double)(PRES_TAXABLE_BASIC_SALARY.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((TaxDue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(TaxDue.Value));
+            if ((PRES_TAXABLE_13TH_MONTH.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(PRES_TAXABLE_13TH_MONTH.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((HeldTaxCE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(HeldTaxCE.Value));
+            if ((PRES_TAXABLE_SALARIES.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(PRES_TAXABLE_SALARIES.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((HeldTaxPE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(HeldTaxPE.Value));
+            if ((TOTAL_TAXABLE_COMP_INCOME.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(TOTAL_TAXABLE_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((TotalTax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(TotalTax.Value));
-            }
-            else {
+            if ((EXMPN_CODE == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((TIN == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(EXMPN_CODE));
+            }
+            if ((EXPMN_AMT.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(EXPMN_AMT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(TIN));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((PREMIUM_PAID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((double)(PREMIUM_PAID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((NET_TAXABLE_COMP_INCOME.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((double)(NET_TAXABLE_COMP_INCOME.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((TAX_DUE.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((double)(TAX_DUE.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((PRES_TAX_WTHLD.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((double)(PRES_TAX_WTHLD.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((AMT_WTHLD_DEC.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(AMT_WTHLD_DEC.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((OVER_WTHLD.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((double)(OVER_WTHLD.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((ACTUAL_AMT_WTHLD.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((double)(ACTUAL_AMT_WTHLD.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((SUBS_FILING.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((double)(SUBS_FILING.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((TIN == null)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(TIN));
+            }
+            if ((STARTED == null)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(STARTED));
+            }
+            if ((ENDED == null)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(ENDED));
+            }
+            if ((CTC.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((int)(CTC.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((POI == null)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(POI));
+            }
+            if ((DOI == null)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(DOI));
+            }
+            if ((AMT.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(AMT.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             if ((Original_ID == null)) {
                 throw new global::System.ArgumentNullException("Original_ID");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_ID));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_ID));
             }
-            if ((Original_FirstName == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_FirstName));
-            }
-            if ((Original_LastName == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            if ((Original_LAST_NAME == null)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_LastName));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_LAST_NAME));
             }
-            if ((Original_GrossIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_GrossIncome.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
-            if ((Original_LessTNT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_LessTNT.Value));
+            if ((Original_FIRST_NAME == null)) {
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((string)(Original_FIRST_NAME));
             }
-            if ((Original_TaxableIncomeCE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(Original_TaxableIncomeCE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TaxableIncomePE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(Original_TaxableIncomePE.Value));
+            if ((Original_MIDDLE_NAME == null)) {
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((string)(Original_MIDDLE_NAME));
             }
-            if ((Original_GrossTaxableIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_GrossTaxableIncome.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
-            }
-            if ((Original_LessTE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(Original_LessTE.Value));
+            if ((Original_GROSS_COMP_INCOME.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((double)(Original_GROSS_COMP_INCOME.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
-            if ((Original_LessPPH.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_LessPPH.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
-            }
-            if ((Original_NetTax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_NetTax.Value));
+            if ((Original_PRES_NONTAX_13TH_MONTH.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((double)(Original_PRES_NONTAX_13TH_MONTH.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
-            if ((Original_TaxDue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((int)(Original_TaxDue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
-            }
-            if ((Original_HeldTaxCE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((int)(Original_HeldTaxCE.Value));
+            if ((Original_PRES_NONTAX_DE_MINIMIS.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((double)(Original_PRES_NONTAX_DE_MINIMIS.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
-            if ((Original_HeldTaxPE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((int)(Original_HeldTaxPE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TotalTax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((int)(Original_TotalTax.Value));
+            if ((Original_PRES_NONTAX_SSS_ETS.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((double)(Original_PRES_NONTAX_SSS_ETS.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PRES_NONTAX_SALARIES.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((double)(Original_PRES_NONTAX_SALARIES.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TOTAL_NONTAX_COMP_INCOME.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((double)(Original_TOTAL_NONTAX_COMP_INCOME.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PRES_TAXABLE_BASIC_SALARY.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((double)(Original_PRES_TAXABLE_BASIC_SALARY.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PRES_TAXABLE_13TH_MONTH.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((double)(Original_PRES_TAXABLE_13TH_MONTH.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PRES_TAXABLE_SALARIES.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((double)(Original_PRES_TAXABLE_SALARIES.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TOTAL_TAXABLE_COMP_INCOME.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((double)(Original_TOTAL_TAXABLE_COMP_INCOME.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
+            }
+            if ((Original_EXMPN_CODE == null)) {
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((string)(Original_EXMPN_CODE));
+            }
+            if ((Original_EXPMN_AMT.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((double)(Original_EXPMN_AMT.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PREMIUM_PAID.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((double)(Original_PREMIUM_PAID.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[63].Value = global::System.DBNull.Value;
+            }
+            if ((Original_NET_TAXABLE_COMP_INCOME.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((double)(Original_NET_TAXABLE_COMP_INCOME.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[65].Value = global::System.DBNull.Value;
+            }
+            if ((Original_TAX_DUE.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((double)(Original_TAX_DUE.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[67].Value = global::System.DBNull.Value;
+            }
+            if ((Original_PRES_TAX_WTHLD.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((double)(Original_PRES_TAX_WTHLD.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
+            }
+            if ((Original_AMT_WTHLD_DEC.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((double)(Original_AMT_WTHLD_DEC.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[71].Value = global::System.DBNull.Value;
+            }
+            if ((Original_OVER_WTHLD.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((double)(Original_OVER_WTHLD.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ACTUAL_AMT_WTHLD.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((double)(Original_ACTUAL_AMT_WTHLD.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
+            }
+            if ((Original_SUBS_FILING.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((double)(Original_SUBS_FILING.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[77].Value = global::System.DBNull.Value;
             }
             if ((Original_TIN == null)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_TIN));
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((string)(Original_TIN));
+            }
+            if ((Original_STARTED == null)) {
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[81].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((string)(Original_STARTED));
+            }
+            if ((Original_ENDED == null)) {
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[83].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((string)(Original_ENDED));
+            }
+            if ((Original_CTC.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((int)(Original_CTC.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[85].Value = global::System.DBNull.Value;
+            }
+            if ((Original_POI == null)) {
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[87].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((string)(Original_POI));
+            }
+            if ((Original_DOI == null)) {
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[89].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((string)(Original_DOI));
+            }
+            if ((Original_AMT.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((int)(Original_AMT.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[91].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3141,38 +6268,320 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    string FirstName, 
-                    string LastName, 
-                    global::System.Nullable<int> GrossIncome, 
-                    global::System.Nullable<int> LessTNT, 
-                    global::System.Nullable<int> TaxableIncomeCE, 
-                    global::System.Nullable<int> TaxableIncomePE, 
-                    global::System.Nullable<int> GrossTaxableIncome, 
-                    global::System.Nullable<int> LessTE, 
-                    global::System.Nullable<int> LessPPH, 
-                    global::System.Nullable<int> NetTax, 
-                    global::System.Nullable<int> TaxDue, 
-                    global::System.Nullable<int> HeldTaxCE, 
-                    global::System.Nullable<int> HeldTaxPE, 
-                    global::System.Nullable<int> TotalTax, 
+                    string LAST_NAME, 
+                    string FIRST_NAME, 
+                    string MIDDLE_NAME, 
+                    global::System.Nullable<double> GROSS_COMP_INCOME, 
+                    global::System.Nullable<double> PRES_NONTAX_13TH_MONTH, 
+                    global::System.Nullable<double> PRES_NONTAX_DE_MINIMIS, 
+                    global::System.Nullable<double> PRES_NONTAX_SSS_ETS, 
+                    global::System.Nullable<double> PRES_NONTAX_SALARIES, 
+                    global::System.Nullable<double> TOTAL_NONTAX_COMP_INCOME, 
+                    global::System.Nullable<double> PRES_TAXABLE_BASIC_SALARY, 
+                    global::System.Nullable<double> PRES_TAXABLE_13TH_MONTH, 
+                    global::System.Nullable<double> PRES_TAXABLE_SALARIES, 
+                    global::System.Nullable<double> TOTAL_TAXABLE_COMP_INCOME, 
+                    string EXMPN_CODE, 
+                    global::System.Nullable<double> EXPMN_AMT, 
+                    global::System.Nullable<double> PREMIUM_PAID, 
+                    global::System.Nullable<double> NET_TAXABLE_COMP_INCOME, 
+                    global::System.Nullable<double> TAX_DUE, 
+                    global::System.Nullable<double> PRES_TAX_WTHLD, 
+                    global::System.Nullable<double> AMT_WTHLD_DEC, 
+                    global::System.Nullable<double> OVER_WTHLD, 
+                    global::System.Nullable<double> ACTUAL_AMT_WTHLD, 
+                    global::System.Nullable<double> SUBS_FILING, 
                     string TIN, 
+                    string STARTED, 
+                    string ENDED, 
+                    global::System.Nullable<int> CTC, 
+                    string POI, 
+                    string DOI, 
+                    global::System.Nullable<int> AMT, 
                     string Original_ID, 
-                    string Original_FirstName, 
-                    string Original_LastName, 
-                    global::System.Nullable<int> Original_GrossIncome, 
-                    global::System.Nullable<int> Original_LessTNT, 
-                    global::System.Nullable<int> Original_TaxableIncomeCE, 
-                    global::System.Nullable<int> Original_TaxableIncomePE, 
-                    global::System.Nullable<int> Original_GrossTaxableIncome, 
-                    global::System.Nullable<int> Original_LessTE, 
-                    global::System.Nullable<int> Original_LessPPH, 
-                    global::System.Nullable<int> Original_NetTax, 
-                    global::System.Nullable<int> Original_TaxDue, 
-                    global::System.Nullable<int> Original_HeldTaxCE, 
-                    global::System.Nullable<int> Original_HeldTaxPE, 
-                    global::System.Nullable<int> Original_TotalTax, 
-                    string Original_TIN) {
-            return this.Update(Original_ID, FirstName, LastName, GrossIncome, LessTNT, TaxableIncomeCE, TaxableIncomePE, GrossTaxableIncome, LessTE, LessPPH, NetTax, TaxDue, HeldTaxCE, HeldTaxPE, TotalTax, TIN, Original_ID, Original_FirstName, Original_LastName, Original_GrossIncome, Original_LessTNT, Original_TaxableIncomeCE, Original_TaxableIncomePE, Original_GrossTaxableIncome, Original_LessTE, Original_LessPPH, Original_NetTax, Original_TaxDue, Original_HeldTaxCE, Original_HeldTaxPE, Original_TotalTax, Original_TIN);
+                    string Original_LAST_NAME, 
+                    string Original_FIRST_NAME, 
+                    string Original_MIDDLE_NAME, 
+                    global::System.Nullable<double> Original_GROSS_COMP_INCOME, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_13TH_MONTH, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_DE_MINIMIS, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_SSS_ETS, 
+                    global::System.Nullable<double> Original_PRES_NONTAX_SALARIES, 
+                    global::System.Nullable<double> Original_TOTAL_NONTAX_COMP_INCOME, 
+                    global::System.Nullable<double> Original_PRES_TAXABLE_BASIC_SALARY, 
+                    global::System.Nullable<double> Original_PRES_TAXABLE_13TH_MONTH, 
+                    global::System.Nullable<double> Original_PRES_TAXABLE_SALARIES, 
+                    global::System.Nullable<double> Original_TOTAL_TAXABLE_COMP_INCOME, 
+                    string Original_EXMPN_CODE, 
+                    global::System.Nullable<double> Original_EXPMN_AMT, 
+                    global::System.Nullable<double> Original_PREMIUM_PAID, 
+                    global::System.Nullable<double> Original_NET_TAXABLE_COMP_INCOME, 
+                    global::System.Nullable<double> Original_TAX_DUE, 
+                    global::System.Nullable<double> Original_PRES_TAX_WTHLD, 
+                    global::System.Nullable<double> Original_AMT_WTHLD_DEC, 
+                    global::System.Nullable<double> Original_OVER_WTHLD, 
+                    global::System.Nullable<double> Original_ACTUAL_AMT_WTHLD, 
+                    global::System.Nullable<double> Original_SUBS_FILING, 
+                    string Original_TIN, 
+                    string Original_STARTED, 
+                    string Original_ENDED, 
+                    global::System.Nullable<int> Original_CTC, 
+                    string Original_POI, 
+                    string Original_DOI, 
+                    global::System.Nullable<int> Original_AMT) {
+            return this.Update(Original_ID, LAST_NAME, FIRST_NAME, MIDDLE_NAME, GROSS_COMP_INCOME, PRES_NONTAX_13TH_MONTH, PRES_NONTAX_DE_MINIMIS, PRES_NONTAX_SSS_ETS, PRES_NONTAX_SALARIES, TOTAL_NONTAX_COMP_INCOME, PRES_TAXABLE_BASIC_SALARY, PRES_TAXABLE_13TH_MONTH, PRES_TAXABLE_SALARIES, TOTAL_TAXABLE_COMP_INCOME, EXMPN_CODE, EXPMN_AMT, PREMIUM_PAID, NET_TAXABLE_COMP_INCOME, TAX_DUE, PRES_TAX_WTHLD, AMT_WTHLD_DEC, OVER_WTHLD, ACTUAL_AMT_WTHLD, SUBS_FILING, TIN, STARTED, ENDED, CTC, POI, DOI, AMT, Original_ID, Original_LAST_NAME, Original_FIRST_NAME, Original_MIDDLE_NAME, Original_GROSS_COMP_INCOME, Original_PRES_NONTAX_13TH_MONTH, Original_PRES_NONTAX_DE_MINIMIS, Original_PRES_NONTAX_SSS_ETS, Original_PRES_NONTAX_SALARIES, Original_TOTAL_NONTAX_COMP_INCOME, Original_PRES_TAXABLE_BASIC_SALARY, Original_PRES_TAXABLE_13TH_MONTH, Original_PRES_TAXABLE_SALARIES, Original_TOTAL_TAXABLE_COMP_INCOME, Original_EXMPN_CODE, Original_EXPMN_AMT, Original_PREMIUM_PAID, Original_NET_TAXABLE_COMP_INCOME, Original_TAX_DUE, Original_PRES_TAX_WTHLD, Original_AMT_WTHLD_DEC, Original_OVER_WTHLD, Original_ACTUAL_AMT_WTHLD, Original_SUBS_FILING, Original_TIN, Original_STARTED, Original_ENDED, Original_CTC, Original_POI, Original_DOI, Original_AMT);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ACTCTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
+        
+        private global::System.Data.OleDb.OleDbConnection _connection;
+        
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
+        
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public ACTCTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ACTC";
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("CTC", "CTC");
+            tableMapping.ColumnMappings.Add("POI", "POI");
+            tableMapping.ColumnMappings.Add("DOI", "DOI");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `ACTC` (`ID`, `CTC`, `POI`, `DOI`) VALUES (?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CTC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CTC", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("POI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "POI", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DOI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DOI", global::System.Data.DataRowVersion.Current, false, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::Query_Listener.Properties.Settings.Default.Cons;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ID, CTC, POI, DOI FROM ACTC";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(ACDBDataSet.ACTCDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual ACDBDataSet.ACTCDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            ACDBDataSet.ACTCDataTable dataTable = new ACDBDataSet.ACTCDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ACDBDataSet.ACTCDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(ACDBDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ACTC");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string ID, global::System.Nullable<int> CTC, string POI, string DOI) {
+            if ((ID == null)) {
+                throw new global::System.ArgumentNullException("ID");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ID));
+            }
+            if ((CTC.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(CTC.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((POI == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(POI));
+            }
+            if ((DOI == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(DOI));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
         }
     }
     
@@ -3298,128 +6707,72 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ACXL";
             tableMapping.ColumnMappings.Add("ID", "ID");
-            tableMapping.ColumnMappings.Add("FirstName", "FirstName");
-            tableMapping.ColumnMappings.Add("LastName", "LastName");
-            tableMapping.ColumnMappings.Add("GrossIncome", "GrossIncome");
-            tableMapping.ColumnMappings.Add("LessTNT", "LessTNT");
-            tableMapping.ColumnMappings.Add("TaxableIncomeCE", "TaxableIncomeCE");
-            tableMapping.ColumnMappings.Add("TaxableIncomePE", "TaxableIncomePE");
-            tableMapping.ColumnMappings.Add("GrossTaxableIncome", "GrossTaxableIncome");
-            tableMapping.ColumnMappings.Add("LessTE", "LessTE");
-            tableMapping.ColumnMappings.Add("LessPPH", "LessPPH");
-            tableMapping.ColumnMappings.Add("NetTax", "NetTax");
-            tableMapping.ColumnMappings.Add("TaxDue", "TaxDue");
-            tableMapping.ColumnMappings.Add("HeldTaxCE", "HeldTaxCE");
-            tableMapping.ColumnMappings.Add("HeldTaxPE", "HeldTaxPE");
-            tableMapping.ColumnMappings.Add("TotalTax", "TotalTax");
+            tableMapping.ColumnMappings.Add("LAST_NAME", "LAST_NAME");
+            tableMapping.ColumnMappings.Add("FIRST_NAME", "FIRST_NAME");
+            tableMapping.ColumnMappings.Add("MIDDLE_NAME", "MIDDLE_NAME");
+            tableMapping.ColumnMappings.Add("GROSS_COMP_INCOME", "GROSS_COMP_INCOME");
+            tableMapping.ColumnMappings.Add("PRES_NONTAX_13TH_MONTH", "PRES_NONTAX_13TH_MONTH");
+            tableMapping.ColumnMappings.Add("PRES_NONTAX_DE_MINIMIS", "PRES_NONTAX_DE_MINIMIS");
+            tableMapping.ColumnMappings.Add("PRES_NONTAX_SSS_ETS", "PRES_NONTAX_SSS_ETS");
+            tableMapping.ColumnMappings.Add("PRES_NONTAX_SALARIES", "PRES_NONTAX_SALARIES");
+            tableMapping.ColumnMappings.Add("TOTAL_NONTAX_COMP_INCOME", "TOTAL_NONTAX_COMP_INCOME");
+            tableMapping.ColumnMappings.Add("PRES_TAXABLE_BASIC_SALARY", "PRES_TAXABLE_BASIC_SALARY");
+            tableMapping.ColumnMappings.Add("PRES_TAXABLE_13TH_MONTH", "PRES_TAXABLE_13TH_MONTH");
+            tableMapping.ColumnMappings.Add("PRES_TAXABLE_SALARIES", "PRES_TAXABLE_SALARIES");
+            tableMapping.ColumnMappings.Add("TOTAL_TAXABLE_COMP_INCOME", "TOTAL_TAXABLE_COMP_INCOME");
+            tableMapping.ColumnMappings.Add("EXMPN_CODE", "EXMPN_CODE");
+            tableMapping.ColumnMappings.Add("EXPMN_AMT", "EXPMN_AMT");
+            tableMapping.ColumnMappings.Add("PREMIUM_PAID", "PREMIUM_PAID");
+            tableMapping.ColumnMappings.Add("NET_TAXABLE_COMP_INCOME", "NET_TAXABLE_COMP_INCOME");
+            tableMapping.ColumnMappings.Add("TAX_DUE", "TAX_DUE");
+            tableMapping.ColumnMappings.Add("PRES_TAX_WTHLD", "PRES_TAX_WTHLD");
+            tableMapping.ColumnMappings.Add("AMT_WTHLD_DEC", "AMT_WTHLD_DEC");
+            tableMapping.ColumnMappings.Add("OVER_WTHLD", "OVER_WTHLD");
+            tableMapping.ColumnMappings.Add("ACTUAL_AMT_WTHLD", "ACTUAL_AMT_WTHLD");
+            tableMapping.ColumnMappings.Add("SUBS_FILING", "SUBS_FILING");
             tableMapping.ColumnMappings.Add("TIN", "TIN");
+            tableMapping.ColumnMappings.Add("STARTED", "STARTED");
+            tableMapping.ColumnMappings.Add("ENDED", "ENDED");
+            tableMapping.ColumnMappings.Add("CTC", "CTC");
+            tableMapping.ColumnMappings.Add("POI", "POI");
+            tableMapping.ColumnMappings.Add("DOI", "DOI");
+            tableMapping.ColumnMappings.Add("AMT", "AMT");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `ACXL` WHERE ((`ID` = ?) AND ((? = 1 AND `FirstName` IS NULL) OR (`FirstName` = ?)) AND ((? = 1 AND `LastName` IS NULL) OR (`LastName` = ?)) AND ((? = 1 AND `GrossIncome` IS NULL) OR (`GrossIncome` = ?)) AND ((? = 1 AND `LessTNT` IS NULL) OR (`LessTNT` = ?)) AND ((? = 1 AND `TaxableIncomeCE` IS NULL) OR (`TaxableIncomeCE` = ?)) AND ((? = 1 AND `TaxableIncomePE` IS NULL) OR (`TaxableIncomePE` = ?)) AND ((? = 1 AND `GrossTaxableIncome` IS NULL) OR (`GrossTaxableIncome` = ?)) AND ((? = 1 AND `LessTE` IS NULL) OR (`LessTE` = ?)) AND ((? = 1 AND `LessPPH` IS NULL) OR (`LessPPH` = ?)) AND ((? = 1 AND `NetTax` IS NULL) OR (`NetTax` = ?)) AND ((? = 1 AND `TaxDue` IS NULL) OR (`TaxDue` = ?)) AND ((? = 1 AND `HeldTaxCE` IS NULL) OR (`HeldTaxCE` = ?)) AND ((? = 1 AND `HeldTaxPE` IS NULL) OR (`HeldTaxPE` = ?)) AND ((? = 1 AND `TotalTax` IS NULL) OR (`TotalTax` = ?)) AND ((? = 1 AND `TIN` IS NULL) OR (`TIN` = ?)))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_FirstName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_FirstName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LastName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LastName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TIN", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TIN", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO `ACXL` (`ID`, `FirstName`, `LastName`, `GrossIncome`, `LessTNT`, `TaxableIncomeCE`, `TaxableIncomePE`, `GrossTaxableIncome`, `LessTE`, `LessPPH`, `NetTax`, `TaxDue`, `HeldTaxCE`, `HeldTaxPE`, `TotalTax`, `TIN`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `ACXL` (`ID`, `LAST_NAME`, `FIRST_NAME`, `MIDDLE_NAME`, `GROSS_COMP_INCOME`, `PRES_NONTAX_13TH_MONTH`, `PRES_NONTAX_DE_MINIMIS`, `PRES_NONTAX_SSS_ETS`, `PRES_NONTAX_SALARIES`, `TOTAL_NONTAX_COMP_INCOME`, `PRES_TAXABLE_BASIC_SALARY`, `PRES_TAXABLE_13TH_MONTH`, `PRES_TAXABLE_SALARIES`, `TOTAL_TAXABLE_COMP_INCOME`, `EXMPN_CODE`, `EXPMN_AMT`, `PREMIUM_PAID`, `NET_TAXABLE_COMP_INCOME`, `TAX_DUE`, `PRES_TAX_WTHLD`, `AMT_WTHLD_DEC`, `OVER_WTHLD`, `ACTUAL_AMT_WTHLD`, `SUBS_FILING`, `TIN`, `STARTED`, `ENDED`, `CTC`, `POI`, `DOI`, `AMT`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("FirstName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LastName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LAST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LAST_NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("FIRST_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FIRST_NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("MIDDLE_NAME", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "MIDDLE_NAME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GROSS_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GROSS_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_13TH_MONTH", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_DE_MINIMIS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_DE_MINIMIS", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_SSS_ETS", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SSS_ETS", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_NONTAX_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_NONTAX_SALARIES", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TOTAL_NONTAX_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_NONTAX_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAXABLE_BASIC_SALARY", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_BASIC_SALARY", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAXABLE_13TH_MONTH", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_13TH_MONTH", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAXABLE_SALARIES", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAXABLE_SALARIES", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TOTAL_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TOTAL_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("EXMPN_CODE", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXMPN_CODE", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("EXPMN_AMT", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "EXPMN_AMT", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PREMIUM_PAID", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PREMIUM_PAID", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NET_TAXABLE_COMP_INCOME", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NET_TAXABLE_COMP_INCOME", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TAX_DUE", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TAX_DUE", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("PRES_TAX_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "PRES_TAX_WTHLD", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AMT_WTHLD_DEC", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT_WTHLD_DEC", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("OVER_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "OVER_WTHLD", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ACTUAL_AMT_WTHLD", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ACTUAL_AMT_WTHLD", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("SUBS_FILING", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "SUBS_FILING", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TIN", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE `ACXL` SET `ID` = ?, `FirstName` = ?, `LastName` = ?, `GrossIncome` = ?, `LessTNT` = ?, `TaxableIncomeCE` = ?, `TaxableIncomePE` = ?, `GrossTaxableIncome` = ?, `LessTE` = ?, `LessPPH` = ?, `NetTax` = ?, `TaxDue` = ?, `HeldTaxCE` = ?, `HeldTaxPE` = ?, `TotalTax` = ?, `TIN` = ? WHERE ((`ID` = ?) AND ((? = 1 AND `FirstName` IS NULL) OR (`FirstName` = ?)) AND ((? = 1 AND `LastName` IS NULL) OR (`LastName` = ?)) AND ((? = 1 AND `GrossIncome` IS NULL) OR (`GrossIncome` = ?)) AND ((? = 1 AND `LessTNT` IS NULL) OR (`LessTNT` = ?)) AND ((? = 1 AND `TaxableIncomeCE` IS NULL) OR (`TaxableIncomeCE` = ?)) AND ((? = 1 AND `TaxableIncomePE` IS NULL) OR (`TaxableIncomePE` = ?)) AND ((? = 1 AND `GrossTaxableIncome` IS NULL) OR (`GrossTaxableIncome` = ?)) AND ((? = 1 AND `LessTE` IS NULL) OR (`LessTE` = ?)) AND ((? = 1 AND `LessPPH` IS NULL) OR (`LessPPH` = ?)) AND ((? = 1 AND `NetTax` IS NULL) OR (`NetTax` = ?)) AND ((? = 1 AND `TaxDue` IS NULL) OR (`TaxDue` = ?)) AND ((? = 1 AND `HeldTaxCE` IS NULL) OR (`HeldTaxCE` = ?)) AND ((? = 1 AND `HeldTaxPE` IS NULL) OR (`HeldTaxPE` = ?)) AND ((? = 1 AND `TotalTax` IS NULL) OR (`TotalTax` = ?)) AND ((? = 1 AND `TIN` IS NULL) OR (`TIN` = ?)))";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("FirstName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LastName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("TIN", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ID", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ID", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_FirstName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_FirstName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "FirstName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LastName", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LastName", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LastName", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GrossIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossIncome", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessTNT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTNT", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxableIncomeCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomeCE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxableIncomePE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxableIncomePE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_GrossTaxableIncome", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "GrossTaxableIncome", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessTE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessTE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_LessPPH", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "LessPPH", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_NetTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "NetTax", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TaxDue", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TaxDue", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_HeldTaxCE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxCE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_HeldTaxPE", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "HeldTaxPE", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TotalTax", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TotalTax", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_TIN", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_TIN", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "TIN", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("STARTED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "STARTED", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ENDED", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ENDED", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("CTC", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "CTC", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("POI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "POI", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("DOI", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "DOI", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("AMT", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "AMT", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3435,9 +6788,7 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, FirstName, LastName, GrossIncome, LessTNT, TaxableIncomeCE, TaxableInc" +
-                "omePE, GrossTaxableIncome, LessTE, LessPPH, NetTax, TaxDue, HeldTaxCE, HeldTaxPE" +
-                ", TotalTax, TIN FROM ACXL";
+            this._commandCollection[0].CommandText = @"SELECT ID, LAST_NAME, FIRST_NAME, MIDDLE_NAME, GROSS_COMP_INCOME, PRES_NONTAX_13TH_MONTH, PRES_NONTAX_DE_MINIMIS, PRES_NONTAX_SSS_ETS, PRES_NONTAX_SALARIES, TOTAL_NONTAX_COMP_INCOME, PRES_TAXABLE_BASIC_SALARY, PRES_TAXABLE_13TH_MONTH, PRES_TAXABLE_SALARIES, TOTAL_TAXABLE_COMP_INCOME, EXMPN_CODE, EXPMN_AMT, PREMIUM_PAID, NET_TAXABLE_COMP_INCOME, TAX_DUE, PRES_TAX_WTHLD, AMT_WTHLD_DEC, OVER_WTHLD, ACTUAL_AMT_WTHLD, SUBS_FILING, TIN, STARTED, ENDED, CTC, POI, DOI, AMT FROM ACXL";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3497,282 +6848,224 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(
-                    string Original_ID, 
-                    string Original_FirstName, 
-                    string Original_LastName, 
-                    global::System.Nullable<int> Original_GrossIncome, 
-                    global::System.Nullable<int> Original_LessTNT, 
-                    global::System.Nullable<int> Original_TaxableIncomeCE, 
-                    global::System.Nullable<int> Original_TaxableIncomePE, 
-                    global::System.Nullable<int> Original_GrossTaxableIncome, 
-                    global::System.Nullable<int> Original_LessTE, 
-                    global::System.Nullable<int> Original_LessPPH, 
-                    global::System.Nullable<int> Original_NetTax, 
-                    global::System.Nullable<int> Original_TaxDue, 
-                    global::System.Nullable<int> Original_HeldTaxCE, 
-                    global::System.Nullable<int> Original_HeldTaxPE, 
-                    global::System.Nullable<int> Original_TotalTax, 
-                    string Original_TIN) {
-            if ((Original_ID == null)) {
-                throw new global::System.ArgumentNullException("Original_ID");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_ID));
-            }
-            if ((Original_FirstName == null)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_FirstName));
-            }
-            if ((Original_LastName == null)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_LastName));
-            }
-            if ((Original_GrossIncome.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_GrossIncome.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((Original_LessTNT.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_LessTNT.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TaxableIncomeCE.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_TaxableIncomeCE.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TaxableIncomePE.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_TaxableIncomePE.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((Original_GrossTaxableIncome.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(Original_GrossTaxableIncome.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            if ((Original_LessTE.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((int)(Original_LessTE.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
-            }
-            if ((Original_LessPPH.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((int)(Original_LessPPH.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
-            }
-            if ((Original_NetTax.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((int)(Original_NetTax.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TaxDue.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((int)(Original_TaxDue.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
-            if ((Original_HeldTaxCE.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((int)(Original_HeldTaxCE.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
-            }
-            if ((Original_HeldTaxPE.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((int)(Original_HeldTaxPE.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TotalTax.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((int)(Original_TotalTax.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TIN == null)) {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[30].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((string)(Original_TIN));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
                     string ID, 
-                    string FirstName, 
-                    string LastName, 
-                    global::System.Nullable<int> GrossIncome, 
-                    global::System.Nullable<int> LessTNT, 
-                    global::System.Nullable<int> TaxableIncomeCE, 
-                    global::System.Nullable<int> TaxableIncomePE, 
-                    global::System.Nullable<int> GrossTaxableIncome, 
-                    global::System.Nullable<int> LessTE, 
-                    global::System.Nullable<int> LessPPH, 
-                    global::System.Nullable<int> NetTax, 
-                    global::System.Nullable<int> TaxDue, 
-                    global::System.Nullable<int> HeldTaxCE, 
-                    global::System.Nullable<int> HeldTaxPE, 
-                    global::System.Nullable<int> TotalTax, 
-                    string TIN) {
+                    string LAST_NAME, 
+                    string FIRST_NAME, 
+                    string MIDDLE_NAME, 
+                    global::System.Nullable<double> GROSS_COMP_INCOME, 
+                    global::System.Nullable<double> PRES_NONTAX_13TH_MONTH, 
+                    global::System.Nullable<double> PRES_NONTAX_DE_MINIMIS, 
+                    global::System.Nullable<double> PRES_NONTAX_SSS_ETS, 
+                    global::System.Nullable<double> PRES_NONTAX_SALARIES, 
+                    global::System.Nullable<double> TOTAL_NONTAX_COMP_INCOME, 
+                    global::System.Nullable<double> PRES_TAXABLE_BASIC_SALARY, 
+                    global::System.Nullable<double> PRES_TAXABLE_13TH_MONTH, 
+                    global::System.Nullable<double> PRES_TAXABLE_SALARIES, 
+                    global::System.Nullable<double> TOTAL_TAXABLE_COMP_INCOME, 
+                    string EXMPN_CODE, 
+                    global::System.Nullable<double> EXPMN_AMT, 
+                    global::System.Nullable<double> PREMIUM_PAID, 
+                    global::System.Nullable<double> NET_TAXABLE_COMP_INCOME, 
+                    global::System.Nullable<double> TAX_DUE, 
+                    global::System.Nullable<double> PRES_TAX_WTHLD, 
+                    global::System.Nullable<double> AMT_WTHLD_DEC, 
+                    global::System.Nullable<double> OVER_WTHLD, 
+                    global::System.Nullable<double> ACTUAL_AMT_WTHLD, 
+                    global::System.Nullable<double> SUBS_FILING, 
+                    string TIN, 
+                    string STARTED, 
+                    string ENDED, 
+                    global::System.Nullable<int> CTC, 
+                    string POI, 
+                    string DOI, 
+                    global::System.Nullable<int> AMT) {
             if ((ID == null)) {
-                throw new global::System.ArgumentNullException("ID");
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ID));
             }
-            if ((FirstName == null)) {
+            if ((LAST_NAME == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FirstName));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(LAST_NAME));
             }
-            if ((LastName == null)) {
+            if ((FIRST_NAME == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(LastName));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(FIRST_NAME));
             }
-            if ((GrossIncome.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(GrossIncome.Value));
-            }
-            else {
+            if ((MIDDLE_NAME == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((LessTNT.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(LessTNT.Value));
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(MIDDLE_NAME));
+            }
+            if ((GROSS_COMP_INCOME.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((double)(GROSS_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((TaxableIncomeCE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(TaxableIncomeCE.Value));
+            if ((PRES_NONTAX_13TH_MONTH.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((double)(PRES_NONTAX_13TH_MONTH.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((TaxableIncomePE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(TaxableIncomePE.Value));
+            if ((PRES_NONTAX_DE_MINIMIS.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((double)(PRES_NONTAX_DE_MINIMIS.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((GrossTaxableIncome.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(GrossTaxableIncome.Value));
+            if ((PRES_NONTAX_SSS_ETS.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((double)(PRES_NONTAX_SSS_ETS.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((LessTE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(LessTE.Value));
+            if ((PRES_NONTAX_SALARIES.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((double)(PRES_NONTAX_SALARIES.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((LessPPH.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(LessPPH.Value));
+            if ((TOTAL_NONTAX_COMP_INCOME.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((double)(TOTAL_NONTAX_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((NetTax.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((int)(NetTax.Value));
+            if ((PRES_TAXABLE_BASIC_SALARY.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((double)(PRES_TAXABLE_BASIC_SALARY.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
-            if ((TaxDue.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((int)(TaxDue.Value));
+            if ((PRES_TAXABLE_13TH_MONTH.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((double)(PRES_TAXABLE_13TH_MONTH.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            if ((HeldTaxCE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((int)(HeldTaxCE.Value));
+            if ((PRES_TAXABLE_SALARIES.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((double)(PRES_TAXABLE_SALARIES.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            if ((HeldTaxPE.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((int)(HeldTaxPE.Value));
+            if ((TOTAL_TAXABLE_COMP_INCOME.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((double)(TOTAL_TAXABLE_COMP_INCOME.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
-            if ((TotalTax.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((int)(TotalTax.Value));
-            }
-            else {
+            if ((EXMPN_CODE == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((TIN == null)) {
-                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(EXMPN_CODE));
+            }
+            if ((EXPMN_AMT.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((double)(EXPMN_AMT.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(TIN));
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((PREMIUM_PAID.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((double)(PREMIUM_PAID.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            if ((NET_TAXABLE_COMP_INCOME.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((double)(NET_TAXABLE_COMP_INCOME.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            if ((TAX_DUE.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[18].Value = ((double)(TAX_DUE.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            if ((PRES_TAX_WTHLD.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((double)(PRES_TAX_WTHLD.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            if ((AMT_WTHLD_DEC.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((double)(AMT_WTHLD_DEC.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            if ((OVER_WTHLD.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[21].Value = ((double)(OVER_WTHLD.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            if ((ACTUAL_AMT_WTHLD.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[22].Value = ((double)(ACTUAL_AMT_WTHLD.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            if ((SUBS_FILING.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((double)(SUBS_FILING.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            if ((TIN == null)) {
+                this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[24].Value = ((string)(TIN));
+            }
+            if ((STARTED == null)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((string)(STARTED));
+            }
+            if ((ENDED == null)) {
+                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(ENDED));
+            }
+            if ((CTC.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[27].Value = ((int)(CTC.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            if ((POI == null)) {
+                this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(POI));
+            }
+            if ((DOI == null)) {
+                this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(DOI));
+            }
+            if ((AMT.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[30].Value = ((int)(AMT.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3789,320 +7082,6 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
                 }
             }
         }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    string ID, 
-                    string FirstName, 
-                    string LastName, 
-                    global::System.Nullable<int> GrossIncome, 
-                    global::System.Nullable<int> LessTNT, 
-                    global::System.Nullable<int> TaxableIncomeCE, 
-                    global::System.Nullable<int> TaxableIncomePE, 
-                    global::System.Nullable<int> GrossTaxableIncome, 
-                    global::System.Nullable<int> LessTE, 
-                    global::System.Nullable<int> LessPPH, 
-                    global::System.Nullable<int> NetTax, 
-                    global::System.Nullable<int> TaxDue, 
-                    global::System.Nullable<int> HeldTaxCE, 
-                    global::System.Nullable<int> HeldTaxPE, 
-                    global::System.Nullable<int> TotalTax, 
-                    string TIN, 
-                    string Original_ID, 
-                    string Original_FirstName, 
-                    string Original_LastName, 
-                    global::System.Nullable<int> Original_GrossIncome, 
-                    global::System.Nullable<int> Original_LessTNT, 
-                    global::System.Nullable<int> Original_TaxableIncomeCE, 
-                    global::System.Nullable<int> Original_TaxableIncomePE, 
-                    global::System.Nullable<int> Original_GrossTaxableIncome, 
-                    global::System.Nullable<int> Original_LessTE, 
-                    global::System.Nullable<int> Original_LessPPH, 
-                    global::System.Nullable<int> Original_NetTax, 
-                    global::System.Nullable<int> Original_TaxDue, 
-                    global::System.Nullable<int> Original_HeldTaxCE, 
-                    global::System.Nullable<int> Original_HeldTaxPE, 
-                    global::System.Nullable<int> Original_TotalTax, 
-                    string Original_TIN) {
-            if ((ID == null)) {
-                throw new global::System.ArgumentNullException("ID");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ID));
-            }
-            if ((FirstName == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FirstName));
-            }
-            if ((LastName == null)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(LastName));
-            }
-            if ((GrossIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(GrossIncome.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((LessTNT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(LessTNT.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            if ((TaxableIncomeCE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(TaxableIncomeCE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((TaxableIncomePE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(TaxableIncomePE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
-            }
-            if ((GrossTaxableIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(GrossTaxableIncome.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((LessTE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(LessTE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
-            }
-            if ((LessPPH.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(LessPPH.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((NetTax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(NetTax.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((TaxDue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(TaxDue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((HeldTaxCE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(HeldTaxCE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
-            }
-            if ((HeldTaxPE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(HeldTaxPE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((TotalTax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(TotalTax.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            if ((TIN == null)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(TIN));
-            }
-            if ((Original_ID == null)) {
-                throw new global::System.ArgumentNullException("Original_ID");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_ID));
-            }
-            if ((Original_FirstName == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(Original_FirstName));
-            }
-            if ((Original_LastName == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_LastName));
-            }
-            if ((Original_GrossIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Original_GrossIncome.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
-            }
-            if ((Original_LessTNT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_LessTNT.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TaxableIncomeCE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(Original_TaxableIncomeCE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TaxableIncomePE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(Original_TaxableIncomePE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
-            }
-            if ((Original_GrossTaxableIncome.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_GrossTaxableIncome.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
-            }
-            if ((Original_LessTE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(Original_LessTE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
-            }
-            if ((Original_LessPPH.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_LessPPH.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
-            }
-            if ((Original_NetTax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_NetTax.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TaxDue.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((int)(Original_TaxDue.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
-            }
-            if ((Original_HeldTaxCE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((int)(Original_HeldTaxCE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
-            }
-            if ((Original_HeldTaxPE.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((int)(Original_HeldTaxPE.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TotalTax.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((int)(Original_TotalTax.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
-            }
-            if ((Original_TIN == null)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_TIN));
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    string FirstName, 
-                    string LastName, 
-                    global::System.Nullable<int> GrossIncome, 
-                    global::System.Nullable<int> LessTNT, 
-                    global::System.Nullable<int> TaxableIncomeCE, 
-                    global::System.Nullable<int> TaxableIncomePE, 
-                    global::System.Nullable<int> GrossTaxableIncome, 
-                    global::System.Nullable<int> LessTE, 
-                    global::System.Nullable<int> LessPPH, 
-                    global::System.Nullable<int> NetTax, 
-                    global::System.Nullable<int> TaxDue, 
-                    global::System.Nullable<int> HeldTaxCE, 
-                    global::System.Nullable<int> HeldTaxPE, 
-                    global::System.Nullable<int> TotalTax, 
-                    string TIN, 
-                    string Original_ID, 
-                    string Original_FirstName, 
-                    string Original_LastName, 
-                    global::System.Nullable<int> Original_GrossIncome, 
-                    global::System.Nullable<int> Original_LessTNT, 
-                    global::System.Nullable<int> Original_TaxableIncomeCE, 
-                    global::System.Nullable<int> Original_TaxableIncomePE, 
-                    global::System.Nullable<int> Original_GrossTaxableIncome, 
-                    global::System.Nullable<int> Original_LessTE, 
-                    global::System.Nullable<int> Original_LessPPH, 
-                    global::System.Nullable<int> Original_NetTax, 
-                    global::System.Nullable<int> Original_TaxDue, 
-                    global::System.Nullable<int> Original_HeldTaxCE, 
-                    global::System.Nullable<int> Original_HeldTaxPE, 
-                    global::System.Nullable<int> Original_TotalTax, 
-                    string Original_TIN) {
-            return this.Update(Original_ID, FirstName, LastName, GrossIncome, LessTNT, TaxableIncomeCE, TaxableIncomePE, GrossTaxableIncome, LessTE, LessPPH, NetTax, TaxDue, HeldTaxCE, HeldTaxPE, TotalTax, TIN, Original_ID, Original_FirstName, Original_LastName, Original_GrossIncome, Original_LessTNT, Original_TaxableIncomeCE, Original_TaxableIncomePE, Original_GrossTaxableIncome, Original_LessTE, Original_LessPPH, Original_NetTax, Original_TaxDue, Original_HeldTaxCE, Original_HeldTaxPE, Original_TotalTax, Original_TIN);
-        }
     }
     
     /// <summary>
@@ -4117,7 +7096,11 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         
         private UpdateOrderOption _updateOrder;
         
+        private ABCDTableAdapter _aBCDTableAdapter;
+        
         private ACTBTableAdapter _aCTBTableAdapter;
+        
+        private ACTCTableAdapter _aCTCTableAdapter;
         
         private ACXLTableAdapter _aCXLTableAdapter;
         
@@ -4141,12 +7124,40 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
+        public ABCDTableAdapter ABCDTableAdapter {
+            get {
+                return this._aBCDTableAdapter;
+            }
+            set {
+                this._aBCDTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
         public ACTBTableAdapter ACTBTableAdapter {
             get {
                 return this._aCTBTableAdapter;
             }
             set {
                 this._aCTBTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ACTCTableAdapter ACTCTableAdapter {
+            get {
+                return this._aCTCTableAdapter;
+            }
+            set {
+                this._aCTCTableAdapter = value;
             }
         }
         
@@ -4183,9 +7194,17 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
                 if ((this._connection != null)) {
                     return this._connection;
                 }
+                if (((this._aBCDTableAdapter != null) 
+                            && (this._aBCDTableAdapter.Connection != null))) {
+                    return this._aBCDTableAdapter.Connection;
+                }
                 if (((this._aCTBTableAdapter != null) 
                             && (this._aCTBTableAdapter.Connection != null))) {
                     return this._aCTBTableAdapter.Connection;
+                }
+                if (((this._aCTCTableAdapter != null) 
+                            && (this._aCTCTableAdapter.Connection != null))) {
+                    return this._aCTCTableAdapter.Connection;
                 }
                 if (((this._aCXLTableAdapter != null) 
                             && (this._aCXLTableAdapter.Connection != null))) {
@@ -4204,7 +7223,13 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
+                if ((this._aBCDTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 if ((this._aCTBTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._aCTCTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._aCXLTableAdapter != null)) {
@@ -4221,12 +7246,30 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(ACDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._aBCDTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ABCD.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._aBCDTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._aCTBTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ACTB.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._aCTBTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._aCTCTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ACTC.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._aCTCTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -4249,11 +7292,27 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(ACDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._aBCDTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ABCD.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._aBCDTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._aCTBTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ACTB.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._aCTBTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._aCTCTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ACTC.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._aCTCTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -4283,11 +7342,27 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._aCTCTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ACTC.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._aCTCTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._aCTBTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ACTB.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._aCTBTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._aBCDTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ABCD.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._aBCDTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -4330,8 +7405,18 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
+            if (((this._aBCDTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._aBCDTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             if (((this._aCTBTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._aCTBTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._aCTCTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._aCTCTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -4372,6 +7457,15 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
             try {
                 // ---- Prepare for update -----------
                 //
+                if ((this._aBCDTableAdapter != null)) {
+                    revertConnections.Add(this._aBCDTableAdapter, this._aBCDTableAdapter.Connection);
+                    this._aBCDTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._aBCDTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._aBCDTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._aBCDTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._aBCDTableAdapter.Adapter);
+                    }
+                }
                 if ((this._aCTBTableAdapter != null)) {
                     revertConnections.Add(this._aCTBTableAdapter, this._aCTBTableAdapter.Connection);
                     this._aCTBTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
@@ -4379,6 +7473,15 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
                     if (this._aCTBTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._aCTBTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._aCTBTableAdapter.Adapter);
+                    }
+                }
+                if ((this._aCTCTableAdapter != null)) {
+                    revertConnections.Add(this._aCTCTableAdapter, this._aCTCTableAdapter.Connection);
+                    this._aCTCTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._aCTCTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._aCTCTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._aCTCTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._aCTCTableAdapter.Adapter);
                     }
                 }
                 if ((this._aCXLTableAdapter != null)) {
@@ -4448,9 +7551,17 @@ namespace Query_Listener.ACDBDataSetTableAdapters {
                 if (workConnOpened) {
                     workConnection.Close();
                 }
+                if ((this._aBCDTableAdapter != null)) {
+                    this._aBCDTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._aBCDTableAdapter]));
+                    this._aBCDTableAdapter.Transaction = null;
+                }
                 if ((this._aCTBTableAdapter != null)) {
                     this._aCTBTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._aCTBTableAdapter]));
                     this._aCTBTableAdapter.Transaction = null;
+                }
+                if ((this._aCTCTableAdapter != null)) {
+                    this._aCTCTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._aCTCTableAdapter]));
+                    this._aCTCTableAdapter.Transaction = null;
                 }
                 if ((this._aCXLTableAdapter != null)) {
                     this._aCXLTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._aCXLTableAdapter]));

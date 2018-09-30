@@ -107,7 +107,7 @@
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(218, 41);
             this.btnPrint.TabIndex = 155;
-            this.btnPrint.Text = "Export and Print";
+            this.btnPrint.Text = "Export to PDF";
             this.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);

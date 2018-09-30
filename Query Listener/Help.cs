@@ -102,7 +102,7 @@ namespace Query_Listener
         private void btnSheet_Click(object sender, EventArgs e)
         {
             RTB.Text = "Select the [IMPORT] button to transfer the entire contents of the visible Excel table into the Access table." + Environment.NewLine +
-           "Select the [PLUS] button to update the value of the selected row with the value from another Excel file. The ID is the unique field of reference. This feature is built with identical records in mind. Make sure that the structure, not just the data, matches the table format.";
+           "Select the [APPEND] button to update the value of the selected row with the value from another Excel file. The ID is the unique field of reference. This feature is built with identical records in mind. Make sure that the structure, not just the data, matches the table format.";
         }
 
         private void btnCrit_Click(object sender, EventArgs e)

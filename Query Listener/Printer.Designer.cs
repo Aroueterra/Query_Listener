@@ -32,6 +32,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Printer));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtAMT = new System.Windows.Forms.TextBox();
+            this.txtDOI = new System.Windows.Forms.TextBox();
+            this.txtPOI = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.txtCTC = new System.Windows.Forms.TextBox();
             this.txtEmployer = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtPeriod2 = new System.Windows.Forms.TextBox();
@@ -71,6 +79,7 @@
             this.txtFirst = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLessTE = new System.Windows.Forms.TextBox();
+            this.chkbxPDF = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tp1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnSource = new System.Windows.Forms.Button();
@@ -78,7 +87,6 @@
             this.lblPath = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.chkbxPDF = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -90,15 +98,23 @@
             this.panel1.BackColor = System.Drawing.Color.SlateGray;
             this.panel1.Controls.Add(this.groupBox2);
             this.panel1.Controls.Add(this.groupBox1);
+            this.panel1.Controls.Add(this.chkbxPDF);
             this.panel1.Location = new System.Drawing.Point(0, 45);
             this.panel1.Margin = new System.Windows.Forms.Padding(5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(396, 508);
+            this.panel1.Size = new System.Drawing.Size(396, 561);
             this.panel1.TabIndex = 1;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.chkbxPDF);
+            this.groupBox2.Controls.Add(this.txtAMT);
+            this.groupBox2.Controls.Add(this.txtDOI);
+            this.groupBox2.Controls.Add(this.txtPOI);
+            this.groupBox2.Controls.Add(this.label30);
+            this.groupBox2.Controls.Add(this.label29);
+            this.groupBox2.Controls.Add(this.label28);
+            this.groupBox2.Controls.Add(this.label27);
+            this.groupBox2.Controls.Add(this.txtCTC);
             this.groupBox2.Controls.Add(this.txtEmployer);
             this.groupBox2.Controls.Add(this.label19);
             this.groupBox2.Controls.Add(this.txtPeriod2);
@@ -111,12 +127,104 @@
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.txtPersonnelID);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox2.Location = new System.Drawing.Point(12, 3);
+            this.groupBox2.Location = new System.Drawing.Point(12, 19);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(370, 172);
+            this.groupBox2.Size = new System.Drawing.Size(370, 214);
             this.groupBox2.TabIndex = 375;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Personnel Data";
+            // 
+            // txtAMT
+            // 
+            this.txtAMT.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtAMT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtAMT.Font = new System.Drawing.Font("Century Gothic", 9.25F);
+            this.txtAMT.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtAMT.Location = new System.Drawing.Point(304, 180);
+            this.txtAMT.Name = "txtAMT";
+            this.txtAMT.Size = new System.Drawing.Size(60, 23);
+            this.txtAMT.TabIndex = 1024;
+            this.tp1.SetToolTip(this.txtAMT, "Format: MM/DD");
+            // 
+            // txtDOI
+            // 
+            this.txtDOI.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtDOI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDOI.Font = new System.Drawing.Font("Century Gothic", 9.25F);
+            this.txtDOI.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtDOI.Location = new System.Drawing.Point(200, 180);
+            this.txtDOI.Name = "txtDOI";
+            this.txtDOI.Size = new System.Drawing.Size(60, 23);
+            this.txtDOI.TabIndex = 1023;
+            this.tp1.SetToolTip(this.txtDOI, "Format: MM/DD");
+            // 
+            // txtPOI
+            // 
+            this.txtPOI.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtPOI.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPOI.Font = new System.Drawing.Font("Century Gothic", 9.25F);
+            this.txtPOI.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtPOI.Location = new System.Drawing.Point(304, 150);
+            this.txtPOI.Name = "txtPOI";
+            this.txtPOI.Size = new System.Drawing.Size(60, 23);
+            this.txtPOI.TabIndex = 1022;
+            this.tp1.SetToolTip(this.txtPOI, "Format: MM/DD");
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Century Gothic", 7.75F);
+            this.label30.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label30.Location = new System.Drawing.Point(270, 185);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(31, 16);
+            this.label30.TabIndex = 1021;
+            this.label30.Text = "AMT";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Century Gothic", 7.75F);
+            this.label29.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label29.Location = new System.Drawing.Point(162, 185);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(29, 16);
+            this.label29.TabIndex = 1020;
+            this.label29.Text = "DOI";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Century Gothic", 7.75F);
+            this.label28.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label28.Location = new System.Drawing.Point(270, 154);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(28, 16);
+            this.label28.TabIndex = 1019;
+            this.label28.Text = "POI";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Century Gothic", 7.75F);
+            this.label27.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label27.Location = new System.Drawing.Point(162, 154);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(31, 16);
+            this.label27.TabIndex = 1018;
+            this.label27.Text = "CTC";
+            // 
+            // txtCTC
+            // 
+            this.txtCTC.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtCTC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCTC.Font = new System.Drawing.Font("Century Gothic", 9.25F);
+            this.txtCTC.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtCTC.Location = new System.Drawing.Point(200, 150);
+            this.txtCTC.Name = "txtCTC";
+            this.txtCTC.Size = new System.Drawing.Size(60, 23);
+            this.txtCTC.TabIndex = 1017;
+            this.tp1.SetToolTip(this.txtCTC, "Format: MM/DD");
             // 
             // txtEmployer
             // 
@@ -124,7 +232,7 @@
             this.txtEmployer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEmployer.Font = new System.Drawing.Font("Century Gothic", 9.25F);
             this.txtEmployer.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtEmployer.Location = new System.Drawing.Point(200, 100);
+            this.txtEmployer.Location = new System.Drawing.Point(200, 98);
             this.txtEmployer.Name = "txtEmployer";
             this.txtEmployer.Size = new System.Drawing.Size(164, 23);
             this.txtEmployer.TabIndex = 398;
@@ -146,7 +254,7 @@
             this.txtPeriod2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPeriod2.Font = new System.Drawing.Font("Century Gothic", 9.25F);
             this.txtPeriod2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtPeriod2.Location = new System.Drawing.Point(293, 53);
+            this.txtPeriod2.Location = new System.Drawing.Point(293, 52);
             this.txtPeriod2.Name = "txtPeriod2";
             this.txtPeriod2.Size = new System.Drawing.Size(71, 23);
             this.txtPeriod2.TabIndex = 396;
@@ -217,7 +325,7 @@
             this.txtTIN.Enabled = false;
             this.txtTIN.Font = new System.Drawing.Font("Century Gothic", 9.25F);
             this.txtTIN.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtTIN.Location = new System.Drawing.Point(200, 76);
+            this.txtTIN.Location = new System.Drawing.Point(200, 75);
             this.txtTIN.Name = "txtTIN";
             this.txtTIN.Size = new System.Drawing.Size(164, 23);
             this.txtTIN.TabIndex = 390;
@@ -240,7 +348,7 @@
             this.txtPersonnelID.Enabled = false;
             this.txtPersonnelID.Font = new System.Drawing.Font("Century Gothic", 9.25F);
             this.txtPersonnelID.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtPersonnelID.Location = new System.Drawing.Point(200, 124);
+            this.txtPersonnelID.Location = new System.Drawing.Point(200, 121);
             this.txtPersonnelID.Name = "txtPersonnelID";
             this.txtPersonnelID.Size = new System.Drawing.Size(164, 23);
             this.txtPersonnelID.TabIndex = 388;
@@ -275,9 +383,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.txtLessTE);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox1.Location = new System.Drawing.Point(12, 181);
+            this.groupBox1.Location = new System.Drawing.Point(12, 231);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 305);
+            this.groupBox1.Size = new System.Drawing.Size(370, 311);
             this.groupBox1.TabIndex = 374;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Summary";
@@ -583,6 +691,19 @@
             this.txtLessTE.Size = new System.Drawing.Size(121, 23);
             this.txtLessTE.TabIndex = 354;
             // 
+            // chkbxPDF
+            // 
+            this.chkbxPDF.AutoSize = true;
+            this.chkbxPDF.Font = new System.Drawing.Font("Century Gothic", 7F);
+            this.chkbxPDF.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.chkbxPDF.Location = new System.Drawing.Point(258, 6);
+            this.chkbxPDF.Name = "chkbxPDF";
+            this.chkbxPDF.Size = new System.Drawing.Size(126, 19);
+            this.chkbxPDF.TabIndex = 374;
+            this.chkbxPDF.Text = "Always create PDF?";
+            this.tp1.SetToolTip(this.chkbxPDF, "Skip confirmation dialog?");
+            this.chkbxPDF.UseVisualStyleBackColor = true;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -593,6 +714,7 @@
             this.label14.Size = new System.Drawing.Size(135, 24);
             this.label14.TabIndex = 376;
             this.label14.Text = "Excel to PDF";
+            this.tp1.SetToolTip(this.label14, "Single selection PDF conversion");
             // 
             // tp1
             // 
@@ -614,7 +736,7 @@
             this.btnSource.Name = "btnSource";
             this.btnSource.Size = new System.Drawing.Size(45, 44);
             this.btnSource.TabIndex = 379;
-            this.tp1.SetToolTip(this.btnSource, "Select a blank formatted form");
+            this.tp1.SetToolTip(this.btnSource, "Select the 2316 source file!");
             this.btnSource.UseVisualStyleBackColor = false;
             this.btnSource.Click += new System.EventHandler(this.btnSource_Click);
             // 
@@ -631,18 +753,18 @@
             this.btnToPDF.Name = "btnToPDF";
             this.btnToPDF.Size = new System.Drawing.Size(45, 44);
             this.btnToPDF.TabIndex = 380;
-            this.tp1.SetToolTip(this.btnToPDF, "Select the BIR form 2316");
+            this.tp1.SetToolTip(this.btnToPDF, "Convert!");
             this.btnToPDF.UseVisualStyleBackColor = false;
             this.btnToPDF.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lblPath
             // 
             this.lblPath.AutoSize = true;
-            this.lblPath.Font = new System.Drawing.Font("Century Gothic", 6.75F);
+            this.lblPath.Font = new System.Drawing.Font("Century Gothic", 7.75F);
             this.lblPath.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblPath.Location = new System.Drawing.Point(4, 3);
+            this.lblPath.Location = new System.Drawing.Point(4, 2);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(35, 13);
+            this.lblPath.Size = new System.Drawing.Size(50, 16);
             this.lblPath.TabIndex = 377;
             this.lblPath.Text = "              ";
             // 
@@ -650,7 +772,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.panel2.Controls.Add(this.lblPath);
-            this.panel2.Location = new System.Drawing.Point(0, 537);
+            this.panel2.Location = new System.Drawing.Point(0, 593);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(401, 31);
             this.panel2.TabIndex = 377;
@@ -664,24 +786,12 @@
             this.panel3.Size = new System.Drawing.Size(15, 48);
             this.panel3.TabIndex = 378;
             // 
-            // chkbxPDF
-            // 
-            this.chkbxPDF.AutoSize = true;
-            this.chkbxPDF.Font = new System.Drawing.Font("Century Gothic", 7F);
-            this.chkbxPDF.Location = new System.Drawing.Point(200, 148);
-            this.chkbxPDF.Name = "chkbxPDF";
-            this.chkbxPDF.Size = new System.Drawing.Size(126, 19);
-            this.chkbxPDF.TabIndex = 374;
-            this.chkbxPDF.Text = "Always create PDF?";
-            this.tp1.SetToolTip(this.chkbxPDF, "Skip confirmation dialog?");
-            this.chkbxPDF.UseVisualStyleBackColor = true;
-            // 
             // Printer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.ClientSize = new System.Drawing.Size(397, 561);
+            this.ClientSize = new System.Drawing.Size(397, 620);
             this.Controls.Add(this.btnToPDF);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.btnSource);
@@ -699,6 +809,7 @@
             this.Text = "Excel to PDF";
             this.Load += new System.EventHandler(this.Printer_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -760,5 +871,13 @@
         private System.Windows.Forms.TextBox txtEmployer;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.CheckBox chkbxPDF;
+        private System.Windows.Forms.TextBox txtAMT;
+        private System.Windows.Forms.TextBox txtDOI;
+        private System.Windows.Forms.TextBox txtPOI;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox txtCTC;
     }
 }
