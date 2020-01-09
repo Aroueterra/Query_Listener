@@ -1,7 +1,7 @@
 # Query-Listener
 
 =========
-#### Windows form application that automates the processing of BIR FORM 2316, developed for the financial department of Convergys
+#### Windows form application that automates the processing of BIR FORM 2316 
 
 ### Frequently Asked Questions
 
@@ -10,6 +10,8 @@
 ##### General Information
 
 The Query Listener is a program designed to automate the process of the BIR form 2316. This is done by aggregating the data from disparate excel files into a single query capable Access .accdb file. 
+
+Notice: As of 2019, this program is marked OBSOLETE, and requires an update to modern standards.
 
 ###### Features include: 
 
@@ -107,4 +109,3 @@ Contact August Bryan N. Florese to report bugs or errors, or to update the funct
 
 Developed by August Bryan N. Florese
 
-This was my first project for the Convergys Finance department, due to a sudden rushed deadline I had to make certain compromises and it resulted in sloppy code! No sense of object oriented programming besides the basic functions available. Feel free to suggest changes and critique, but most of all, show me how to do it better!
